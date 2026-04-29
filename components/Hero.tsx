@@ -1,6 +1,18 @@
 import Image from "next/image";
 import { FadeIn } from "./FadeIn";
 
+const AnimatedText = ({ text }: { text: string }) => {
+  return (
+    <>
+      {text.split("").map((char, index) => (
+        <span key={index} className="magnify-letter">
+          {char === " " ? "\u00A0" : char}
+        </span>
+      ))}
+    </>
+  );
+};
+
 export function Hero() {
   return (
     <section id="about" className="min-h-screen flex flex-col justify-center px-8 md:px-24 pt-48 md:pt-48 pb-32 relative overflow-hidden">
@@ -38,8 +50,13 @@ export function Hero() {
         </FadeIn>
 
         <FadeIn delay={0.2}>
-          <h1 className="text-[14vw] md:text-[9vw] font-[900] tracking-tighter leading-[0.82] mb-12 uppercase typing-cursor">
-            CRAFTING,<br />DIGITAL <span className="text-accent relative">EXPERIENCES.<span className="inline-block w-4 md:w-8 h-2 md:h-4 bg-accent ml-2 translate-y-[-20%]" /></span>
+          <h1 className="text-[14vw] md:text-[9vw] max-w-[80rem] font-[900] tracking-tighter leading-[0.82] mb-12 uppercase typing-cursor magnify-target origin-left">
+            <AnimatedText text="CRAFTING" /><br />
+            <AnimatedText text="MODERN" /><br />
+            <span className="text-accent relative">
+              <AnimatedText text="WEBSITES" />
+              <span className="inline-block w-4 md:w-8 h-2 md:h-4 bg-accent ml-2 translate-y-[-20%]" />
+            </span>
           </h1>
         </FadeIn>
 

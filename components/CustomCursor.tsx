@@ -5,7 +5,9 @@ import { motion, useSpring, useMotionValue } from "framer-motion";
 
 export function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
+  const [isMagnifying, setIsMagnifying] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isClicking, setIsClicking] = useState(false);
 
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
@@ -23,8 +25,14 @@ export function CustomCursor() {
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
+      
+      // Check if hovering over magnifier text
+      if (target.classList.contains("magnify-target") || target.closest(".magnify-target")) {
+        setIsMagnifying(true);
+        setIsHovering(false);
+      } 
       // Check if hovering over interactive elements
-      if (
+      else if (
         target.tagName.toLowerCase() === "a" ||
         target.tagName.toLowerCase() === "button" ||
         target.closest("a") ||
@@ -33,8 +41,10 @@ export function CustomCursor() {
         window.getComputedStyle(target).cursor === "pointer"
       ) {
         setIsHovering(true);
+        setIsMagnifying(false);
       } else {
         setIsHovering(false);
+        setIsMagnifying(false);
       }
     };
 
@@ -42,14 +52,21 @@ export function CustomCursor() {
       setIsVisible(false);
     };
 
+    const handleMouseDown = () => setIsClicking(true);
+    const handleMouseUp = () => setIsClicking(false);
+
     window.addEventListener("mousemove", updateMousePosition);
     window.addEventListener("mouseover", handleMouseOver);
     window.addEventListener("mouseleave", handleMouseLeave);
+    window.addEventListener("mousedown", handleMouseDown);
+    window.addEventListener("mouseup", handleMouseUp);
 
     return () => {
       window.removeEventListener("mousemove", updateMousePosition);
       window.removeEventListener("mouseover", handleMouseOver);
       window.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener("mousedown", handleMouseDown);
+      window.removeEventListener("mouseup", handleMouseUp);
     };
   }, [cursorX, cursorY, isVisible]);
 
@@ -68,6 +85,10 @@ export function CustomCursor() {
           translateY: "-50%",
           opacity: isVisible ? 1 : 0,
         }}
+        animate={{
+          scale: isClicking ? 0.5 : 1,
+        }}
+        transition={{ type: "spring", stiffness: 400, damping: 25 }}
       />
       <motion.div
         className="fixed top-0 left-0 rounded-full pointer-events-none z-[9998] hidden md:block"
@@ -77,16 +98,21 @@ export function CustomCursor() {
           translateX: "-50%",
           translateY: "-50%",
           opacity: isVisible ? 1 : 0,
-          width: isHovering ? "200px" : "40px",
-          height: isHovering ? "200px" : "40px",
-          background: isHovering 
-            ? "radial-gradient(circle, rgba(255, 77, 0, 0.4) 0%, rgba(255, 77, 0, 0) 70%)"
-            : "radial-gradient(circle, rgba(255, 77, 0, 0.1) 0%, rgba(255, 77, 0, 0) 70%)",
-          border: isHovering ? "none" : "1px solid rgba(255, 77, 0, 0.3)",
+          background: isMagnifying 
+            ? "rgba(255, 255, 255, 0.05)" 
+            : (isHovering 
+                ? "radial-gradient(circle, rgba(255, 77, 0, 0.4) 0%, rgba(255, 77, 0, 0) 70%)"
+                : "radial-gradient(circle, rgba(255, 77, 0, 0.1) 0%, rgba(255, 77, 0, 0) 70%)"),
+          border: isMagnifying 
+            ? "1px solid rgba(255, 255, 255, 0.2)"
+            : (isHovering ? "none" : "1px solid rgba(255, 77, 0, 0.3)"),
+          backdropFilter: isMagnifying ? "blur(6px) contrast(1.1) brightness(1.2)" : "none",
+          WebkitBackdropFilter: isMagnifying ? "blur(6px) contrast(1.1) brightness(1.2)" : "none",
         }}
         animate={{
-          width: isHovering ? 200 : 40,
-          height: isHovering ? 200 : 40,
+          width: isMagnifying ? 250 : (isHovering ? 200 : 40),
+          height: isMagnifying ? 250 : (isHovering ? 200 : 40),
+          scale: isClicking ? 0.85 : 1,
         }}
         transition={{ type: "tween", ease: "easeOut", duration: 0.3 }}
       />
