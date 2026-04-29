@@ -14,7 +14,8 @@ export default function ProjectsPage() {
       desc: "Developed responsive and accessible UI components using Tailwind CSS. Converted design mockups into clean HTML layouts, ensuring cross-browser compatibility and working closely with backend developers for smooth UI integration.",
       tech: "HTML / Tailwind CSS",
       focus: "Responsive UI / Styling",
-      tags: ["UI COMPONENTS", "CROSS-BROWSER", "ACCESSIBILITY", "RESPONSIVE"]
+      tags: ["UI COMPONENTS", "CROSS-BROWSER", "ACCESSIBILITY", "RESPONSIVE"],
+      link: "https://vaidyaratnamstore.com"
     },
     {
       id: "PRJ_002",
@@ -24,7 +25,8 @@ export default function ProjectsPage() {
       desc: "Developed key frontend modules using Next.js with a component-based architecture. Implemented SSR/SSG for SEO-critical pages, integrated REST APIs for major data flows, and optimized performance using image optimization and lazy loading.",
       tech: "Next.js / React / Tailwind CSS",
       focus: "REST APIs / SSR / SSG",
-      tags: ["PERFORMANCE", "IMAGE OPTIMIZATION", "ACCESSIBILITY", "STATE MANAGEMENT"]
+      tags: ["PERFORMANCE", "IMAGE OPTIMIZATION", "ACCESSIBILITY", "STATE MANAGEMENT"],
+      link: "https://www.muthootcap.com/"
     },
     {
       id: "PRJ_003",
@@ -34,7 +36,140 @@ export default function ProjectsPage() {
       desc: "Implemented pixel-perfect UI screens based on design requirements using HTML and Tailwind CSS. Built fully responsive layouts ensuring consistent experience across desktop, tablet, and mobile devices, optimizing CSS structure for maintainability.",
       tech: "HTML / Tailwind CSS",
       focus: "Responsive UI / Integration",
-      tags: ["PIXEL-PERFECT", "RESPONSIVE LAYOUTS", "CSS OPTIMIZATION", "PHP INTEGRATION"]
+      tags: ["PIXEL-PERFECT", "RESPONSIVE LAYOUTS", "CSS OPTIMIZATION", "PHP INTEGRATION"],
+      link: "https://luxontata.com/"
+    },
+    {
+      id: "PRJ_004",
+      title: "Levage Engineering",
+      year: "2024",
+      image: "/assets/levage_hero.png",
+      desc: "A construction company website. Developed custom UI components using Tailwind CSS and HTML to match premium design specifications.",
+      tech: "HTML / Tailwind CSS",
+      focus: "Responsive UI / Integration",
+      tags: ["UI COMPONENTS", "RESPONSIVE LAYOUTS", "CSS OPTIMIZATION", "WORDPRESS INTEGRATION"],
+      link: "https://levageengineering.com/"
+    },
+    {
+      id: "PRJ_005",
+      title: "24 Study Abroad",
+      year: "2024",
+      image: "/assets/studyabroad_hero.png",
+      desc: "A study abroad website. Built the frontend architecture and integrated REST APIs with Strapi backend for dynamic content delivery.",
+      tech: "Next.js / Strapi / Tailwind CSS",
+      focus: "Frontend / REST API Integration",
+      tags: ["NEXT.JS", "STRAPI CMS", "API INTEGRATION", "STATE MANAGEMENT"],
+      link: "https://24studyabroad.com/"
+    },
+    {
+      id: "PRJ_006",
+      title: "Dar Assihha",
+      year: "2024",
+      image: "/assets/darassihha_hero.png",
+      desc: "A modern hospital website. Implemented clean and professional user interfaces using Next.js and Tailwind CSS for a Strapi-powered platform.",
+      tech: "Next.js / Strapi / Tailwind CSS",
+      focus: "UI Development",
+      tags: ["HEALTHCARE UI", "NEXT.JS", "TAILWIND CSS", "COMPONENT ARCHITECTURE"],
+      link: "https://www.darassihha.net/"
+    },
+    {
+      id: "PRJ_007",
+      title: "Vieco Pharma",
+      year: "2024",
+      image: "/assets/vieco_hero.png",
+      desc: "UAE based pharmaceutical manufacturer website. Crafted responsive layouts and UI elements using HTML and Tailwind CSS for WordPress integration.",
+      tech: "HTML / Tailwind CSS",
+      focus: "UI Design / Responsiveness",
+      tags: ["PHARMA UI", "WORDPRESS", "CSS STYLING", "RESPONSIVE DESIGN"],
+      link: "https://www.vieco-pharma.com/"
+    },
+    {
+      id: "PRJ_008",
+      title: "South Indian Credit",
+      year: "2024",
+      image: "/assets/southindian_hero.png",
+      desc: "Financial companion offering trusted solutions. Developed the frontend application with Next.js and Tailwind CSS, integrating with a Strapi backend.",
+      tech: "Next.js / Strapi / Tailwind CSS",
+      focus: "Frontend Development",
+      tags: ["FINTECH", "NEXT.JS", "STRAPI CMS", "TAILWIND CSS"],
+      link: "https://southindiancredits.com/"
+    },
+    {
+      id: "PRJ_009",
+      title: "Dewton India",
+      year: "2024",
+      image: "/assets/dewton_hero.png",
+      desc: "Leading manufacturer of LED lights. Implemented dynamic and visually appealing user interfaces using Next.js and Tailwind CSS.",
+      tech: "Next.js / Strapi / Tailwind CSS",
+      focus: "UI Development",
+      tags: ["MANUFACTURING UI", "NEXT.JS", "TAILWIND CSS", "STRAPI CMS"],
+      link: "https://dewtonindia.com/"
+    },
+    {
+      id: "PRJ_010",
+      title: "Zoople Technologies",
+      year: "2024",
+      image: "/assets/zoople_hero.png",
+      desc: "IT courses and software training institute. Built fully responsive, pixel-perfect UI screens using HTML and Tailwind CSS.",
+      tech: "HTML / Tailwind CSS",
+      focus: "UI Development",
+      tags: ["EDUCATION UI", "HTML5", "TAILWIND CSS", "RESPONSIVE LAYOUTS"],
+      link: "https://zoople.in/"
+    },
+    {
+      id: "PRJ_011",
+      title: "Somans Leisure Tours",
+      year: "2024",
+      image: "/assets/somans_hero.png",
+      desc: "Premium tour operator in Kerala. Developed interactive and visually stunning UI components using React.",
+      tech: "React / CSS",
+      focus: "UI Development",
+      tags: ["TRAVEL UI", "REACT", "INTERACTIVE DESIGN", "COMPONENT ARCHITECTURE"],
+      link: "https://www.somansleisuretours.com/"
+    },
+    {
+      id: "PRJ_012",
+      title: "Bookaero",
+      year: "2024",
+      image: "/assets/bookaero_hero.png",
+      desc: "Flight booking website. Crafted semantic HTML and styled with CSS to build a clean and responsive frontend for a Laravel backend.",
+      tech: "HTML / CSS / Laravel",
+      focus: "UI Development",
+      tags: ["TRAVEL UI", "HTML5", "CSS3", "LARAVEL INTEGRATION"],
+      link: "https://www.bookaero.com/"
+    },
+    {
+      id: "PRJ_013",
+      title: "TT Devassy Jewellery",
+      year: "2024",
+      image: "/assets/ttdevassy_hero.png",
+      desc: "Luxury jewelry brand website. Built the frontend using Next.js and Tailwind CSS integrated with a Node.js backend.",
+      tech: "Next.js / Node.js / Tailwind CSS",
+      focus: "Frontend Development",
+      tags: ["JEWELRY UI", "NEXT.JS", "TAILWIND CSS", "NODE.JS"],
+      link: "https://www.ttdevassyjewellery.com/"
+    },
+    {
+      id: "PRJ_014",
+      title: "Josco Jewellers",
+      year: "2024",
+      image: "/assets/josco_hero.png",
+      desc: "Fine jewelry brand website. Crafted precise HTML and CSS to create an elegant and responsive UI for a Laravel-powered backend.",
+      tech: "HTML / CSS / Laravel",
+      focus: "UI Development",
+      tags: ["JEWELRY UI", "HTML5", "CSS3", "LARAVEL INTEGRATION"],
+      link: "https://www.joscojewellers.in/"
+    },
+    {
+      id: "PRJ_015",
+      title: "Celant",
+      year: "2024",
+      image: "/assets/celant_hero.png",
+      desc: "Exclusive luxury jewelry brand website. Designed and developed a minimalist, premium user interface to showcase high-end collections.",
+      tech: "HTML / CSS",
+      focus: "UI Development",
+      tags: ["JEWELRY UI", "LUXURY DESIGN", "UI/UX", "RESPONSIVE"],
+      link: "https://celant.in/"
     }
   ];
 
@@ -67,7 +202,8 @@ export default function ProjectsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {projects.map((project, idx) => (
               <FadeIn key={project.id} delay={idx * 0.15}>
-                <div className="group relative flex flex-col border border-grid-line bg-background/50 backdrop-blur-sm hover:border-accent transition-all duration-700 h-full">
+                <Link href={project.link} target="_blank" rel="noopener noreferrer" className="block h-full">
+                  <div className="group relative flex flex-col border border-grid-line bg-background/50 backdrop-blur-sm hover:border-accent transition-all duration-700 h-full">
                   <div className="relative aspect-video w-full overflow-hidden border-b border-grid-line">
                     <Image
                       src={project.image}
@@ -118,6 +254,7 @@ export default function ProjectsPage() {
                     </div>
                   </div>
                 </div>
+                </Link>
               </FadeIn>
             ))}
           </div>

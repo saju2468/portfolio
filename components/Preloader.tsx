@@ -36,7 +36,7 @@ export function Preloader() {
           className="fixed inset-0 z-[20000] bg-[#fbfbf7] dark:bg-[#0c0c0c] flex flex-col items-center justify-center p-8 overflow-hidden"
         >
           <div className="absolute inset-0 opacity-10 pointer-events-none">
-            <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-full h-full max-md:hidden" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <pattern
                   id="preloader-grid"
@@ -57,7 +57,7 @@ export function Preloader() {
           </div>
           <div className="relative flex flex-col items-center gap-12 max-w-md w-full">
             <div className="relative flex flex-col items-center">
-              <h1 className="text-6xl md:text-8xl font-black tracking-tighter uppercase leading-none selection:bg-accent relative">
+              <h1 className="text-6xl md:text-8xl text-white font-black tracking-tighter uppercase leading-none selection:bg-accent relative">
                 sajin
                 <div className="absolute -right-6 bottom-2 w-4 h-8 bg-[#ff4d00]" />
               </h1>
@@ -75,9 +75,9 @@ export function Preloader() {
                 <span className="text-xl font-black">{Math.round(progress)}%</span>
               </div>
               <div className="h-[2px] w-full bg-grid-line relative overflow-hidden">
-                <div 
+                <div
                   className="absolute h-full bg-[#ff4d00] transition-all duration-75"
-                  style={{ width: `${progress}%` }} 
+                  style={{ width: `${progress}%` }}
                 />
               </div>
               <div className="flex justify-between items-center technical-label !text-[7px] opacity-30">
@@ -86,11 +86,11 @@ export function Preloader() {
               </div>
             </div>
           </div>
-          <div className="absolute top-12 left-12 w-8 h-8 border-t-2 border-l-2 border-[#101010] dark:border-[#f2f2f2] opacity-20" />
-          <div className="absolute top-12 right-12 w-8 h-8 border-t-2 border-r-2 border-[#101010] dark:border-[#f2f2f2] opacity-20" />
-          <div className="absolute bottom-12 left-12 w-8 h-8 border-b-2 border-l-2 border-[#101010] dark:border-[#f2f2f2] opacity-20" />
-          <div className="absolute bottom-12 right-12 w-8 h-8 border-b-2 border-r-2 border-[#101010] dark:border-[#f2f2f2] opacity-20" />
-          <div className="absolute top-0 right-0 h-full w-24 opacity-5 pointer-events-none vertical-text technical-label !text-[6px] overflow-hidden leading-none select-none">
+          <div className="absolute top-12 left-12 w-8 h-8 border-t-2 border-l-2 hidden border-[#101010] dark:border-[#f2f2f2] opacity-20" />
+          <div className="absolute top-12 right-12 w-8 h-8 border-t-2 border-r-2 hidden border-[#101010] dark:border-[#f2f2f2] opacity-20" />
+          <div className="absolute bottom-12 left-12 w-8 h-8 border-b-2 border-l-2 hidden border-[#101010] dark:border-[#f2f2f2] opacity-20" />
+          <div className="absolute bottom-12 right-12 w-8 h-8 border-b-2 border-r-2 hidden border-[#101010] dark:border-[#f2f2f2] opacity-20" />
+          <div className="absolute top-0 right-0 h-full w-24 opacity-5 pointer-events-none vertical-text hidden technical-label !text-[6px] overflow-hidden leading-none select-none">
             {Array.from({ length: 40 }).map((_, i) => (
               <div key={i} className="mb-2">
                 1011010101101100101010010110101

@@ -4,7 +4,7 @@ import { FadeIn } from "./FadeIn";
 
 export function Work() {
   return (
-    <section id="work" className="px-6 md:px-24 py-32 md:py-48 border-t border-grid-line relative z-10 mt-12 md:mt-0">
+    <section id="work" className="px-6 md:px-24 py-32 md:py-36 border-t border-grid-line relative z-10 mt-12 md:mt-0">
       <div className="flex flex-col gap-20 md:gap-32">
         <FadeIn delay={0.1}>
           <div className="flex flex-col gap-6">
@@ -13,8 +13,8 @@ export function Work() {
               <span>SYSTEM_MANIFEST_v0.1</span>
             </div>
             <h2 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tighter uppercase leading-[0.9]">
-              Realized.<br />
-              <span className="text-accent underline decoration-4 underline-offset-8">Systems.</span>
+              Featured.<br />
+              <span className="text-accent underline decoration-4 underline-offset-8">Projects.</span>
             </h2>
           </div>
         </FadeIn>
@@ -71,7 +71,7 @@ export function Work() {
                   </span>
                 ))}
               </div>
-              <Link href="/projects/PRJ_001">
+              <Link href="https://vaidyaratnamstore.com" target="_blank" rel="noopener noreferrer">
                 <button className="flex items-center gap-6 group/btn mt-4">
                   <span className="font-black text-xs uppercase tracking-[0.4em] border-b-2 border-accent pb-2">
                     Investigate_Operation
@@ -135,7 +135,7 @@ export function Work() {
                   </span>
                 ))}
               </div>
-              <Link href="/projects/PRJ_002">
+              <Link href="https://www.muthootcap.com/" target="_blank" rel="noopener noreferrer">
                 <button className="flex items-center gap-6 group/btn mt-4 lg:flex-row-reverse lg:justify-end">
                   <span className="font-black text-xs uppercase tracking-[0.4em] border-b-2 border-accent pb-2">
                     Investigate_Operation
@@ -199,7 +199,7 @@ export function Work() {
                   </span>
                 ))}
               </div>
-              <Link href="/projects/PRJ_003">
+              <Link href="https://luxontata.com/" target="_blank" rel="noopener noreferrer">
                 <button className="flex items-center gap-6 group/btn mt-4">
                   <span className="font-black text-xs uppercase tracking-[0.4em] border-b-2 border-accent pb-2">
                     Investigate_Operation
@@ -211,7 +211,7 @@ export function Work() {
           </div>
         </FadeIn>
 
-        <div className="mt-20 md:mt-32 flex justify-center w-full relative z-20">
+        <div className="mt-20 md:mt-5 flex justify-center w-full relative z-20">
           <Link href="/projects">
             <button className="px-8 md:px-12 py-5 md:py-6 border-2 border-accent text-accent font-black text-xs md:text-lg uppercase tracking-[0.3em] transition-all hover:bg-accent hover:text-white flex items-center gap-4 group shadow-[6px_6px_0px_0px_rgba(255,77,0,0.1)] hover:shadow-none">
               <span>VIEW_ALL_PROJECTS</span>

@@ -3,7 +3,7 @@ import { FadeIn } from "./FadeIn";
 
 export function Hero() {
   return (
-    <section id="about" className="min-h-screen flex flex-col justify-center px-8 md:px-24 pt-48 md:pt-64 pb-32 relative overflow-hidden">
+    <section id="about" className="min-h-screen flex flex-col justify-center px-8 md:px-24 pt-48 md:pt-48 pb-32 relative overflow-hidden">
       <div
         className="absolute z-10 hidden lg:flex flex-col gap-4"
         style={{ right: "10%", top: "50%", width: "350px", height: "450px", transform: "translateY(-50%)" }}
@@ -36,7 +36,7 @@ export function Hero() {
             </span>
           </div>
         </FadeIn>
-        
+
         <FadeIn delay={0.2}>
           <h1 className="text-[14vw] md:text-[9vw] font-[900] tracking-tighter leading-[0.82] mb-12 uppercase typing-cursor">
             CRAFTING,<br />DIGITAL <span className="text-accent relative">EXPERIENCES.<span className="inline-block w-4 md:w-8 h-2 md:h-4 bg-accent ml-2 translate-y-[-20%]" /></span>
@@ -48,15 +48,16 @@ export function Hero() {
             <FadeIn delay={0.3}>
               <div className="lg:hidden w-full max-w-[400px] aspect-[4/5] border border-grid-line p-2 mb-8 relative group">
                 <div className="w-full h-full overflow-hidden relative">
-                {/* Mobile portrait placeholder */}
-                <div className="absolute inset-0 bg-gray-500/20" />
-                <div className="absolute top-0 right-0 p-4 mix-blend-difference z-10 opacity-60">
-                  <span className="technical-label !text-[8px] text-white tracking-[0.4em]">LIVE_FEED_01</span>
+                  {/* Mobile portrait placeholder */}
+                  <Image src="/sajin.jpg" alt="image" fill className="object-cover" />
+                  <div className="absolute inset-0 bg-gray-500/20" />
+                  <div className="absolute top-0 right-0 p-4 mix-blend-difference z-10 opacity-60">
+                    <span className="technical-label !text-[8px] text-white tracking-[0.4em]">LIVE_FEED_01</span>
+                  </div>
                 </div>
+                <div className="absolute -top-1 -right-1 w-2 h-2 border-t border-r border-accent" />
+                <div className="absolute -bottom-1 -left-1 w-2 h-2 border-b border-l border-accent" />
               </div>
-              <div className="absolute -top-1 -right-1 w-2 h-2 border-t border-r border-accent" />
-              <div className="absolute -bottom-1 -left-1 w-2 h-2 border-b border-l border-accent" />
-            </div>
             </FadeIn>
             <FadeIn delay={0.4}>
               <p className="text-2xl md:text-5xl leading-[1.1] font-medium tracking-tight max-w-[50rem]">
@@ -89,7 +90,7 @@ export function Hero() {
                 <span className="technical-label opacity-40">ACTIVE MODULES</span>
                 <div className="flex flex-wrap gap-2">
                   {["NEXT.JS", "REACT", "TAILWIND", "TYPESCRIPT"].map((module) => (
-                    <span key={module} className="text-[10px] font-mono border border-foreground/20 px-3 py-1 uppercase font-bold hover:bg-accent hover:text-background transition-colors cursor-crosshair">
+                    <span key={module} className="text-[10px] font-mono border border-foreground/20 px-3 py-1 uppercase font-bold hover:bg-accent hover:text-background transition-colors cursor-pointer">
                       {module}
                     </span>
                   ))}

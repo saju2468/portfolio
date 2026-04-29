@@ -15,8 +15,8 @@ export function Contact() {
             <span>SYSTEM_CONTACT_BRIDGE_v1.2</span>
           </div>
           <h2 className="text-6xl sm:text-8xl md:text-9xl font-black tracking-tighter uppercase leading-[0.8] mb-8">
-            Start a.<br />
-            <span className="text-accent underline decoration-4 md:decoration-8 underline-offset-12">Session.</span>
+            Initiate.<br />
+            <span className="text-accent underline decoration-4 md:decoration-8 underline-offset-12">Connection.</span>
           </h2>
           <p className="text-xl md:text-2xl font-medium opacity-60 max-w-2xl tracking-tight">
             For industrial architecture inquiries, system optimizations, or global collaborations, initiate the handshake protocol below.
@@ -56,7 +56,7 @@ export function Contact() {
             </div>
             <button className="w-full py-8 border-2 border-accent text-accent font-black text-xs md:text-2xl uppercase tracking-[0.2em] md:tracking-[0.5em] transition-all flex items-center justify-center gap-6 group overflow-hidden relative shadow-[8px_8px_0px_0px_rgba(255,77,0,0.1)] hover:shadow-none hover:bg-accent hover:text-white" tabIndex={0}>
               <span className="relative z-10">INITIATE_TRANSMISSION</span>
-              <Send className="w-6 h-6 relative z-10 transition-transform duration-500 group-hover:translate-x-4 group-hover:-translate-y-4" />
+              <Send className="w-6 h-6 relative z-10 transition-transform duration-500 group-hover:translate-x-2 group-hover:-translate-y-2" />
             </button>
           </form>
         </div>

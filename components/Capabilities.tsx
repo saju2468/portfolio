@@ -39,8 +39,8 @@ export function Capabilities() {
               <span>CORE_CAPABILITIES_v1.0</span>
             </div>
             <h2 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tighter uppercase leading-[0.9]">
-              Technical.<br />
-              <span className="text-accent underline decoration-4 underline-offset-8">Arsenal.</span>
+              Core.<br />
+              <span className="text-accent underline decoration-4 underline-offset-8">Skills.</span>
             </h2>
           </div>
         </FadeIn>
@@ -68,11 +68,11 @@ export function Capabilities() {
             </FadeIn>
           ))}
         </div>
-        <div className="mt-12 flex items-center gap-6 opacity-10">
+        {/* <div className="mt-12 flex items-center gap-6 opacity-10">
           <div className="h-[1px] flex-1 bg-foreground" />
           <div className="technical-label !text-[8px]">LOG_LEVEL: SYSTEM_READY</div>
           <div className="h-[1px] w-24 bg-foreground" />
-        </div>
+        </div> */}
       </div>
     </section>
   );

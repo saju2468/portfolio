@@ -7,11 +7,11 @@ export function Footer() {
         <span className="font-black tracking-tighter text-3xl uppercase leading-none">sajin</span>
         <span className="technical-label opacity-30 !text-[8px] tracking-[0.5em]">FRONTEND ENGINEER CORE // 2024</span>
       </div>
-      <div className="flex gap-12">
+      {/* <div className="flex gap-12">
         <Link className="technical-label !text-[10px] hover:text-accent transition-colors" href="/projects">Archive</Link>
         <Link className="technical-label !text-[10px] hover:text-accent transition-colors" href="/experience">Experience</Link>
         <span className="technical-label !text-[10px] opacity-20">Terms_01</span>
-      </div>
+      </div> */}
       <div className="flex flex-col gap-1 items-center md:items-end technical-label !text-[8px] opacity-60 font-mono text-center md:text-right">
         <div className="flex gap-4 items-center">
           <span>SYSTEM_LATENCY: 0MS</span>

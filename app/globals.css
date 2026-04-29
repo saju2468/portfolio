@@ -5,7 +5,7 @@
   --foreground: #101010;
   --accent: #ff4d00;
   --secondary: #666;
-  --grid-line: #f2f2f2;
+  --grid-line: #fb4c0040;
 }
 
 [data-theme="dark"] {
@@ -57,13 +57,13 @@ body {
 }
 
 .node-hover {
-  cursor: crosshair !important;
+  cursor: pointer !important;
 }
 
 a,
 button,
 [role="button"] {
-  cursor: crosshair;
+  cursor: pointer;
 }
 
 .typing-cursor:after {
@@ -72,10 +72,12 @@ button,
 }
 
 @keyframes blink {
+
   0%,
   to {
     opacity: 1;
   }
+
   50% {
     opacity: 0;
   }
@@ -145,6 +147,7 @@ button,
   .custom-tab\:block {
     display: block;
   }
+
   .custom-tab\:hidden {
     display: none;
   }
@@ -154,6 +157,7 @@ button,
   .custom-desktop\:block {
     display: block;
   }
+
   .custom-tab\:block {
     display: none;
   }
@@ -163,18 +167,23 @@ button,
   0% {
     transform: translate(0);
   }
+
   20% {
     transform: translate(-1px, 1px);
   }
+
   40% {
     transform: translate(-1px, -1px);
   }
+
   60% {
     transform: translate(1px, 1px);
   }
+
   80% {
     transform: translate(1px, -1px);
   }
+
   to {
     transform: translate(0);
   }
