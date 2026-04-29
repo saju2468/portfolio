@@ -30,6 +30,7 @@ export const viewport: Viewport = {
 };
 
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { CustomCursor } from "@/components/CustomCursor";
 
 export default function RootLayout({
   children,
@@ -49,6 +50,7 @@ export default function RootLayout({
           enableSystem={false}
         >
           <SmoothScroll>
+            <CustomCursor />
             <div className="crt-overlay pointer-events-none" />
             <div className="bg-pattern pointer-events-none">
               <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">

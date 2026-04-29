@@ -87,11 +87,11 @@ export function Work() {
           <div className="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 lg:order-2 relative aspect-video lg:h-[60vh] lg:aspect-auto border border-grid-line overflow-hidden bg-background/50 backdrop-blur-sm group-hover:border-accent transition-all duration-700">
               <Image
-                src="/muthoot_hero.webp"
+                src="/assets/muthoot_hero.png"
                 alt="Muthoot Capital Platform"
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 60vw"
-                className="object-cover grayscale group-hover:grayscale-0 contrast-125 opacity-40 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
+                className="object-cover object-left grayscale group-hover:grayscale-0 contrast-125 opacity-40 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80" />
               <div className="absolute bottom-0 left-0 lg:left-auto lg:right-0 p-6 md:p-10 z-10 w-full flex justify-between items-end text-left lg:text-right">
