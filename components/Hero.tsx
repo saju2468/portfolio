@@ -26,7 +26,7 @@ export function Hero() {
           </div>
           <div className="w-full h-full overflow-hidden relative">
             {/* The actual image path needs to be updated with real assets */}
-            <Image src="/sajin.jpg" alt="image" fill className="object-cover" />
+            <Image src="/sajin.jpg" alt="image" fill priority sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
             <div className="absolute inset-0 bg-accent/5 pointer-events-none" />
           </div>
           <div className="absolute -top-1 -right-1 w-2 h-2 border-t border-r border-accent" />
@@ -44,7 +44,7 @@ export function Hero() {
             <span className="symbol text-2xl">✦</span>
             <span className="text-xs">SYSTEM_INITIALIZED_00.2</span>
             <span className="handwriting text-xl ml-8 rotate-[-2deg] hidden md:inline-block">
-              // Portrait mode active
+              {"// Portrait mode active"}
             </span>
           </div>
         </FadeIn>
@@ -66,7 +66,7 @@ export function Hero() {
               <div className="lg:hidden w-full max-w-[400px] aspect-[4/5] border border-grid-line p-2 mb-8 relative group">
                 <div className="w-full h-full overflow-hidden relative">
                   {/* Mobile portrait placeholder */}
-                  <Image src="/sajin.jpg" alt="image" fill className="object-cover" />
+                  <Image src="/sajin.jpg" alt="image" fill priority sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
                   <div className="absolute inset-0 bg-gray-500/20" />
                   <div className="absolute top-0 right-0 p-4 mix-blend-difference z-10 opacity-60">
                     <span className="technical-label !text-[8px] text-white tracking-[0.4em]">LIVE_FEED_01</span>

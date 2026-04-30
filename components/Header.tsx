@@ -6,12 +6,15 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 export function Header() {
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
-    setMounted(true);
     // Prevent body scroll when menu is open
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -48,8 +51,8 @@ export function Header() {
         <nav className="flex items-center gap-6 md:gap-10">
           <ul className="hidden lg:flex items-center gap-16 text-[10px] uppercase tracking-[0.4em] font-medium opacity-60">
             <li className="hover:opacity-100 cursor-pointer transition-all hover:text-[#ff4d00]">
-              <Link 
-                href="#work" 
+              <Link
+                href="#work"
                 onClick={(e) => {
                   e.preventDefault();
                   document.querySelector('#work')?.scrollIntoView({ behavior: 'smooth' });
@@ -59,7 +62,7 @@ export function Header() {
               </Link>
             </li>
             <li className="hover:opacity-100 cursor-pointer transition-all hover:text-[#ff4d00]">
-              <Link 
+              <Link
                 href="#capabilities"
                 onClick={(e) => {
                   e.preventDefault();
@@ -70,7 +73,7 @@ export function Header() {
               </Link>
             </li>
             <li className="hover:opacity-100 cursor-pointer transition-all hover:text-[#ff4d00]">
-              <Link 
+              <Link
                 href="#about"
                 onClick={(e) => {
                   e.preventDefault();
@@ -81,7 +84,7 @@ export function Header() {
               </Link>
             </li>
             <li className="hover:opacity-100 cursor-pointer transition-all hover:text-[#ff4d00]">
-              <Link 
+              <Link
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
@@ -101,7 +104,7 @@ export function Header() {
                 {resolvedTheme === "dark" ? "LIGHT" : "DARK"}
               </button>
             )}
-            <button 
+            <button
               className="lg:hidden text-[10px] uppercase tracking-[0.4em] font-black flex items-center gap-4 group"
               onClick={() => setIsMenuOpen(true)}
             >

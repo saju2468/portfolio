@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CodeXml, Layers, GitBranch, Cpu, Terminal, Zap, Globe, Gauge } from "lucide-react";
+import { Layers, GitBranch, Cpu, Terminal, Zap, Globe, Gauge } from "lucide-react";
 import { FadeIn } from "./FadeIn";
 
 const BentoCard = ({ children, className = "", delay = 0 }: { children: React.ReactNode, className?: string, delay?: number }) => {
@@ -113,10 +113,10 @@ export function Capabilities() {
                 </div>
                 <div className="flex flex-col gap-2">
                   <p><span className="text-accent font-bold">const</span> <span className="text-foreground font-bold">seniorEngineer</span> = {"{"}</p>
-                  <p className="pl-4 sm:pl-8">core: <span className="text-accent">["Next.js", "React", "TypeScript"]</span>,</p>
-                  <p className="pl-4 sm:pl-8">styling: <span className="text-accent">["Tailwind CSS", "Framer Motion"]</span>,</p>
-                  <p className="pl-4 sm:pl-8">state: <span className="text-accent">["Zustand", "Redux Toolkit"]</span>,</p>
-                  <p className="pl-4 sm:pl-8">focus: <span className="text-foreground/70">"Scalable, maintainable, performant."</span></p>
+                  <p className="pl-4 sm:pl-8">core: <span className="text-accent">[&quot;Next.js&quot;, &quot;React&quot;, &quot;TypeScript&quot;]</span>,</p>
+                  <p className="pl-4 sm:pl-8">styling: <span className="text-accent">[&quot;Tailwind CSS&quot;, &quot;Framer Motion&quot;]</span>,</p>
+                  <p className="pl-4 sm:pl-8">state: <span className="text-accent">[&quot;Zustand&quot;, &quot;Redux Toolkit&quot;]</span>,</p>
+                  <p className="pl-4 sm:pl-8">focus: <span className="text-foreground/70">&quot;Scalable, maintainable, performant.&quot;</span></p>
                   <p>{"};"}</p>
                 </div>
               </div>
