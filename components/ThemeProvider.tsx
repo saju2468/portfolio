@@ -8,7 +8,13 @@ import type { ThemeProviderProps } from "next-themes";
 if (typeof window !== "undefined" && process.env.NODE_ENV === "development") {
   const orig = console.error;
   console.error = (...args: unknown[]) => {
-    if (typeof args[0] === "string" && args[0].includes("Encountered a script tag")) {
+    const msg = typeof args[0] === "string" ? args[0] : "";
+    if (
+      msg.includes("Encountered a script tag") ||
+      msg.includes("hydration-mismatch") ||
+      msg.includes("A tree hydrated but some attributes") ||
+      msg.includes("cz-shortcut-listen")
+    ) {
       return;
     }
     orig.apply(console, args);

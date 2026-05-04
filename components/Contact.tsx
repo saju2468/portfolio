@@ -1,91 +1,430 @@
 "use client";
 
-import { Mail, User, Send } from "lucide-react";
+import { Mail, Send, CheckCircle2, Loader2, AlertCircle, MapPin, Globe, MessageSquare, Zap, Cpu } from "lucide-react";
+import { useState, FormEvent, ChangeEvent, useRef, useEffect } from "react";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { FadeIn } from "./FadeIn";
+import { Magnetic } from "./Magnetic";
+
+type FormState = {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+};
+
+type FormErrors = Partial<Record<keyof FormState, string>>;
+
+const ModernInput = ({ 
+  id, 
+  name,
+  label, 
+  type = "text",
+  value,
+  error,
+  isSubmitting,
+  onChange,
+  onFocus,
+  onBlur,
+  isFocused,
+  isTextArea = false
+}: { 
+  id: string;
+  name: keyof FormState;
+  label: string;
+  type?: string;
+  value: string;
+  error?: string;
+  isSubmitting: boolean;
+  onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onFocus: () => void;
+  onBlur: () => void;
+  isFocused: boolean;
+  isTextArea?: boolean;
+}) => {
+  const hasValue = value.length > 0;
+
+  return (
+    <div className="flex flex-col gap-2 relative w-full group">
+      <div 
+        className={`relative transition-all duration-700
+          ${isFocused ? 'opacity-100' : 'opacity-80'}
+        `}
+      >
+        <label 
+          htmlFor={id} 
+          className={`absolute left-0 transition-all duration-500 pointer-events-none font-mono uppercase tracking-[0.2em]
+            ${(isFocused || hasValue) 
+              ? '-top-6 text-[10px] text-accent' 
+              : 'top-4 text-xs opacity-40'}
+          `}
+        >
+          {label}
+        </label>
+        
+        <div className="relative overflow-hidden pt-4 pb-2">
+          {isTextArea ? (
+            <textarea
+              id={id}
+              name={name}
+              value={value}
+              onChange={onChange}
+              onFocus={onFocus}
+              onBlur={onBlur}
+              disabled={isSubmitting}
+              rows={4}
+              placeholder=" "
+              className="w-full bg-transparent outline-none text-lg font-medium tracking-tight resize-none placeholder:opacity-0 disabled:opacity-50 min-h-[120px] transition-all duration-300"
+            />
+          ) : (
+            <input
+              id={id}
+              name={name}
+              type={type}
+              value={value}
+              onChange={onChange}
+              onFocus={onFocus}
+              onBlur={onBlur}
+              disabled={isSubmitting}
+              placeholder=" "
+              className="w-full bg-transparent outline-none text-lg font-medium tracking-tight placeholder:opacity-0 disabled:opacity-50 transition-all duration-300"
+            />
+          )}
+          
+          {/* Bottom border animation */}
+          <div className="absolute bottom-0 left-0 w-full h-[1px] bg-foreground/10" />
+          <motion.div 
+            initial={false}
+            animate={{ 
+              width: isFocused ? "100%" : "0%",
+              backgroundColor: error ? "var(--color-red-500)" : "var(--accent)"
+            }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute bottom-0 left-0 h-[1.5px] z-10"
+          />
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {error && (
+          <motion.div 
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -10 }}
+            className="flex items-center gap-2 text-red-500"
+          >
+            <AlertCircle className="w-3 h-3" />
+            <span className="text-[10px] font-mono uppercase tracking-widest">{error}</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
 
 export function Contact() {
+  const [formData, setFormData] = useState<FormState>({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [focusedField, setFocusedField] = useState<keyof FormState | null>(null);
+
+  // Mouse spotlight logic
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = ({ clientX, clientY }: React.MouseEvent) => {
+    if (!containerRef.current) return;
+    const { left, top } = containerRef.current.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  };
+
+  const spotlightBg = useTransform(
+    [mouseX, mouseY],
+    ([x, y]) => `radial-gradient(600px circle at ${x}px ${y}px, rgba(255, 77, 0, 0.08), transparent 80%)`
+  );
+
+  const validate = (): boolean => {
+    const newErrors: FormErrors = {};
+    if (!formData.name.trim()) newErrors.name = "ID_REQUIRED";
+    if (!formData.email.trim()) {
+      newErrors.email = "COMMS_REQUIRED";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "MALFORMED_ADDR";
+    }
+    if (!formData.subject.trim()) newErrors.subject = "PROTOCOL_MISSING";
+    if (!formData.message.trim() || formData.message.length < 10) {
+      newErrors.message = "DATA_INSUFFICIENT";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    if (errors[name as keyof FormState]) {
+      setErrors(prev => ({ ...prev, [name]: undefined }));
+    }
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!validate()) return;
+
+    setIsSubmitting(true);
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    setIsSubmitting(false);
+    setIsSuccess(true);
+    
+    setTimeout(() => {
+      setIsSuccess(false);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    }, 4000);
+  };
+
+  const socialLinks = [
+    { icon: <Zap className="w-5 h-5" />, label: "GitHub", href: "https://github.com/sajin77", id: "01" },
+    { icon: <Cpu className="w-5 h-5" />, label: "LinkedIn", href: "https://linkedin.com/in/sajin-pp", id: "02" },
+    { icon: <MessageSquare className="w-5 h-5" />, label: "Twitter", href: "#", id: "03" },
+    { icon: <Globe className="w-5 h-5" />, label: "Dribbble", href: "#", id: "04" },
+  ];
+
   return (
-    <section id="contact" className="px-6 md:px-24 py-32 md:py-48 border-t border-grid-line bg-background relative z-10 mt-12 md:mt-0">
-      <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
-        <span className="font-mono text-[20vw] font-black leading-none">@</span>
-      </div>
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 relative z-10">
-        <div className="lg:col-span-12 flex flex-col gap-6 mb-12">
-          <div className="technical-label flex items-center gap-4">
-            <Mail className="w-4 h-4 text-accent" />
-            <span>SYSTEM_CONTACT_BRIDGE_v1.2</span>
+    <section id="contact" className="px-6 md:px-24 py-32 md:py-64 bg-background relative overflow-hidden border-t border-grid-line/50">
+      {/* Background elements */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-[0.03] dark:opacity-[0.05]" 
+        style={{ backgroundImage: `radial-gradient(var(--foreground) 1px, transparent 0)`, backgroundSize: '40px 40px' }} 
+      />
+
+      <div className="max-w-[1600px] mx-auto relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24">
+          
+          {/* Left Column: Heading & Contact Info */}
+          <div className="lg:col-span-5 flex flex-col justify-between">
+            <div>
+              <FadeIn delay={0.1}>
+                <div className="flex flex-col gap-6">
+                  <div className="technical-label flex items-center gap-4">
+                    <span className="w-12 h-[1px] bg-accent" />
+                    <span className="text-accent">ESTABLISH_UPLINK</span>
+                  </div>
+                  <h2 className="text-7xl sm:text-8xl md:text-9xl xl:text-[11rem] font-black tracking-tighter uppercase leading-[0.8] mb-12">
+                    Let&apos;s<br />
+                    <span className="text-accent italic">Create.</span>
+                  </h2>
+                </div>
+              </FadeIn>
+
+              <FadeIn delay={0.2}>
+                <p className="text-2xl md:text-3xl font-medium opacity-60 max-w-xl leading-snug tracking-tight mb-20">
+                  Currently open for strategic partnerships and high-impact digital ventures.
+                </p>
+              </FadeIn>
+            </div>
+
+            <div className="flex flex-col gap-16">
+              <FadeIn delay={0.3}>
+                <div className="flex flex-col gap-4">
+                  <span className="technical-label opacity-40">PRIMARY_NODE</span>
+                  <a href="mailto:sajinpp77@gmail.com" className="group flex items-center gap-4 w-fit">
+                    <span className="text-2xl md:text-4xl font-bold tracking-tighter group-hover:text-accent transition-colors">
+                      sajinpp77@gmail.com
+                    </span>
+                    <div className="w-10 h-10 rounded-full border border-foreground/10 flex items-center justify-center group-hover:border-accent group-hover:bg-accent/5 transition-all">
+                      <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    </div>
+                  </a>
+                </div>
+              </FadeIn>
+
+              <div className="grid grid-cols-2 gap-8">
+                {socialLinks.map((link, i) => (
+                  <FadeIn key={link.label} delay={0.4 + i * 0.1}>
+                    <Magnetic strength={0.2}>
+                      <a 
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex flex-col gap-3 p-6 rounded-2xl bg-foreground/5 border border-transparent hover:border-accent/20 hover:bg-accent/5 transition-all duration-500"
+                      >
+                        <div className="flex justify-between items-center">
+                          <div className="opacity-40 group-hover:opacity-100 group-hover:text-accent transition-all">
+                            {link.icon}
+                          </div>
+                          <span className="text-[10px] font-mono opacity-20 group-hover:opacity-100">{link.id}</span>
+                        </div>
+                        <span className="text-sm font-bold uppercase tracking-widest group-hover:text-accent transition-colors">
+                          {link.label}
+                        </span>
+                      </a>
+                    </Magnetic>
+                  </FadeIn>
+                ))}
+              </div>
+            </div>
           </div>
-          <h2 className="text-6xl sm:text-8xl md:text-9xl font-black tracking-tighter uppercase leading-[0.8] mb-8">
-            Initiate.<br />
-            <span className="text-accent underline decoration-4 md:decoration-8 underline-offset-12">Connection.</span>
-          </h2>
-          <p className="text-xl md:text-2xl font-medium opacity-60 max-w-2xl tracking-tight">
-            For industrial architecture inquiries, system optimizations, or global collaborations, initiate the handshake protocol below.
-          </p>
-        </div>
-        <div className="lg:col-span-8">
-          <form className="flex flex-col gap-10 w-full" onSubmit={(e) => e.preventDefault()}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-              <div className="flex flex-col gap-3">
-                <label className="technical-label text-[10px]! opacity-40">01_USER_NAME</label>
-                <div className="flex items-center gap-4 border-b border-grid-line p-4 focus-within:border-accent transition-all group">
-                  <span className="technical-label text-accent! font-black opacity-0 group-focus-within:opacity-100 group-focus-within:animate-pulse transition-opacity">USER: {">"}</span>
-                  <input type="text" required placeholder="INPUT NAME..." className="w-full bg-transparent outline-none text-xl font-black uppercase tracking-tighter transition-all placeholder:text-foreground/50" />
-                </div>
-              </div>
-              <div className="flex flex-col gap-3">
-                <label className="technical-label text-[10px]! opacity-40">02_EMAIL_PROTOCOL</label>
-                <div className="flex items-center gap-4 border-b border-grid-line p-4 focus-within:border-accent transition-all group">
-                  <span className="technical-label text-accent! font-black opacity-0 group-focus-within:opacity-100 group-focus-within:animate-pulse transition-opacity">MAIL: {">"}</span>
-                  <input type="email" required placeholder="INPUT EMAIL..." className="w-full bg-transparent outline-none text-xl font-black uppercase tracking-tighter transition-all placeholder:text-foreground/50" />
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col gap-3">
-              <label className="technical-label text-[10px]! opacity-40">03_SUBJECT_MANIFEST</label>
-              <div className="flex items-center gap-4 border-b border-grid-line p-4 focus-within:border-accent transition-all group">
-                <span className="technical-label text-accent! font-black opacity-0 group-focus-within:opacity-100 group-focus-within:animate-pulse transition-opacity">SUBJ: {">"}</span>
-                <input type="text" placeholder="INPUT SUBJECT..." className="w-full bg-transparent outline-none text-xl font-black uppercase tracking-tighter transition-all placeholder:text-foreground/50" />
-              </div>
-            </div>
-            <div className="flex flex-col gap-3">
-              <label className="technical-label text-[10px]! opacity-40">04_MESSAGE_DATA_BUFFER</label>
-              <div className="flex flex-col gap-3 border border-grid-line p-6 focus-within:border-accent transition-all group">
-                <span className="technical-label text-accent! font-black opacity-40 group-focus-within:opacity-100 group-focus-within:animate-pulse transition-opacity">DATA_STREAM: {">"}</span>
-                <textarea required placeholder="TRANSMIT MESSAGE..." rows={4} className="bg-transparent outline-none text-lg font-medium tracking-tight transition-all resize-none placeholder:text-foreground/50" />
-              </div>
-            </div>
-            <button className="w-full py-8 border-2 border-accent text-accent font-black text-xs md:text-2xl uppercase tracking-[0.2em] md:tracking-[0.5em] transition-all flex items-center justify-center gap-6 group overflow-hidden relative shadow-[8px_8px_0px_0px_rgba(255,77,0,0.1)] hover:shadow-none hover:bg-accent hover:text-white" tabIndex={0}>
-              <span className="relative z-10">INITIATE_TRANSMISSION</span>
-              <Send className="w-6 h-6 relative z-10 transition-transform duration-500 group-hover:translate-x-2 group-hover:-translate-y-2" />
-            </button>
-          </form>
-        </div>
-        <div className="lg:col-span-4 flex flex-col gap-12">
-          <div className="border border-grid-line p-10 space-y-8 h-fit bg-foreground/[0.01] dark:bg-white/[0.01]">
-            <div className="space-y-4">
-              <span className="technical-label text-[8px]! opacity-40">DIRECT_NODES</span>
-              <div className="flex flex-col gap-3">
-                <a href="mailto:sajinpp77@gmail.com" className="group flex items-center gap-4">
-                  <div className="w-8 h-8 rounded-full border border-grid-line flex items-center justify-center group-hover:border-accent transition-colors">
-                    <Mail className="w-3 h-3 group-hover:text-accent" />
+
+          {/* Right Column: Interactive Form */}
+          <div className="lg:col-span-7">
+            <FadeIn delay={0.5}>
+              <div 
+                ref={containerRef}
+                onMouseMove={handleMouseMove}
+                className="relative group/form"
+              >
+                {/* Spotlight Background */}
+                <motion.div 
+                  className="absolute inset-0 pointer-events-none rounded-[2rem] z-0 transition-opacity duration-500 opacity-0 group-hover/form:opacity-100"
+                  style={{ background: spotlightBg }}
+                />
+
+                <div className="relative z-10 bg-white/5 dark:bg-foreground/[0.02] backdrop-blur-3xl border border-foreground/5 p-8 md:p-16 rounded-[2rem] overflow-hidden shadow-2xl shadow-black/5">
+                  {/* Form Header */}
+                  <div className="flex justify-between items-start mb-16">
+                    <div>
+                      <h3 className="text-2xl font-bold uppercase tracking-tight mb-2">Initialize Protocol</h3>
+                      <p className="text-sm opacity-40 font-mono">ENCRYPTION: AES-256-GCM</p>
+                    </div>
+                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20">
+                      <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                      <span className="text-[10px] font-bold text-green-500 uppercase tracking-widest">Live_Status: Nominal</span>
+                    </div>
                   </div>
-                  <span className="font-mono text-xs opacity-60 group-hover:opacity-100 group-hover:text-accent transition-all">Sajinpp@gmail.com</span>
-                </a>
-                <div className="flex items-center gap-4">
-                  <div className="w-8 h-8 rounded-full border border-grid-line flex items-center justify-center">
-                    <User className="w-3 h-3" />
-                  </div>
-                  <span className="font-mono text-xs opacity-60">@sajin</span>
+
+                  <form className="flex flex-col gap-12" onSubmit={handleSubmit} noValidate>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                      <ModernInput 
+                        id="name"
+                        name="name"
+                        label="Identity / Name"
+                        value={formData.name}
+                        error={errors.name}
+                        isSubmitting={isSubmitting || isSuccess}
+                        onChange={handleChange}
+                        onFocus={() => setFocusedField("name")}
+                        onBlur={() => setFocusedField(null)}
+                        isFocused={focusedField === "name"}
+                      />
+                      <ModernInput 
+                        id="email"
+                        name="email"
+                        label="Channel / Email"
+                        type="email"
+                        value={formData.email}
+                        error={errors.email}
+                        isSubmitting={isSubmitting || isSuccess}
+                        onChange={handleChange}
+                        onFocus={() => setFocusedField("email")}
+                        onBlur={() => setFocusedField(null)}
+                        isFocused={focusedField === "email"}
+                      />
+                    </div>
+                    
+                    <ModernInput 
+                      id="subject"
+                      name="subject"
+                      label="Manifest / Subject"
+                      value={formData.subject}
+                      error={errors.subject}
+                      isSubmitting={isSubmitting || isSuccess}
+                      onChange={handleChange}
+                      onFocus={() => setFocusedField("subject")}
+                      onBlur={() => setFocusedField(null)}
+                      isFocused={focusedField === "subject"}
+                    />
+                    
+                    <ModernInput 
+                      id="message"
+                      name="message"
+                      label="Payload / Message"
+                      value={formData.message}
+                      error={errors.message}
+                      isSubmitting={isSubmitting || isSuccess}
+                      onChange={handleChange}
+                      onFocus={() => setFocusedField("message")}
+                      onBlur={() => setFocusedField(null)}
+                      isFocused={focusedField === "message"}
+                      isTextArea
+                    />
+                    
+                    <div className="pt-6">
+                      <Magnetic strength={0.15}>
+                        <motion.button 
+                          whileTap={{ scale: 0.98 }}
+                          disabled={isSubmitting || isSuccess}
+                          className={`
+                            relative w-full py-8 rounded-2xl font-black text-xl uppercase tracking-[0.3em] transition-all duration-700 overflow-hidden
+                            ${isSuccess 
+                              ? 'bg-green-500 text-white shadow-lg shadow-green-500/30' 
+                              : 'bg-foreground text-background hover:shadow-2xl hover:shadow-accent/20'}
+                          `}
+                        >
+                          <AnimatePresence mode="wait">
+                            {isSubmitting ? (
+                              <motion.div 
+                                key="loading"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -20 }}
+                                className="flex items-center justify-center gap-4"
+                              >
+                                <Loader2 className="w-6 h-6 animate-spin" />
+                                <span>Processing_</span>
+                              </motion.div>
+                            ) : isSuccess ? (
+                              <motion.div 
+                                key="success"
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 1.1 }}
+                                className="flex items-center justify-center gap-4"
+                              >
+                                <CheckCircle2 className="w-6 h-6" />
+                                <span>Data_Synced</span>
+                              </motion.div>
+                            ) : (
+                              <motion.div 
+                                key="idle"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -20 }}
+                                className="flex items-center justify-center gap-4"
+                              >
+                                <span>Transmit_Data</span>
+                                <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                          
+                          {/* Button Hover Glow */}
+                          {!isSubmitting && !isSuccess && (
+                            <motion.div 
+                              className="absolute inset-0 bg-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                              initial={false}
+                            />
+                          )}
+                        </motion.button>
+                      </Magnetic>
+                    </div>
+                  </form>
                 </div>
+
+                {/* Decorative Elements */}
+                <div className="absolute -bottom-12 -right-12 w-64 h-64 bg-accent/10 blur-[100px] rounded-full pointer-events-none" />
+                <div className="absolute -top-12 -left-12 w-64 h-64 bg-accent/5 blur-[100px] rounded-full pointer-events-none" />
               </div>
-            </div>
-            <div className="space-y-4 pt-8 border-t border-grid-line">
-              <span className="technical-label text-[8px]! opacity-40">AVAILABILITY_STATE</span>
-              <div className="flex items-center gap-4">
-                <div className="w-2 h-2 rounded-full bg-[#22c55e] animate-pulse shadow-[0_0_10px_#22c55e]" />
-                <span className="technical-label text-[10px]! font-black">ACTIVE_FOR_NEW_VENTURES</span>
-              </div>
-            </div>
+            </FadeIn>
           </div>
         </div>
       </div>

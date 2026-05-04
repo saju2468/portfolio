@@ -93,7 +93,7 @@ export function Hero() {
               </div>
             </FadeIn>
           </div>
-          <div className="md:col-span-12 lg:col-span-5 flex flex-col gap-12 lg:pl-12">
+          <div className="md:col-span-12 lg:col-span-5 flex flex-col gap-12 lg:pl-12 decoration_elements">
             <FadeIn delay={0.6}>
               <div className="space-y-4">
                 <span className="technical-label opacity-40">SYSTEM STATUS</span>

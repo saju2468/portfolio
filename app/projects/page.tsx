@@ -7,6 +7,28 @@ import { FadeIn } from "@/components/FadeIn";
 export default function ProjectsPage() {
   const projects = [
     {
+      id: "PRJ_016",
+      title: "Mary Sadan Edathala Group",
+      year: "2024",
+      image: "/assets/marysadan_hero.png",
+      desc: "Developed a premium infrastructure development company website for Mary Sadan Edathala Group. Focused on a professional corporate identity, showcasing large-scale construction projects in Kerala and Karnataka.",
+      tech: "Next.js / React / Tailwind CSS",
+      focus: "Corporate UI / Infrastructure",
+      tags: ["INFRASTRUCTURE", "CORPORATE", "PREMIUM DESIGN", "RESPONSIVE"],
+      link: "https://marysadan.com/"
+    },
+    {
+      id: "PRJ_017",
+      title: "Travz Car Rental",
+      year: "2024",
+      image: "/assets/travz_hero.png",
+      desc: "Built a high-performance car rental platform for Travz Muscat. Features free airport pickup integration, automated booking workflows, and a responsive fleet management interface for daily and monthly rates.",
+      tech: "React / Tailwind CSS / API Integration",
+      focus: "Booking Flow / UX",
+      tags: ["CAR RENTAL", "MUSCAT", "BOOKING SYSTEM", "CONVERSION"],
+      link: "https://travzcarrental.com/"
+    },
+    {
       id: "PRJ_001",
       title: "VAIDYARATNAM",
       year: "2024",

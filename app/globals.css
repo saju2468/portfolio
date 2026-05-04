@@ -68,6 +68,7 @@ button,
 
 .typing-cursor:after {
   content: "_";
+  position: absolute;
   animation: 1s step-end infinite blink;
 }
 
@@ -197,10 +198,48 @@ button,
   text-shadow: 1px 0 #ff4d00, -1px 0 #4dff00;
   animation: 0.2s linear infinite glitch;
 }
+
 /* Letter Magnify Effect */
-.magnify-letter { display: inline-block; transition: transform 0.3s cubic-bezier(0.2, 1, 0.2, 1), color 0.3s ease; position: relative; will-change: transform; }
-.magnify-letter:hover { transform: scale(1.5) translateY(-8px); z-index: 10; color: var(--accent); }
-.magnify-letter:has(+ .magnify-letter:hover) { transform: scale(1.3) translateY(-4px); z-index: 9; }
-.magnify-letter:hover + .magnify-letter { transform: scale(1.3) translateY(-4px); z-index: 9; }
-.magnify-letter:has(+ .magnify-letter + .magnify-letter:hover) { transform: scale(1.1) translateY(-2px); z-index: 8; }
-.magnify-letter:hover + .magnify-letter + .magnify-letter { transform: scale(1.1) translateY(-2px); z-index: 8; }
+.magnify-letter {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.2, 1, 0.2, 1), color 0.3s ease;
+  position: relative;
+  will-change: transform;
+}
+
+.magnify-letter:hover {
+  transform: scale(1.5) translateY(-8px);
+  z-index: 10;
+  color: var(--accent);
+}
+
+.magnify-letter:has(+ .magnify-letter:hover) {
+  transform: scale(1.3) translateY(-4px);
+  z-index: 9;
+}
+
+.magnify-letter:hover+.magnify-letter {
+  transform: scale(1.3) translateY(-4px);
+  z-index: 9;
+}
+
+.magnify-letter:has(+ .magnify-letter + .magnify-letter:hover) {
+  transform: scale(1.1) translateY(-2px);
+  z-index: 8;
+}
+
+.magnify-letter:hover+.magnify-letter+.magnify-letter {
+  transform: scale(1.1) translateY(-2px);
+  z-index: 8;
+}
+
+
+
+
+
+/* 
+@media (max-width: 1450px) {
+  .decoration_elements {
+    padding-top: 2rem !important;
+  }
+} */

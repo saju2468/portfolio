@@ -70,7 +70,19 @@ export function CustomCursor() {
     };
   }, [cursorX, cursorY, isVisible]);
 
-  if (typeof window !== "undefined" && window.matchMedia("(max-width: 768px)").matches) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+    };
+    
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  if (isMobile) {
     return null; // Don't show custom cursor on mobile
   }
 

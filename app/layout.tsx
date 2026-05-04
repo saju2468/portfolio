@@ -43,7 +43,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${architectsDaughter.variable}`}
     >
-      <body className="antialiased selection:bg-[#ff4d00] selection:text-white">
+      <body suppressHydrationWarning className="antialiased selection:bg-[#ff4d00] selection:text-white">
         <ThemeProvider
           attribute="data-theme"
           defaultTheme="dark"
