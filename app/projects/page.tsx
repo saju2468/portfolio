@@ -7,28 +7,6 @@ import { FadeIn } from "@/components/FadeIn";
 export default function ProjectsPage() {
   const projects = [
     {
-      id: "PRJ_016",
-      title: "Mary Sadan Edathala Group",
-      year: "2024",
-      image: "/assets/marysadan_hero.png",
-      desc: "Developed a premium infrastructure development company website for Mary Sadan Edathala Group. Focused on a professional corporate identity, showcasing large-scale construction projects in Kerala and Karnataka.",
-      tech: "Next.js / React / Tailwind CSS",
-      focus: "Corporate UI / Infrastructure",
-      tags: ["INFRASTRUCTURE", "CORPORATE", "PREMIUM DESIGN", "RESPONSIVE"],
-      link: "https://marysadan.com/"
-    },
-    {
-      id: "PRJ_017",
-      title: "Travz Car Rental",
-      year: "2024",
-      image: "/assets/travz_hero.png",
-      desc: "Built a high-performance car rental platform for Travz Muscat. Features free airport pickup integration, automated booking workflows, and a responsive fleet management interface for daily and monthly rates.",
-      tech: "React / Tailwind CSS / API Integration",
-      focus: "Booking Flow / UX",
-      tags: ["CAR RENTAL", "MUSCAT", "BOOKING SYSTEM", "CONVERSION"],
-      link: "https://travzcarrental.com/"
-    },
-    {
       id: "PRJ_001",
       title: "VAIDYARATNAM",
       year: "2024",
@@ -58,25 +36,14 @@ export default function ProjectsPage() {
       desc: "Implemented pixel-perfect UI screens based on design requirements using HTML and Tailwind CSS. Built fully responsive layouts ensuring consistent experience across desktop, tablet, and mobile devices, optimizing CSS structure for maintainability.",
       tech: "HTML / Tailwind CSS",
       focus: "Responsive UI / Integration",
-      tags: ["PIXEL-PERFECT", "RESPONSIVE LAYOUTS", "CSS OPTIMIZATION", "PHP INTEGRATION"],
+      tags: ["PIXEL-PERFECT", "RESPONSIVE LAYOUTS", "CSS OPTIMIZATION"],
       link: "https://luxontata.com/"
-    },
-    {
-      id: "PRJ_004",
-      title: "Levage Engineering",
-      year: "2024",
-      image: "/assets/levage_hero.png",
-      desc: "A construction company website. Developed custom UI components using Tailwind CSS and HTML to match premium design specifications.",
-      tech: "HTML / Tailwind CSS",
-      focus: "Responsive UI / Integration",
-      tags: ["UI COMPONENTS", "RESPONSIVE LAYOUTS", "CSS OPTIMIZATION", "WORDPRESS INTEGRATION"],
-      link: "https://levageengineering.com/"
     },
     {
       id: "PRJ_005",
       title: "24 Study Abroad",
       year: "2024",
-      image: "/assets/studyabroad_hero.png",
+      image: "/assets/studyabroad_hero1.png",
       desc: "A study abroad website. Built the frontend architecture and integrated REST APIs with Strapi backend for dynamic content delivery.",
       tech: "Next.js / Strapi / Tailwind CSS",
       focus: "Frontend / REST API Integration",
@@ -84,10 +51,87 @@ export default function ProjectsPage() {
       link: "https://24studyabroad.com/"
     },
     {
-      id: "PRJ_006",
-      title: "Dar Assihha",
+      id: "PRJ_008",
+      title: "South Indian Credits",
       year: "2024",
-      image: "/assets/darassihha_hero.png",
+      image: "/assets/southindian_hero1.png",
+      desc: "Financial companion offering trusted solutions. Developed the frontend application with Next.js and Tailwind CSS.",
+      tech: "Next.js / Strapi / Tailwind CSS",
+      focus: "Frontend Development",
+      tags: ["FINTECH", "NEXT.JS", "STRAPI CMS", "TAILWIND CSS"],
+      link: "https://southindiancredits.com/"
+    },
+    {
+      id: "PRJ_011",
+      title: "Somans Leisure Tours",
+      year: "2024",
+      image: "/assets/somans-hero1.png",
+      desc: "Premium tour operator in Kerala. Developed interactive and visually stunning UI components using React.",
+      tech: "React / CSS",
+      focus: "UI Development",
+      tags: ["TRAVEL UI", "REACT", "INTERACTIVE DESIGN", "COMPONENT ARCHITECTURE"],
+      link: "https://www.somansleisuretours.com/"
+    },
+    {
+      id: "PRJ_013",
+      title: "TT Devassy Jewellery",
+      year: "2024",
+      image: "/assets/ttdevassy_hero1.png",
+      desc: "Luxury jewelry brand website. Built the frontend using Next.js and Tailwind CSS.",
+      tech: "Next.js / Node.js / Tailwind CSS",
+      focus: "Frontend Development",
+      tags: ["JEWELRY UI", "NEXT.JS", "TAILWIND CSS", "NODE.JS"],
+      link: "https://www.ttdevassyjewellery.com/"
+    },
+    {
+      id: "PRJ_014",
+      title: "Josco Jewellers",
+      year: "2024",
+      image: "/assets/josco_hero1.png",
+      desc: "Fine jewelry brand website. Crafted precise HTML and CSS to create an elegant and responsive UI for a Laravel-powered backend.",
+      tech: "HTML / CSS / Laravel",
+      focus: "UI Development",
+      tags: ["JEWELRY UI", "HTML5", "CSS3", "LARAVEL INTEGRATION"],
+      link: "https://www.joscojewellers.in/"
+    },
+    {
+      id: "PRJ_016",
+      title: "Mary Sadan Edathala Group",
+      year: "2024",
+      image: "/assets/marysadan_logo1.png",
+      desc: "Developed a premium infrastructure development company website for Mary Sadan Edathala Group. Focused on a professional corporate identity, showcasing large-scale construction projects in Kerala and Karnataka.",
+      tech: "Next.js / React / Tailwind CSS",
+      focus: "Corporate UI / Infrastructure",
+      tags: ["INFRASTRUCTURE", "CORPORATE", "PREMIUM DESIGN", "RESPONSIVE"],
+      link: "https://marysadan.com/"
+    },
+    {
+      id: "PRJ_017",
+      title: "Travz Car Rental",
+      year: "2024",
+      image: "/assets/travz-logo.png",
+      desc: "Built a high-performance car rental platform for Travz Muscat. Features free airport pickup integration, automated booking workflows, and a responsive fleet management interface for daily and monthly rates.",
+      tech: "React / Tailwind CSS",
+      focus: "Responsive UI / UX",
+      tags: ["CAR RENTAL", "MUSCAT", "BOOKING SYSTEM", "CONVERSION"],
+      link: "https://travzcarrental.com/"
+    },
+    {
+      id: "PRJ_004",
+      title: "Levage Engineering",
+      year: "2024",
+      image: "/assets/levage-hero.png",
+      desc: "A construction company website. Developed custom UI components using Tailwind CSS and HTML to match premium design specifications.",
+      tech: "HTML / Tailwind CSS",
+      focus: "Responsive UI / Integration",
+      tags: ["UI COMPONENTS", "RESPONSIVE LAYOUTS", "CSS OPTIMIZATION", "WORDPRESS INTEGRATION"],
+      link: "https://levageengineering.com/"
+    },
+    {
+      id: "PRJ_006",
+      title: "Dar As-sihha",
+      year: "2024",
+      image: "/assets/darassihha_hero1.png",
       desc: "A modern hospital website. Implemented clean and professional user interfaces using Next.js and Tailwind CSS for a Strapi-powered platform.",
       tech: "Next.js / Strapi / Tailwind CSS",
       focus: "UI Development",
@@ -98,7 +142,7 @@ export default function ProjectsPage() {
       id: "PRJ_007",
       title: "Vieco Pharma",
       year: "2024",
-      image: "/assets/vieco_hero.png",
+      image: "/assets/vieco-hero1.png",
       desc: "UAE based pharmaceutical manufacturer website. Crafted responsive layouts and UI elements using HTML and Tailwind CSS for WordPress integration.",
       tech: "HTML / Tailwind CSS",
       focus: "UI Design / Responsiveness",
@@ -106,21 +150,10 @@ export default function ProjectsPage() {
       link: "https://www.vieco-pharma.com/"
     },
     {
-      id: "PRJ_008",
-      title: "South Indian Credit",
-      year: "2024",
-      image: "/assets/southindian_hero.png",
-      desc: "Financial companion offering trusted solutions. Developed the frontend application with Next.js and Tailwind CSS, integrating with a Strapi backend.",
-      tech: "Next.js / Strapi / Tailwind CSS",
-      focus: "Frontend Development",
-      tags: ["FINTECH", "NEXT.JS", "STRAPI CMS", "TAILWIND CSS"],
-      link: "https://southindiancredits.com/"
-    },
-    {
       id: "PRJ_009",
       title: "Dewton India",
       year: "2024",
-      image: "/assets/dewton_hero.png",
+      image: "/assets/dewton1.png",
       desc: "Leading manufacturer of LED lights. Implemented dynamic and visually appealing user interfaces using Next.js and Tailwind CSS.",
       tech: "Next.js / Strapi / Tailwind CSS",
       focus: "UI Development",
@@ -131,7 +164,7 @@ export default function ProjectsPage() {
       id: "PRJ_010",
       title: "Zoople Technologies",
       year: "2024",
-      image: "/assets/zoople_hero.png",
+      image: "/assets/zoople1.png",
       desc: "IT courses and software training institute. Built fully responsive, pixel-perfect UI screens using HTML and Tailwind CSS.",
       tech: "HTML / Tailwind CSS",
       focus: "UI Development",
@@ -139,21 +172,10 @@ export default function ProjectsPage() {
       link: "https://zoople.in/"
     },
     {
-      id: "PRJ_011",
-      title: "Somans Leisure Tours",
-      year: "2024",
-      image: "/assets/somans_hero.png",
-      desc: "Premium tour operator in Kerala. Developed interactive and visually stunning UI components using React.",
-      tech: "React / CSS",
-      focus: "UI Development",
-      tags: ["TRAVEL UI", "REACT", "INTERACTIVE DESIGN", "COMPONENT ARCHITECTURE"],
-      link: "https://www.somansleisuretours.com/"
-    },
-    {
       id: "PRJ_012",
       title: "Bookaero",
       year: "2024",
-      image: "/assets/bookaero_hero.png",
+      image: "/assets/bookaero_hero1.png",
       desc: "Flight booking website. Crafted semantic HTML and styled with CSS to build a clean and responsive frontend for a Laravel backend.",
       tech: "HTML / CSS / Laravel",
       focus: "UI Development",
@@ -161,32 +183,10 @@ export default function ProjectsPage() {
       link: "https://www.bookaero.com/"
     },
     {
-      id: "PRJ_013",
-      title: "TT Devassy Jewellery",
-      year: "2024",
-      image: "/assets/ttdevassy_hero.png",
-      desc: "Luxury jewelry brand website. Built the frontend using Next.js and Tailwind CSS integrated with a Node.js backend.",
-      tech: "Next.js / Node.js / Tailwind CSS",
-      focus: "Frontend Development",
-      tags: ["JEWELRY UI", "NEXT.JS", "TAILWIND CSS", "NODE.JS"],
-      link: "https://www.ttdevassyjewellery.com/"
-    },
-    {
-      id: "PRJ_014",
-      title: "Josco Jewellers",
-      year: "2024",
-      image: "/assets/josco_hero.png",
-      desc: "Fine jewelry brand website. Crafted precise HTML and CSS to create an elegant and responsive UI for a Laravel-powered backend.",
-      tech: "HTML / CSS / Laravel",
-      focus: "UI Development",
-      tags: ["JEWELRY UI", "HTML5", "CSS3", "LARAVEL INTEGRATION"],
-      link: "https://www.joscojewellers.in/"
-    },
-    {
       id: "PRJ_015",
-      title: "Celant",
+      title: "Celant Jewellers",
       year: "2024",
-      image: "/assets/celant_hero.png",
+      image: "/assets/celant1.png",
       desc: "Exclusive luxury jewelry brand website. Designed and developed a minimalist, premium user interface to showcase high-end collections.",
       tech: "HTML / CSS",
       focus: "UI Development",
