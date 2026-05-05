@@ -1,14 +1,19 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FadeIn } from "@/components/FadeIn";
+import { Button } from "@/components/Button";
+import { motion } from "framer-motion";
 
 export default function ProjectsPage() {
   const projects = [
     {
       id: "PRJ_001",
       title: "VAIDYARATNAM",
+      category: "E-COMMERCE",
       year: "2024",
       image: "/assets/vaidyaratnam_hero.png",
       desc: "Developed responsive and accessible UI components using Tailwind CSS. Converted design mockups into clean HTML layouts, ensuring cross-browser compatibility and working closely with backend developers for smooth UI integration.",
@@ -20,7 +25,8 @@ export default function ProjectsPage() {
     {
       id: "PRJ_002",
       title: "Muthoot Capital",
-      year: "2024",
+      category: "CMS",
+      year: "2025",
       image: "/assets/muthoot_hero.png",
       desc: "Developed key frontend modules using Next.js with a component-based architecture. Implemented SSR/SSG for SEO-critical pages, integrated REST APIs for major data flows, and optimized performance using image optimization and lazy loading.",
       tech: "Next.js / React / Tailwind CSS",
@@ -31,6 +37,7 @@ export default function ProjectsPage() {
     {
       id: "PRJ_003",
       title: "LUXON TATA MOTORS",
+      category: "CMS",
       year: "2023",
       image: "/assets/luxon_hero.png",
       desc: "Implemented pixel-perfect UI screens based on design requirements using HTML and Tailwind CSS. Built fully responsive layouts ensuring consistent experience across desktop, tablet, and mobile devices, optimizing CSS structure for maintainability.",
@@ -42,6 +49,7 @@ export default function ProjectsPage() {
     {
       id: "PRJ_005",
       title: "24 Study Abroad",
+      category: "CMS",
       year: "2024",
       image: "/assets/studyabroad_hero1.png",
       desc: "A study abroad website. Built the frontend architecture and integrated REST APIs with Strapi backend for dynamic content delivery.",
@@ -53,6 +61,7 @@ export default function ProjectsPage() {
     {
       id: "PRJ_008",
       title: "South Indian Credits",
+      category: "CMS",
       year: "2024",
       image: "/assets/southindian_hero1.png",
       desc: "Financial companion offering trusted solutions. Developed the frontend application with Next.js and Tailwind CSS.",
@@ -64,6 +73,7 @@ export default function ProjectsPage() {
     {
       id: "PRJ_011",
       title: "Somans Leisure Tours",
+      category: "OTHER",
       year: "2024",
       image: "/assets/somans-hero1.png",
       desc: "Premium tour operator in Kerala. Developed interactive and visually stunning UI components using React.",
@@ -75,6 +85,7 @@ export default function ProjectsPage() {
     {
       id: "PRJ_013",
       title: "TT Devassy Jewellery",
+      category: "E-COMMERCE",
       year: "2024",
       image: "/assets/ttdevassy_hero1.png",
       desc: "Luxury jewelry brand website. Built the frontend using Next.js and Tailwind CSS.",
@@ -86,7 +97,8 @@ export default function ProjectsPage() {
     {
       id: "PRJ_014",
       title: "Josco Jewellers",
-      year: "2024",
+      category: "E-COMMERCE",
+      year: "2023",
       image: "/assets/josco_hero1.png",
       desc: "Fine jewelry brand website. Crafted precise HTML and CSS to create an elegant and responsive UI for a Laravel-powered backend.",
       tech: "HTML / CSS / Laravel",
@@ -97,7 +109,8 @@ export default function ProjectsPage() {
     {
       id: "PRJ_016",
       title: "Mary Sadan Edathala Group",
-      year: "2024",
+      category: "CMS",
+      year: "2026",
       image: "/assets/marysadan_logo1.png",
       desc: "Developed a premium infrastructure development company website for Mary Sadan Edathala Group. Focused on a professional corporate identity, showcasing large-scale construction projects in Kerala and Karnataka.",
       tech: "Next.js / React / Tailwind CSS",
@@ -108,6 +121,7 @@ export default function ProjectsPage() {
     {
       id: "PRJ_017",
       title: "Travz Car Rental",
+      category: "OTHER",
       year: "2024",
       image: "/assets/travz-logo.png",
       desc: "Built a high-performance car rental platform for Travz Muscat. Features free airport pickup integration, automated booking workflows, and a responsive fleet management interface for daily and monthly rates.",
@@ -119,6 +133,7 @@ export default function ProjectsPage() {
     {
       id: "PRJ_004",
       title: "Levage Engineering",
+      category: "CMS",
       year: "2024",
       image: "/assets/levage-hero.png",
       desc: "A construction company website. Developed custom UI components using Tailwind CSS and HTML to match premium design specifications.",
@@ -130,6 +145,7 @@ export default function ProjectsPage() {
     {
       id: "PRJ_006",
       title: "Dar As-sihha",
+      category: "CMS",
       year: "2024",
       image: "/assets/darassihha_hero1.png",
       desc: "A modern hospital website. Implemented clean and professional user interfaces using Next.js and Tailwind CSS for a Strapi-powered platform.",
@@ -141,6 +157,7 @@ export default function ProjectsPage() {
     {
       id: "PRJ_007",
       title: "Vieco Pharma",
+      category: "CMS",
       year: "2024",
       image: "/assets/vieco-hero1.png",
       desc: "UAE based pharmaceutical manufacturer website. Crafted responsive layouts and UI elements using HTML and Tailwind CSS for WordPress integration.",
@@ -152,6 +169,7 @@ export default function ProjectsPage() {
     {
       id: "PRJ_009",
       title: "Dewton India",
+      category: "CMS",
       year: "2024",
       image: "/assets/dewton1.png",
       desc: "Leading manufacturer of LED lights. Implemented dynamic and visually appealing user interfaces using Next.js and Tailwind CSS.",
@@ -163,7 +181,8 @@ export default function ProjectsPage() {
     {
       id: "PRJ_010",
       title: "Zoople Technologies",
-      year: "2024",
+      category: "CMS",
+      year: "2023",
       image: "/assets/zoople1.png",
       desc: "IT courses and software training institute. Built fully responsive, pixel-perfect UI screens using HTML and Tailwind CSS.",
       tech: "HTML / Tailwind CSS",
@@ -174,7 +193,8 @@ export default function ProjectsPage() {
     {
       id: "PRJ_012",
       title: "Bookaero",
-      year: "2024",
+      category: "OTHER",
+      year: "2023",
       image: "/assets/bookaero_hero1.png",
       desc: "Flight booking website. Crafted semantic HTML and styled with CSS to build a clean and responsive frontend for a Laravel backend.",
       tech: "HTML / CSS / Laravel",
@@ -185,6 +205,7 @@ export default function ProjectsPage() {
     {
       id: "PRJ_015",
       title: "Celant Jewellers",
+      category: "E-COMMERCE",
       year: "2024",
       image: "/assets/celant1.png",
       desc: "Exclusive luxury jewelry brand website. Designed and developed a minimalist, premium user interface to showcase high-end collections.",
@@ -223,7 +244,7 @@ export default function ProjectsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {projects.map((project, idx) => (
-              <FadeIn key={project.id} delay={idx * 0.15}>
+              <FadeIn key={project.id} delay={idx * 0.1}>
                 <Link href={project.link} target="_blank" rel="noopener noreferrer" className="block h-full">
                   <div className="group relative flex flex-col border border-grid-line bg-background/50 backdrop-blur-sm hover:border-accent transition-all duration-700 h-full">
                     <div className="relative aspect-video w-full overflow-hidden border-b border-grid-line">
@@ -235,9 +256,12 @@ export default function ProjectsPage() {
                         className="object-cover object-left grayscale group-hover:grayscale-0 contrast-125 opacity-40 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80" />
-                      <div className="absolute bottom-4 left-4 z-10">
+                      <div className="absolute bottom-4 left-4 z-10 flex gap-2">
                         <span className="technical-label !text-white !opacity-100 bg-accent px-2 py-0.5 text-[8px]">
-                          DEPLOYMENT_ACTIVE
+                          {project.category}
+                        </span>
+                        <span className="technical-label !text-white !opacity-100 bg-foreground/20 backdrop-blur-md px-2 py-0.5 text-[8px]">
+                          ACTIVE
                         </span>
                       </div>
                     </div>
@@ -282,12 +306,10 @@ export default function ProjectsPage() {
           </div>
 
           <div className="mt-20 flex justify-center">
-            <Link href="/">
-              <button className="px-8 py-4 border-2 border-foreground/20 text-foreground font-black text-xs uppercase tracking-[0.2em] transition-all hover:bg-foreground hover:text-background flex items-center gap-4">
-                <span className="symbol rotate-180">→</span>
-                <span>RETURN_TO_BASE</span>
-              </button>
-            </Link>
+            <Button href="/" variant="outline">
+              <span className="symbol rotate-180">→</span>
+              <span>RETURN_TO_BASE</span>
+            </Button>
           </div>
         </div>
       </main>
@@ -295,3 +317,4 @@ export default function ProjectsPage() {
     </>
   );
 }
+

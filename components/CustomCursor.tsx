@@ -1,98 +1,135 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useSpring, useMotionValue } from "framer-motion";
+import { motion, useSpring, useMotionValue, useReducedMotion } from "framer-motion";
 
-export function CustomCursor() {
-  const [isHovering, setIsHovering] = useState(false);
-  const [isMagnifying, setIsMagnifying] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const [isClicking, setIsClicking] = useState(false);
+// --- Constants ---
 
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
+const CURSOR_SIZES = {
+  DEFAULT: 40,
+  HOVER: 200,
+  MAGNIFY: 250,
+};
 
-  const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
-  const cursorXSpring = useSpring(cursorX, springConfig);
-  const cursorYSpring = useSpring(cursorY, springConfig);
+const SPRING_CONFIG = { damping: 25, stiffness: 300, mass: 0.5 };
+
+// --- Hooks ---
+
+/**
+ * Tracks mouse position and visibility globally.
+ */
+const useMousePosition = (isVisible: boolean, setIsVisible: (v: boolean) => void) => {
+  const x = useMotionValue(-100);
+  const y = useMotionValue(-100);
 
   useEffect(() => {
-    const updateMousePosition = (e: MouseEvent) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
+    const handleMouseMove = (e: MouseEvent) => {
+      x.set(e.clientX);
+      y.set(e.clientY);
       if (!isVisible) setIsVisible(true);
     };
 
+    const handleMouseLeave = () => setIsVisible(false);
+    const handleMouseEnter = () => setIsVisible(true);
+
+    window.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseleave", handleMouseLeave);
+    document.addEventListener("mouseenter", handleMouseEnter);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("mouseenter", handleMouseEnter);
+    };
+  }, [x, y, isVisible, setIsVisible]);
+
+  return { x, y };
+};
+
+/**
+ * High-performance custom cursor with advanced interaction states.
+ * Respects user motion preferences and avoids expensive DOM lookups.
+ */
+export function CustomCursor() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [isClicking, setIsClicking] = useState(false);
+  const [cursorState, setCursorState] = useState<"default" | "hover" | "magnify">("default");
+  const [isMobile, setIsMobile] = useState(false);
+
+  const shouldReduceMotion = useReducedMotion();
+  const { x, y } = useMousePosition(isVisible, setIsVisible);
+
+  // Smooth spring values for the "lagging" outer ring effect
+  const springX = useSpring(x, SPRING_CONFIG);
+  const springY = useSpring(y, SPRING_CONFIG);
+
+  /**
+   * Monitor interactive elements for cursor state updates.
+   * Optimizes performance by avoiding getComputedStyle and relying on tag/class/attribute rules.
+   */
+  useEffect(() => {
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      
-      // Check if hovering over magnifier text
-      if (target.classList.contains("magnify-target") || target.closest(".magnify-target")) {
-        setIsMagnifying(true);
-        setIsHovering(false);
-      } 
-      // Check if hovering over interactive elements
-      else if (
+      if (!target) return;
+
+      // Rule 1: Magnify target detection
+      const isMagnify = target.classList.contains("magnify-target") || target.closest(".magnify-target");
+      if (isMagnify) {
+        setCursorState("magnify");
+        return;
+      }
+
+      // Rule 2: General interactive element detection
+      const isInteractive = 
         target.tagName.toLowerCase() === "a" ||
         target.tagName.toLowerCase() === "button" ||
         target.closest("a") ||
         target.closest("button") ||
         target.classList.contains("group") ||
-        window.getComputedStyle(target).cursor === "pointer"
-      ) {
-        setIsHovering(true);
-        setIsMagnifying(false);
-      } else {
-        setIsHovering(false);
-        setIsMagnifying(false);
-      }
-    };
+        target.hasAttribute("data-cursor-hover");
 
-    const handleMouseLeave = () => {
-      setIsVisible(false);
+      setCursorState(isInteractive ? "hover" : "default");
     };
 
     const handleMouseDown = () => setIsClicking(true);
     const handleMouseUp = () => setIsClicking(false);
 
-    window.addEventListener("mousemove", updateMousePosition);
     window.addEventListener("mouseover", handleMouseOver);
-    window.addEventListener("mouseleave", handleMouseLeave);
     window.addEventListener("mousedown", handleMouseDown);
     window.addEventListener("mouseup", handleMouseUp);
 
     return () => {
-      window.removeEventListener("mousemove", updateMousePosition);
       window.removeEventListener("mouseover", handleMouseOver);
-      window.removeEventListener("mouseleave", handleMouseLeave);
       window.removeEventListener("mousedown", handleMouseDown);
       window.removeEventListener("mouseup", handleMouseUp);
     };
-  }, [cursorX, cursorY, isVisible]);
-
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.matchMedia("(max-width: 768px)").matches);
-    };
-    
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  if (isMobile) {
-    return null; // Don't show custom cursor on mobile
+  /**
+   * Responsive detection using matchMedia for better performance than window resize events.
+   */
+  useEffect(() => {
+    const mql = window.matchMedia("(max-width: 768px)");
+    const checkMobile = () => setIsMobile(mql.matches);
+    
+    checkMobile();
+    mql.addEventListener("change", checkMobile);
+    return () => mql.removeEventListener("change", checkMobile);
+  }, []);
+
+  // Performance & A11y: Graceful degradation for mobile and reduced motion users
+  if (isMobile || shouldReduceMotion) {
+    return null;
   }
 
   return (
     <>
+      {/* Primary Pointer - Direct tracking for zero-latency feel */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 bg-accent rounded-full pointer-events-none z-[9999] mix-blend-difference hidden md:block"
+        className="fixed top-0 left-0 w-2 h-2 bg-accent rounded-full pointer-events-none z-[9999] mix-blend-difference"
         style={{
-          x: cursorX,
-          y: cursorY,
+          x,
+          y,
           translateX: "-50%",
           translateY: "-50%",
           opacity: isVisible ? 1 : 0,
@@ -102,28 +139,30 @@ export function CustomCursor() {
         }}
         transition={{ type: "spring", stiffness: 400, damping: 25 }}
       />
+
+      {/* Decorative Outer Ring - Smooth spring motion for "premium" feel */}
       <motion.div
-        className="fixed top-0 left-0 rounded-full pointer-events-none z-[9998] hidden md:block"
+        className="fixed top-0 left-0 rounded-full pointer-events-none z-[9998]"
         style={{
-          x: cursorXSpring,
-          y: cursorYSpring,
+          x: springX,
+          y: springY,
           translateX: "-50%",
           translateY: "-50%",
           opacity: isVisible ? 1 : 0,
-          background: isMagnifying 
+          background: cursorState === "magnify" 
             ? "rgba(255, 255, 255, 0.05)" 
-            : (isHovering 
+            : (cursorState === "hover" 
                 ? "radial-gradient(circle, rgba(255, 77, 0, 0.4) 0%, rgba(255, 77, 0, 0) 70%)"
                 : "radial-gradient(circle, rgba(255, 77, 0, 0.1) 0%, rgba(255, 77, 0, 0) 70%)"),
-          border: isMagnifying 
+          border: cursorState === "magnify" 
             ? "1px solid rgba(255, 255, 255, 0.2)"
-            : (isHovering ? "none" : "1px solid rgba(255, 77, 0, 0.3)"),
-          backdropFilter: isMagnifying ? "blur(6px) contrast(1.1) brightness(1.2)" : "none",
-          WebkitBackdropFilter: isMagnifying ? "blur(6px) contrast(1.1) brightness(1.2)" : "none",
+            : (cursorState === "hover" ? "none" : "1px solid rgba(255, 77, 0, 0.3)"),
+          backdropFilter: cursorState === "magnify" ? "blur(6px) contrast(1.1) brightness(1.2)" : "none",
+          WebkitBackdropFilter: cursorState === "magnify" ? "blur(6px) contrast(1.1) brightness(1.2)" : "none",
         }}
         animate={{
-          width: isMagnifying ? 250 : (isHovering ? 200 : 40),
-          height: isMagnifying ? 250 : (isHovering ? 200 : 40),
+          width: cursorState === "magnify" ? CURSOR_SIZES.MAGNIFY : (cursorState === "hover" ? CURSOR_SIZES.HOVER : CURSOR_SIZES.DEFAULT),
+          height: cursorState === "magnify" ? CURSOR_SIZES.MAGNIFY : (cursorState === "hover" ? CURSOR_SIZES.HOVER : CURSOR_SIZES.DEFAULT),
           scale: isClicking ? 0.85 : 1,
         }}
         transition={{ type: "tween", ease: "easeOut", duration: 0.3 }}
@@ -131,3 +170,4 @@ export function CustomCursor() {
     </>
   );
 }
+
