@@ -23,8 +23,8 @@ type FormErrors = Partial<Record<keyof FormState, string>>;
 const SOCIAL_LINKS = [
   { icon: <Zap className="w-5 h-5" />, label: "GitHub", href: "https://github.com/sajin77", id: "01" },
   { icon: <Cpu className="w-5 h-5" />, label: "LinkedIn", href: "https://linkedin.com/in/sajin-pp", id: "02" },
-  { icon: <MessageSquare className="w-5 h-5" />, label: "Twitter", href: "#", id: "03" },
-  { icon: <Globe className="w-5 h-5" />, label: "Dribbble", href: "#", id: "04" },
+  // { icon: <MessageSquare className="w-5 h-5" />, label: "Twitter", href: "#", id: "03" },
+  // { icon: <Globe className="w-5 h-5" />, label: "Dribbble", href: "#", id: "04" },
 ];
 
 const ERROR_MESSAGES = {
@@ -55,7 +55,7 @@ const useContactForm = () => {
   const validate = useCallback((): boolean => {
     const newErrors: FormErrors = {};
     if (!formData.name.trim()) newErrors.name = ERROR_MESSAGES.name;
-    
+
     if (!formData.email.trim()) {
       newErrors.email = ERROR_MESSAGES.email_required;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
@@ -63,7 +63,7 @@ const useContactForm = () => {
     }
 
     if (!formData.subject.trim()) newErrors.subject = ERROR_MESSAGES.subject;
-    
+
     if (!formData.message.trim() || formData.message.length < 10) {
       newErrors.message = ERROR_MESSAGES.message;
     }
@@ -109,10 +109,10 @@ const useContactForm = () => {
 /**
  * A highly interactive input field with animated labels and validation feedback.
  */
-const ModernInput = memo(({ 
-  id, 
+const ModernInput = memo(({
+  id,
   name,
-  label, 
+  label,
   type = "text",
   value,
   error,
@@ -122,7 +122,7 @@ const ModernInput = memo(({
   onBlur,
   isFocused,
   isTextArea = false
-}: { 
+}: {
   id: string;
   name: keyof FormState;
   label: string;
@@ -142,17 +142,17 @@ const ModernInput = memo(({
   return (
     <div className="flex flex-col gap-2 relative w-full group">
       <div className={`relative transition-all duration-700 ${isFocused ? 'opacity-100' : 'opacity-80'}`}>
-        <label 
-          htmlFor={id} 
+        <label
+          htmlFor={id}
           className={`absolute left-0 transition-all duration-500 pointer-events-none font-mono uppercase tracking-[0.2em]
-            ${(isFocused || hasValue) 
-              ? '-top-6 text-[10px] text-accent' 
+            ${(isFocused || hasValue)
+              ? '-top-6 text-[10px] text-accent'
               : 'top-4 text-xs opacity-40'}
           `}
         >
           {label}
         </label>
-        
+
         <div className="relative overflow-hidden pt-4 pb-2">
           {isTextArea ? (
             <textarea
@@ -185,12 +185,12 @@ const ModernInput = memo(({
               className="w-full bg-transparent outline-none text-lg font-medium tracking-tight placeholder:opacity-0 disabled:opacity-50 transition-all duration-300"
             />
           )}
-          
+
           {/* Animated underline */}
           <div className="absolute bottom-0 left-0 w-full h-[1px] bg-foreground/10" />
-          <motion.div 
+          <motion.div
             initial={false}
-            animate={{ 
+            animate={{
               width: isFocused ? "100%" : "0%",
               backgroundColor: error ? "#ef4444" : "var(--accent)"
             }}
@@ -202,7 +202,7 @@ const ModernInput = memo(({
 
       <AnimatePresence>
         {error && (
-          <motion.div 
+          <motion.div
             id={errorId}
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
@@ -225,7 +225,7 @@ const ModernInput = memo(({
 const SocialLinkItem = memo(({ link, index }: { link: typeof SOCIAL_LINKS[0], index: number }) => (
   <FadeIn delay={0.4 + index * 0.1}>
     <Magnetic strength={0.2}>
-      <a 
+      <a
         href={link.href}
         target="_blank"
         rel="noopener noreferrer"
@@ -270,14 +270,14 @@ export function Contact() {
   return (
     <section id="contact" className="px-6 md:px-24 py-32 md:py-64 bg-background relative overflow-hidden border-t border-grid-line/50">
       {/* Decorative Grid */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-[0.03] dark:opacity-[0.05]" 
-        style={{ backgroundImage: `radial-gradient(var(--foreground) 1px, transparent 0)`, backgroundSize: '40px 40px' }} 
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-[0.03] dark:opacity-[0.05]"
+        style={{ backgroundImage: `radial-gradient(var(--foreground) 1px, transparent 0)`, backgroundSize: '40px 40px' }}
         aria-hidden="true"
       />
 
       <div className="max-w-[1600px] mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24">
-          
+
           {/* Info Column */}
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
@@ -327,13 +327,13 @@ export function Contact() {
           {/* Form Column */}
           <div className="lg:col-span-7">
             <FadeIn delay={0.5}>
-              <div 
+              <div
                 ref={containerRef}
                 onMouseMove={handleMouseMove}
                 className="relative group/form"
               >
                 {/* Spotlight Interaction */}
-                <motion.div 
+                <motion.div
                   className="absolute inset-0 pointer-events-none rounded-[2rem] z-0 transition-opacity duration-500 opacity-0 group-hover/form:opacity-100"
                   style={{ background: spotlightBg }}
                   aria-hidden="true"
@@ -353,7 +353,7 @@ export function Contact() {
 
                   <form className="flex flex-col gap-12" onSubmit={handleSubmit} noValidate>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                      <ModernInput 
+                      <ModernInput
                         id="name"
                         name="name"
                         label="Identity / Name"
@@ -365,7 +365,7 @@ export function Contact() {
                         onBlur={() => setFocusedField(null)}
                         isFocused={focusedField === "name"}
                       />
-                      <ModernInput 
+                      <ModernInput
                         id="email"
                         name="email"
                         label="Channel / Email"
@@ -379,8 +379,8 @@ export function Contact() {
                         isFocused={focusedField === "email"}
                       />
                     </div>
-                    
-                    <ModernInput 
+
+                    <ModernInput
                       id="subject"
                       name="subject"
                       label="Manifest / Subject"
@@ -392,8 +392,8 @@ export function Contact() {
                       onBlur={() => setFocusedField(null)}
                       isFocused={focusedField === "subject"}
                     />
-                    
-                    <ModernInput 
+
+                    <ModernInput
                       id="message"
                       name="message"
                       label="Payload / Message"
@@ -406,15 +406,15 @@ export function Contact() {
                       isFocused={focusedField === "message"}
                       isTextArea
                     />
-                    
+
                     <div className="pt-6">
                       <Button
                         type="submit"
                         disabled={isSubmitting || isSuccess}
                         className={`
                           relative w-full py-8 rounded-2xl font-black text-xl uppercase tracking-[0.3em] transition-all duration-700 overflow-hidden
-                          ${isSuccess 
-                            ? 'bg-green-500! text-white! shadow-lg shadow-green-500/30' 
+                          ${isSuccess
+                            ? 'bg-green-500! text-white! shadow-lg shadow-green-500/30'
                             : ''}
                         `}
                         aria-live="polite"
@@ -422,7 +422,7 @@ export function Contact() {
                       >
                         <AnimatePresence mode="wait">
                           {isSubmitting ? (
-                            <motion.div 
+                            <motion.div
                               key="loading"
                               initial={{ opacity: 0, y: 20 }}
                               animate={{ opacity: 1, y: 0 }}
@@ -433,7 +433,7 @@ export function Contact() {
                               <span>Processing_</span>
                             </motion.div>
                           ) : isSuccess ? (
-                            <motion.div 
+                            <motion.div
                               key="success"
                               initial={{ opacity: 0, scale: 0.9 }}
                               animate={{ opacity: 1, scale: 1 }}
@@ -444,7 +444,7 @@ export function Contact() {
                               <span>Data_Synced</span>
                             </motion.div>
                           ) : (
-                            <motion.div 
+                            <motion.div
                               key="idle"
                               initial={{ opacity: 0, y: 20 }}
                               animate={{ opacity: 1, y: 0 }}
