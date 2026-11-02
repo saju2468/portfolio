@@ -2,8 +2,10 @@
 
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useSyncExternalStore } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+
+const emptySubscribe = () => () => {};
 
 // Types
 interface NavLink {
@@ -21,8 +23,8 @@ const NAV_LINKS: NavLink[] = [
 ];
 
 const MOBILE_NAV_LINKS: NavLink[] = [
-  ...NAV_LINKS.slice(0, 3),
-  { name: "ARCHIVE", href: "/archive", id: "04" },
+  ...NAV_LINKS,
+  { name: "Projects", href: "/projects", id: "05" },
 ];
 
 /**
@@ -92,7 +94,7 @@ const MobileMenu = ({
             <span className="opacity-60 group-hover:opacity-100 transition-opacity">
               CLOSE
             </span>
-            <div className="grid grid-cols-2 gap-1 w-4 h-4 translate-y-[2px]">
+            <div className="grid grid-cols-2 gap-1 w-4 h-4 translate-y-0.5">
               <div className="w-full h-full bg-[#00a8ff] transition-all" />
               <div className="w-full h-full border border-black dark:border-white transition-all" />
               <div className="w-full h-full bg-[#00a8ff] transition-all" />
@@ -164,12 +166,8 @@ const MobileMenu = ({
 
 export function Header() {
   const { setTheme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     // Prevent body scroll when menu is open

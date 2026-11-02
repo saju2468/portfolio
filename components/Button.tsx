@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
 import { motion, useSpring, useMotionValue, HTMLMotionProps } from "framer-motion";
 import { Magnetic } from "./Magnetic";
 import Link from "next/link";
@@ -25,8 +25,7 @@ export function Button({
   type = "button",
   ...props
 }: ButtonProps) {
-  const buttonRef = useRef<HTMLButtonElement | HTMLAnchorElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
   
   // Mouse tracking inside the button for the fill effect
   const mouseX = useMotionValue(0);
@@ -44,10 +43,8 @@ export function Button({
 
   const buttonContent = (
     <motion.button
-      ref={buttonRef as any}
+      ref={buttonRef}
       onClick={onClick}
-      onMouseEnter={() => !disabled && setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
       onMouseMove={handleMouseMove}
       disabled={disabled}
       type={type}

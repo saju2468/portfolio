@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, FormEvent, ChangeEvent, useRef, useCallback, memo, useMemo } from "react";
-import { Mail, Send, CheckCircle2, Loader2, AlertCircle, MapPin, Globe, MessageSquare, Zap, Cpu } from "lucide-react";
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
+import React, { useState, FormEvent, ChangeEvent, useRef, useCallback, memo } from "react";
+import { Send, CheckCircle2, Loader2, AlertCircle, Zap, Cpu } from "lucide-react";
+import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
 import { FadeIn } from "./FadeIn";
 import { Magnetic } from "./Magnetic";
 import { Button } from "./Button";
@@ -21,8 +21,8 @@ type FormErrors = Partial<Record<keyof FormState, string>>;
 // --- Constants ---
 
 const SOCIAL_LINKS = [
-  { icon: <Zap className="w-5 h-5" />, label: "GitHub", href: "https://github.com/sajin77", id: "01" },
-  { icon: <Cpu className="w-5 h-5" />, label: "LinkedIn", href: "https://linkedin.com/in/sajin-pp", id: "02" },
+  { icon: <Zap className="w-5 h-5" />, label: "GitHub", href: "https://github.com/saju2468", id: "01" },
+  { icon: <Cpu className="w-5 h-5" />, label: "LinkedIn", href: "https://linkedin.com/in/sajinpp77", id: "02" },
   // { icon: <MessageSquare className="w-5 h-5" />, label: "Twitter", href: "#", id: "03" },
   // { icon: <Globe className="w-5 h-5" />, label: "Dribbble", href: "#", id: "04" },
 ];
@@ -51,6 +51,7 @@ const useContactForm = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const validate = useCallback((): boolean => {
     const newErrors: FormErrors = {};
@@ -77,11 +78,13 @@ const useContactForm = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
     // Clear error for the field being edited
     setErrors(prev => ({ ...prev, [name]: undefined }));
+    setSubmitError(null);
   }, []);
 
   const resetForm = useCallback(() => {
     setFormData({ name: "", email: "", subject: "", message: "" });
     setIsSuccess(false);
+    setSubmitError(null);
   }, []);
 
   const handleSubmit = useCallback(async (e: FormEvent) => {
@@ -89,19 +92,32 @@ const useContactForm = () => {
     if (!validate()) return;
 
     setIsSubmitting(true);
+    setSubmitError(null);
     try {
-      // Simulate API call (replace with actual backend endpoint if needed)
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(data.error || "TRANSMISSION_FAILED");
+      }
+
       setIsSuccess(true);
       setTimeout(resetForm, 4000);
-    } catch (err) {
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "TRANSMISSION_FAILED";
       console.error("Submission failed", err);
+      setSubmitError(msg);
     } finally {
       setIsSubmitting(false);
     }
-  }, [validate, resetForm]);
+  }, [formData, validate, resetForm]);
 
-  return { formData, errors, isSubmitting, isSuccess, handleChange, handleSubmit };
+  return { formData, errors, isSubmitting, isSuccess, submitError, handleChange, handleSubmit };
 };
 
 // --- Sub-components ---
@@ -219,6 +235,8 @@ const ModernInput = memo(({
   );
 });
 
+ModernInput.displayName = "ModernInput";
+
 /**
  * Social media link card with magnetic interaction.
  */
@@ -246,8 +264,10 @@ const SocialLinkItem = memo(({ link, index }: { link: typeof SOCIAL_LINKS[0], in
   </FadeIn>
 ));
 
+SocialLinkItem.displayName = "SocialLinkItem";
+
 export function Contact() {
-  const { formData, errors, isSubmitting, isSuccess, handleChange, handleSubmit } = useContactForm();
+  const { formData, errors, isSubmitting, isSuccess, submitError, handleChange, handleSubmit } = useContactForm();
   const [focusedField, setFocusedField] = useState<keyof FormState | null>(null);
 
   // Optimized Mouse Spotlight tracking
@@ -407,7 +427,13 @@ export function Contact() {
                       isTextArea
                     />
 
-                    <div className="pt-6">
+                    <div className="pt-6 flex flex-col gap-4">
+                      {submitError && (
+                        <div className="flex items-center gap-2 p-3 bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-mono uppercase tracking-wider rounded-lg" role="alert">
+                          <AlertCircle className="w-4 h-4 shrink-0" />
+                          <span>Transmission error: {submitError}</span>
+                        </div>
+                      )}
                       <Button
                         type="submit"
                         disabled={isSubmitting || isSuccess}

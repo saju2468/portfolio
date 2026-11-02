@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import { motion } from "framer-motion";
-import { Layers, GitBranch, Cpu, Terminal, Zap, Globe, Gauge } from "lucide-react";
+import { Layers, GitBranch, Cpu, Terminal, Zap, Globe, Gauge, LucideIcon } from "lucide-react";
 import { FadeIn } from "./FadeIn";
 
 // --- Constants ---
@@ -49,7 +49,7 @@ const BentoCard = ({
   </FadeIn>
 );
 
-const BentoHeader = ({ index, title, Icon }: { index: string, title: string, Icon: any }) => (
+const BentoHeader = ({ index, title, Icon }: { index: string, title: string, Icon: LucideIcon }) => (
   <div className="flex justify-between items-start mb-8">
     <div className="flex flex-col gap-2">
       <span className="font-mono text-[10px] opacity-20" aria-hidden="true">{index}</span>
@@ -136,7 +136,7 @@ const CodeSnippet = () => (
   </div>
 );
 
-const SkillItem = ({ Icon, title, desc }: { Icon: any, title: string, desc: string }) => (
+const SkillItem = ({ Icon, title, desc }: { Icon: LucideIcon, title: string, desc: string }) => (
   <div className="flex items-center gap-4 group/item">
     <div className="w-12 h-12 rounded-full border border-grid-line flex items-center justify-center group-hover/item:border-accent group-hover/item:text-accent transition-colors bg-background">
       <Icon className="w-5 h-5" />

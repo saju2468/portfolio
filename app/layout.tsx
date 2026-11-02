@@ -20,9 +20,53 @@ const architectsDaughter = Architects_Daughter({
 });
 
 export const metadata: Metadata = {
-  title: "sajin — Frontend Engineer (React, Next.js)",
+  title: {
+    default: "sajin — Frontend Engineer (React, Next.js)",
+    template: "%s | sajin",
+  },
   description:
-    "Portfolio of sajin. Frontend Engineer with 3 years of experience building scalable, responsive, and SEO-friendly web applications.",
+    "Portfolio of sajin. Frontend Engineer with 3+ years of experience building scalable, responsive, and SEO-friendly web applications with Next.js, React, and Tailwind CSS.",
+  keywords: [
+    "Frontend Engineer",
+    "React Developer",
+    "Next.js Developer",
+    "Tailwind CSS",
+    "TypeScript",
+    "Web Developer",
+    "Sajin Portfolio",
+  ],
+  authors: [{ name: "sajin", url: "https://github.com/saju2468" }],
+  creator: "sajin",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    title: "sajin — Frontend Engineer (React, Next.js)",
+    description:
+      "Frontend Engineer with 3+ years of experience building scalable, responsive, and SEO-friendly web applications.",
+    siteName: "sajin Portfolio",
+    images: [
+      {
+        url: "/sajin.jpg",
+        width: 800,
+        height: 1000,
+        alt: "Sajin - Frontend Engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "sajin — Frontend Engineer (React, Next.js)",
+    description:
+      "Frontend Engineer specializing in Next.js, React, and modern UI engineering.",
+    images: ["/sajin.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export const viewport: Viewport = {

@@ -6,7 +6,6 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FadeIn } from "@/components/FadeIn";
 import { Button } from "@/components/Button";
-import { motion } from "framer-motion";
 
 export default function ProjectsPage() {
   const projects = [

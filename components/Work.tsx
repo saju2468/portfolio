@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useSpring, useMotionValue } from "framer-motion";
+import { motion, useSpring, useMotionValue, MotionValue } from "framer-motion";
 import { FadeIn } from "./FadeIn";
 import { Button } from "./Button";
 
@@ -78,8 +78,8 @@ const FloatingImage = ({
   cursorY 
 }: { 
   hoveredIndex: number | null, 
-  cursorX: any, 
-  cursorY: any 
+  cursorX: MotionValue<number>, 
+  cursorY: MotionValue<number> 
 }) => {
   return (
     <div className="pointer-events-none fixed inset-0 z-50 hidden lg:block overflow-hidden" aria-hidden="true">
