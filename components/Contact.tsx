@@ -288,7 +288,7 @@ export function Contact() {
   );
 
   return (
-    <section id="contact" className="px-6 md:px-24 py-32 md:py-64 bg-background relative overflow-hidden border-t border-grid-line/50">
+    <section id="contact" className="px-6 md:px-24 py-32 md:py-32 bg-background relative overflow-hidden border-t border-grid-line/50">
       {/* Decorative Grid */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-[0.03] dark:opacity-[0.05]"
         style={{ backgroundImage: `radial-gradient(var(--foreground) 1px, transparent 0)`, backgroundSize: '40px 40px' }}

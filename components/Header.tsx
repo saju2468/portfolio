@@ -2,8 +2,8 @@
 
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import { useEffect, useState, useCallback, useSyncExternalStore } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState, useCallback, useSyncExternalStore, useRef } from "react";
+import { AnimatePresence, motion, useScroll, useMotionValueEvent } from "framer-motion";
 
 const emptySubscribe = () => () => {};
 
@@ -168,6 +168,33 @@ export function Header() {
   const { setTheme, resolvedTheme } = useTheme();
   const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const lastScrollY = useRef(0);
+
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = lastScrollY.current;
+    lastScrollY.current = latest;
+
+    // Keep header visible when near the top of the page
+    if (latest <= 60) {
+      setIsHidden(false);
+      return;
+    }
+
+    const diff = latest - previous;
+    // Threshold to prevent jitter on tiny micro-scrolls
+    if (Math.abs(diff) < 8) return;
+
+    if (diff > 0) {
+      // Scrolling down -> hide header
+      setIsHidden(true);
+    } else {
+      // Scrolling up (reverse scroll) -> show header
+      setIsHidden(false);
+    }
+  });
 
   useEffect(() => {
     // Prevent body scroll when menu is open
@@ -191,7 +218,16 @@ export function Header() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full p-6 md:p-12 z-[1000] flex justify-between items-baseline mix-blend-difference text-white backdrop-blur-md">
+      <motion.header
+        variants={{
+          visible: { y: 0, opacity: 1 },
+          hidden: { y: "-100%", opacity: 0 },
+        }}
+        initial="visible"
+        animate={isHidden && !isMenuOpen ? "hidden" : "visible"}
+        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+        className="fixed top-0 left-0 w-full p-6 md:p-12 z-[1000] flex justify-between items-baseline mix-blend-difference text-white backdrop-blur-md"
+      >
         <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-12">
           <Link href="/" aria-label="Sajin Portfolio Home">
             <span className="font-black tracking-tighter text-3xl md:text-5xl uppercase leading-none block">
@@ -244,7 +280,7 @@ export function Header() {
             </button>
           </div>
         </nav>
-      </header>
+      </motion.header>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>

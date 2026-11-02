@@ -70,11 +70,11 @@ export function Button({
       )}
 
       {/* Decorative Corners/Lines for Cyberpunk feel */}
-      <div className="absolute top-0 left-0 w-2 h-[2px] bg-accent opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:w-4" />
-      <div className="absolute top-0 left-0 w-[2px] h-2 bg-accent opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:h-4" />
+      <div className="absolute top-0 left-0 w-2 h-0.5 bg-accent opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:w-4" />
+      <div className="absolute top-0 left-0 w-0.5 h-2 bg-accent opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:h-4" />
       
-      <div className="absolute bottom-0 right-0 w-2 h-[2px] bg-accent opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:w-4" />
-      <div className="absolute bottom-0 right-0 w-[2px] h-2 bg-accent opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:h-4" />
+      <div className="absolute bottom-0 right-0 w-2 h-0.5 bg-accent opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:w-4" />
+      <div className="absolute bottom-0 right-0 w-0.5 h-2 bg-accent opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:h-4" />
 
       {/* Main Content */}
       <div className="relative z-10 flex items-center justify-center gap-4 transition-transform duration-500 group-hover:scale-105">
@@ -82,7 +82,7 @@ export function Button({
       </div>
 
       {/* Scanline Effect on Hover */}
-      <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-10 transition-opacity bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]" />
+      <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-10 transition-opacity bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-size-[100%_2px,3px_100%]" />
     </motion.button>
   );
 
