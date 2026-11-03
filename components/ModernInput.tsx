@@ -18,6 +18,7 @@ export interface ModernInputProps {
   onBlur: () => void;
   isFocused: boolean;
   isTextArea?: boolean;
+  rows?: number;
 }
 
 /**
@@ -38,6 +39,7 @@ export const ModernInput = memo(
     onBlur,
     isFocused,
     isTextArea = false,
+    rows = 2,
   }: ModernInputProps) => {
     const hasValue = value.length > 0;
     const errorId = `${id}-error`;
@@ -70,11 +72,11 @@ export const ModernInput = memo(
                 onFocus={onFocus}
                 onBlur={onBlur}
                 disabled={isSubmitting}
-                rows={4}
+                rows={rows}
                 placeholder=" "
                 aria-invalid={!!error}
                 aria-describedby={error ? errorId : undefined}
-                className="w-full bg-transparent outline-none text-lg font-medium tracking-tight resize-none placeholder:opacity-0 disabled:opacity-50 min-h-10 md:min-h-30 transition-all duration-300"
+                className="w-full bg-transparent outline-none text-base md:text-lg font-medium tracking-tight resize-none placeholder:opacity-0 disabled:opacity-50 min-h-[56px] md:min-h-[120px] transition-all duration-300"
               />
             ) : (
               <input
@@ -89,7 +91,7 @@ export const ModernInput = memo(
                 placeholder=" "
                 aria-invalid={!!error}
                 aria-describedby={error ? errorId : undefined}
-                className="w-full bg-transparent outline-none text-lg font-medium tracking-tight placeholder:opacity-0 disabled:opacity-50 transition-all duration-300"
+                className="w-full bg-transparent outline-none text-base md:text-lg font-medium tracking-tight placeholder:opacity-0 disabled:opacity-50 transition-all duration-300"
               />
             )}
 
