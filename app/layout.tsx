@@ -20,6 +20,7 @@ const architectsDaughter = Architects_Daughter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://sajin.dev"),
   title: {
     default: "sajin — Frontend Engineer (React, Next.js)",
     template: "%s | sajin",
@@ -75,6 +76,7 @@ export const viewport: Viewport = {
 
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { CustomCursor } from "@/components/CustomCursor";
+import { StoreProvider } from "@/store/StoreProvider";
 
 export default function RootLayout({
   children,
@@ -84,42 +86,45 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-theme="dark"
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${architectsDaughter.variable}`}
     >
       <body suppressHydrationWarning className="antialiased selection:bg-[#ff4d00] selection:text-white">
-        <ThemeProvider
-          attribute="data-theme"
-          defaultTheme="dark"
-          enableSystem={false}
-        >
-          <SmoothScroll>
-            <CustomCursor />
-            <div className="crt-overlay pointer-events-none" />
-            <div className="bg-pattern pointer-events-none">
-              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                <defs>
-                  <pattern
-                    id="a"
-                    width="20"
-                    height="20"
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <circle
-                      cx="2"
-                      cy="2"
-                      r="1"
-                      fill="currentColor"
-                      className="text-gray-300 dark:text-gray-800"
-                    />
-                  </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#a)" />
-              </svg>
-            </div>
-            {children}
-          </SmoothScroll>
-        </ThemeProvider>
+        <StoreProvider>
+          <ThemeProvider
+            attribute="data-theme"
+            defaultTheme="dark"
+            enableSystem={false}
+          >
+            <SmoothScroll>
+              <CustomCursor />
+              <div className="crt-overlay pointer-events-none" />
+              <div className="bg-pattern pointer-events-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                  <defs>
+                    <pattern
+                      id="a"
+                      width="20"
+                      height="20"
+                      patternUnits="userSpaceOnUse"
+                    >
+                      <circle
+                        cx="2"
+                        cy="2"
+                        r="1"
+                        fill="currentColor"
+                        className="text-gray-800 [data-theme=light]_&:text-gray-300"
+                      />
+                    </pattern>
+                  </defs>
+                  <rect width="100%" height="100%" fill="url(#a)" />
+                </svg>
+              </div>
+              {children}
+            </SmoothScroll>
+          </ThemeProvider>
+        </StoreProvider>
       </body>
     </html>
   );

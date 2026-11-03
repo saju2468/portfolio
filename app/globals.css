@@ -1,18 +1,29 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 :root {
-  --background: #fbfbf7;
-  --foreground: #101010;
+  --background: #0c0c0c;
+  --foreground: #f2f2f2;
   --accent: #ff4d00;
-  --secondary: #666;
-  --grid-line: #fb4c0040;
+  --secondary: #aaa;
+  --grid-line: #1a1a1a;
 }
 
 [data-theme="dark"] {
   --background: #0c0c0c;
   --foreground: #f2f2f2;
-  --grid-line: #1a1a1a;
+  --accent: #ff4d00;
   --secondary: #aaa;
+  --grid-line: #1a1a1a;
+}
+
+[data-theme="light"] {
+  --background: #fbfbf7;
+  --foreground: #101010;
+  --accent: #ff4d00;
+  --secondary: #666;
+  --grid-line: #fb4c0040;
 }
 
 @theme inline {
@@ -40,9 +51,9 @@ body {
 .crt-overlay {
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.4;
-  background: linear-gradient(#12101000 50%, #00000008 50%) 0 0 / 100% 2px,
-    linear-gradient(90deg, #ff000003, #00ff0001, #0000ff03) 0 0 / 3px 100%;
+  opacity: 0.6;
+  background: linear-gradient(#12101000 50%, #0000001a 50%) 0 0 / 100% 3px,
+    linear-gradient(90deg, #ff000005, #00ff0003, #0000ff05) 0 0 / 4px 100%;
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -50,10 +61,10 @@ body {
   left: 0;
 }
 
-[data-theme="dark"] .crt-overlay {
-  opacity: 0.6;
-  background: linear-gradient(#12101000 50%, #0000001a 50%) 0 0 / 100% 3px,
-    linear-gradient(90deg, #ff000005, #00ff0003, #0000ff05) 0 0 / 4px 100%;
+[data-theme="light"] .crt-overlay {
+  opacity: 0.4;
+  background: linear-gradient(#12101000 50%, #00000008 50%) 0 0 / 100% 2px,
+    linear-gradient(90deg, #ff000003, #00ff0001, #0000ff03) 0 0 / 3px 100%;
 }
 
 .node-hover {
@@ -101,14 +112,15 @@ button,
 
 .bg-pattern svg {
   object-fit: cover;
-  mix-blend-mode: multiply;
+  mix-blend-mode: screen;
+  opacity: 0.4;
   width: 100%;
   height: 100%;
 }
 
-[data-theme="dark"] .bg-pattern svg {
-  mix-blend-mode: screen;
-  opacity: 0.4;
+[data-theme="light"] .bg-pattern svg {
+  mix-blend-mode: multiply;
+  opacity: 1;
 }
 
 .technical-label {

@@ -2,44 +2,9 @@
 
 import Image from "next/image";
 import { FadeIn } from "./FadeIn";
-import { useEffect, useState, useMemo } from "react";
-
-// --- Constants ---
-
-const SYSTEM_CONFIG = {
-  REF_ID: "772-019-91",
-  LOCATION: "12.9716° N, 77.5946° E",
-  ACTIVE_MODULES: ["NEXT.JS", "REACT", "TAILWIND", "TYPESCRIPT"],
-  CURRENT_STACK: "NEXT.JS / REACT / TAILWIND / TS",
-};
-
-// --- Hooks ---
-
-/**
- * Custom hook for real-time clock display
- */
-const useRealTime = () => {
-  const [time, setTime] = useState<string>("");
-
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      setTime(
-        now.toLocaleTimeString("en-US", {
-          hour12: true,
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-        }),
-      );
-    };
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
-  return time;
-};
+import { useMemo } from "react";
+import { SYSTEM_CONFIG } from "@/data/systemConfig";
+import { useRealTime } from "@/hooks/useRealTime";
 
 // --- Sub-components ---
 
@@ -104,7 +69,7 @@ export function Hero() {
   return (
     <section
       id="about"
-      className="min-h-screen flex flex-col justify-center px-8 md:px-24 pt-48 md:pt-48 pb-32 relative overflow-hidden"
+      className="min-h-screen flex flex-col justify-center px-8 md:px-24 pt-48 md:pt-48 pb-10 relative overflow-hidden"
       aria-label="Introduction"
     >
       {/* Desktop Portrait - Fixed position at the side */}

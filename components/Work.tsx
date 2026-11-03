@@ -6,66 +6,7 @@ import Image from "next/image";
 import { motion, useSpring, useMotionValue, MotionValue } from "framer-motion";
 import { FadeIn } from "./FadeIn";
 import { Button } from "./Button";
-
-// --- Types ---
-
-interface Project {
-  id: string;
-  year: string;
-  title: string;
-  description: string;
-  image: string;
-  status: string;
-  technologies: string;
-  coreFocus: string;
-  tags: string[];
-  link: string;
-  accentColor: string;
-}
-
-// --- Constants ---
-
-const PROJECTS: Project[] = [
-  {
-    id: "PRJ_001",
-    year: "2024",
-    title: "VAIDYARATNAM",
-    description: "Developed responsive and accessible UI components using Tailwind CSS. Converted design mockups into clean HTML layouts, ensuring cross-browser compatibility and working closely with backend developers for smooth UI integration.",
-    image: "/assets/vaidyaratnam_hero.png",
-    status: "DEPLOYMENT_ACTIVE",
-    technologies: "HTML / Tailwind CSS",
-    coreFocus: "Responsive UI / Styling",
-    tags: ["UI COMPONENTS", "CROSS-BROWSER", "ACCESSIBILITY", "RESPONSIVE"],
-    link: "https://vaidyaratnamstore.com",
-    accentColor: "bg-accent",
-  },
-  {
-    id: "PRJ_002",
-    year: "2024",
-    title: "Muthoot_Capital",
-    description: "Developed key frontend modules using Next.js with a component-based architecture. Implemented SSR/SSG for SEO-critical pages, integrated REST APIs for major data flows, and optimized performance using image optimization and lazy loading.",
-    image: "/assets/muthoot_hero.png",
-    status: "DOCKER_GRID_ACTIVE",
-    technologies: "Next.js / React / Tailwind CSS",
-    coreFocus: "REST APIs / SSR / SSG",
-    tags: ["PERFORMANCE", "IMAGE OPTIMIZATION", "ACCESSIBILITY", "STATE MANAGEMENT"],
-    link: "https://www.muthootcap.com/",
-    accentColor: "bg-[#ff4d00]",
-  },
-  {
-    id: "PRJ_003",
-    year: "2023",
-    title: "LUXON_TATA",
-    description: "Implemented pixel-perfect UI screens based on design requirements using HTML and Tailwind CSS. Built fully responsive layouts ensuring consistent experience across desktop, tablet, and mobile devices, optimizing CSS structure for maintainability.",
-    image: "/assets/luxon_hero.png",
-    status: "DEPLOYMENT_ACTIVE",
-    technologies: "HTML / Tailwind CSS",
-    coreFocus: "Responsive UI / Integration",
-    tags: ["PIXEL-PERFECT", "RESPONSIVE LAYOUTS", "CSS OPTIMIZATION", "PHP INTEGRATION"],
-    link: "https://luxontata.com/",
-    accentColor: "bg-accent",
-  }
-];
+import { Project, getFeaturedProjects } from "@/data/projects";
 
 // --- Sub-components ---
 
@@ -73,10 +14,12 @@ const PROJECTS: Project[] = [
  * A decorative component that follows the cursor and reveals project previews.
  */
 const FloatingImage = ({ 
+  projects,
   hoveredIndex, 
   cursorX, 
   cursorY 
 }: { 
+  projects: Project[],
   hoveredIndex: number | null, 
   cursorX: MotionValue<number>, 
   cursorY: MotionValue<number> 
@@ -98,7 +41,7 @@ const FloatingImage = ({
           rotate: { duration: 0.4 } 
         }}
       >
-        {PROJECTS.map((project, index) => (
+        {projects.map((project, index) => (
           <Image
             key={project.id}
             src={project.image}
@@ -166,8 +109,8 @@ const ProjectItem = ({
 
               {/* Huge Typography with Text Stroke */}
               <h3
-                className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter uppercase leading-[0.8] transition-all duration-700 group-hover/row:translate-x-4 ${
-                  !isHovered && 'dark:opacity-40 opacity-50'
+                className={`text-3xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter uppercase leading-[0.8] transition-all duration-700 group-hover/row:translate-x-4 ${
+                  !isHovered && 'opacity-40 [data-theme=light]_&:opacity-50'
                 }`}
                 style={{
                   WebkitTextStroke: isHovered ? "0px transparent" : "1px var(--foreground)",
@@ -217,6 +160,7 @@ const ProjectItem = ({
 
 export function Work() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const featuredProjects = getFeaturedProjects();
 
   // Performance: Use motion values to track mouse without triggering React re-renders
   const mouseX = useMotionValue(0);
@@ -236,17 +180,18 @@ export function Work() {
   return (
     <section
       id="work"
-      className="px-6 md:px-24 py-32 md:py-36 border-t border-grid-line relative z-10 mt-12 md:mt-0 cursor-default"
+      className="px-6 md:px-24 py-24 md:py-36 border-t border-grid-line relative z-10 mt-12 md:mt-0 cursor-default"
       onMouseMove={handleMouseMove}
       aria-label="Portfolio Work Section"
     >
       <FloatingImage 
+        projects={featuredProjects}
         hoveredIndex={hoveredIndex} 
         cursorX={cursorX} 
         cursorY={cursorY} 
       />
 
-      <div className="flex flex-col gap-20">
+      <div className="flex flex-col gap-10 md:gap-20">
         <FadeIn delay={0.1}>
           <div className="flex flex-col gap-6">
             <div className="technical-label flex items-center gap-4" aria-hidden="true">
@@ -263,7 +208,7 @@ export function Work() {
         <div className="w-full flex flex-col mt-4">
           <div className="border-t border-grid-line w-full" aria-hidden="true" />
 
-          {PROJECTS.map((project, index) => (
+          {featuredProjects.map((project, index) => (
             <ProjectItem
               key={project.id}
               project={project}
@@ -275,7 +220,7 @@ export function Work() {
           ))}
         </div>
 
-        <div className="mt-16 flex justify-center w-full relative z-20">
+        <div className="mt-5 md:mt-16 flex justify-center w-full relative z-20">
           <Button href="/projects" variant="secondary">
             <span>VIEW_ALL_PROJECTS</span>
             <span className="symbol text-xl group-hover:translate-x-2 transition-transform duration-300" aria-hidden="true">→</span>

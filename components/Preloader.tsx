@@ -140,7 +140,7 @@ export function Preloader() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="fixed inset-0 z-[20000] bg-[#fbfbf7] dark:bg-[#0c0c0c] flex flex-col items-center justify-center p-8 overflow-hidden"
+          className="fixed inset-0 z-[20000] bg-background text-foreground flex flex-col items-center justify-center p-8 overflow-hidden"
           role="progressbar"
           aria-label="Loading Sajin Portfolio"
           aria-valuemin={0}
@@ -151,7 +151,7 @@ export function Preloader() {
           
           <div className="relative flex flex-col items-center gap-12 max-w-md w-full">
             <div className="relative flex flex-col items-center">
-              <h1 className="text-6xl md:text-8xl text-white font-black tracking-tighter uppercase leading-none selection:bg-accent relative">
+              <h1 className="text-6xl md:text-8xl text-foreground font-black tracking-tighter uppercase leading-none selection:bg-accent relative">
                 sajin
                 <div className="absolute -right-6 bottom-2 w-4 h-8 bg-accent" />
               </h1>
@@ -185,10 +185,10 @@ export function Preloader() {
           </div>
 
           {/* Corner Accents */}
-          <div className="absolute top-12 left-12 w-8 h-8 border-t-2 border-l-2 hidden md:block border-[#101010] dark:border-[#f2f2f2] opacity-20" aria-hidden="true" />
-          <div className="absolute top-12 right-12 w-8 h-8 border-t-2 border-r-2 hidden md:block border-[#101010] dark:border-[#f2f2f2] opacity-20" aria-hidden="true" />
-          <div className="absolute bottom-12 left-12 w-8 h-8 border-b-2 border-l-2 hidden md:block border-[#101010] dark:border-[#f2f2f2] opacity-20" aria-hidden="true" />
-          <div className="absolute bottom-12 right-12 w-8 h-8 border-b-2 border-r-2 hidden md:block border-[#101010] dark:border-[#f2f2f2] opacity-20" aria-hidden="true" />
+          <div className="absolute top-12 left-12 w-8 h-8 border-t-2 border-l-2 hidden md:block border-foreground opacity-20" aria-hidden="true" />
+          <div className="absolute top-12 right-12 w-8 h-8 border-t-2 border-r-2 hidden md:block border-foreground opacity-20" aria-hidden="true" />
+          <div className="absolute bottom-12 left-12 w-8 h-8 border-b-2 border-l-2 hidden md:block border-foreground opacity-20" aria-hidden="true" />
+          <div className="absolute bottom-12 right-12 w-8 h-8 border-b-2 border-r-2 hidden md:block border-foreground opacity-20" aria-hidden="true" />
           
           <BinaryStream />
         </motion.div>
