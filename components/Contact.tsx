@@ -263,7 +263,7 @@ export function Contact() {
                         type="submit"
                         disabled={isSubmitting || isSuccess}
                         className={`
-                          relative w-full py-8 rounded-2xl font-black text-xl uppercase tracking-[0.3em] transition-all duration-700 overflow-hidden
+                          relative w-full py-4 sm:py-5 md:py-8 rounded-xl md:rounded-2xl font-black text-sm sm:text-base md:text-xl uppercase tracking-[0.2em] md:tracking-[0.3em] transition-all duration-700 overflow-hidden
                           ${
                             isSuccess
                               ? "bg-green-500! text-white! shadow-lg shadow-green-500/30"

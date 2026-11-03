@@ -223,7 +223,7 @@ export function Work() {
         <div className="mt-5 md:mt-16 flex justify-center w-full relative z-20">
           <Button href="/projects" variant="secondary">
             <span>VIEW_ALL_PROJECTS</span>
-            <span className="symbol text-xl group-hover:translate-x-2 transition-transform duration-300" aria-hidden="true">→</span>
+            <span className="symbol text-base md:text-xl group-hover:translate-x-2 transition-transform duration-300" aria-hidden="true">→</span>
           </Button>
         </div>
       </div>

@@ -50,11 +50,11 @@ export function Button({
       type={type}
       {...props}
       className={`
-        relative group px-10 py-5 font-black text-xs md:text-sm uppercase tracking-[0.3em] overflow-hidden transition-all duration-500
+        relative group px-5 py-3 sm:px-6 sm:py-3.5 md:px-10 md:py-5 font-black text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.3em] overflow-hidden transition-all duration-500
         ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-default"}
         ${variant === "primary" ? "bg-foreground text-background" : ""}
         ${variant === "outline" ? "border-2 border-foreground/20 text-foreground hover:border-accent" : ""}
-        ${variant === "secondary" ? "border-2 border-accent text-accent shadow-[6px_6px_0px_0px_rgba(255,77,0,0.1)] hover:shadow-none" : ""}
+        ${variant === "secondary" ? "border-2 border-accent text-accent shadow-[4px_4px_0px_0px_rgba(255,77,0,0.1)] md:shadow-[6px_6px_0px_0px_rgba(255,77,0,0.1)] hover:shadow-none" : ""}
         ${className}
       `}
       whileTap={disabled ? {} : { scale: 0.95 }}
@@ -77,7 +77,7 @@ export function Button({
       <div className="absolute bottom-0 right-0 w-0.5 h-2 bg-accent opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:h-4" />
 
       {/* Main Content */}
-      <div className="relative z-10 flex items-center justify-center gap-4 transition-transform duration-500 group-hover:scale-105">
+      <div className="relative z-10 flex items-center justify-center gap-2.5 md:gap-4 transition-transform duration-500 group-hover:scale-105">
         {children}
       </div>
 
