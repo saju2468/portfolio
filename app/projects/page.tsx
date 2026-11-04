@@ -25,7 +25,7 @@ export default function ProjectsPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen relative font-sans transition-colors duration-700 bg-background text-foreground pt-24 md:pt-32 pb-16 md:pb-32">
+      <main className="min-h-screen relative font-sans bg-background text-foreground pt-24 md:pt-32 pb-16 md:pb-32">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -47,7 +47,7 @@ export default function ProjectsPage() {
           </svg>
         </div>
 
-        <div className="relative z-10 px-6 md:px-24 mx-auto w-full">
+        <div className="relative z-10 px-4 sm:px-6 md:px-24 mx-auto w-full">
           <div className="flex flex-col gap-4 md:gap-6 mb-8 md:mb-24 pt-4 md:pt-16">
             <div className="technical-label flex items-center gap-4">
               <span className="symbol text-accent">✦</span>
@@ -63,12 +63,12 @@ export default function ProjectsPage() {
 
           {/* Redux-powered Filter & Search Bar */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 md:gap-6 mb-8 md:mb-12 pb-6 md:pb-8 border-b border-grid-line">
-            <div className="flex flex-wrap gap-2 items-center">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 items-center">
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => dispatch(setSelectedCategory(cat))}
-                  className={`text-[10px] font-mono px-3 sm:px-4 py-1.5 sm:py-2 uppercase font-bold tracking-widest border transition-all duration-300 ${
+                  className={`text-[9px] sm:text-[10px] font-mono px-2.5 sm:px-4 py-1.5 sm:py-2 uppercase font-bold tracking-wider sm:tracking-widest border transition-all duration-300 ${
                     selectedCategory === cat
                       ? "border-accent bg-accent text-white shadow-sm"
                       : "border-card-border bg-card text-foreground font-bold hover:border-accent shadow-xs"
@@ -86,7 +86,7 @@ export default function ProjectsPage() {
                   value={searchQuery}
                   onChange={(e) => dispatch(setSearchQuery(e.target.value))}
                   placeholder="SEARCH_PROJECTS_..."
-                  className="w-full bg-card border border-card-border px-4 py-2 text-xs font-mono font-bold text-foreground placeholder:text-muted placeholder:opacity-70 focus:border-accent outline-none uppercase tracking-wider shadow-xs"
+                  className="w-full bg-card border border-card-border px-3 sm:px-4 py-1.5 sm:py-2 text-xs font-mono font-bold text-foreground placeholder:text-muted placeholder:opacity-70 focus:border-accent outline-none uppercase tracking-wider shadow-xs"
                 />
                 {searchQuery && (
                   <button
@@ -105,7 +105,7 @@ export default function ProjectsPage() {
           </div>
 
           {projects.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-12">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 md:gap-8 lg:gap-12">
               {projects.map((project, idx) => (
                 <ProjectCard key={project.id} project={project} index={idx} />
               ))}

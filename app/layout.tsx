@@ -96,6 +96,7 @@ export default function RootLayout({
             attribute="data-theme"
             defaultTheme="dark"
             enableSystem={false}
+            disableTransitionOnChange
           >
             <SmoothScroll>
               <CustomCursor />

@@ -11,7 +11,7 @@ export default function Home() {
     <>
       <Preloader />
       <Header />
-      <main className="min-h-screen relative font-sans transition-colors duration-700 bg-background text-foreground">
+      <main className="min-h-screen relative font-sans bg-background text-foreground">
         <Hero />
         <Work />
         <Capabilities />
