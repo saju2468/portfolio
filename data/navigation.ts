@@ -8,7 +8,7 @@ export interface SocialLink {
   id: string;
   label: string;
   href: string;
-  iconName: "Zap" | "Cpu" | "Globe" | "MessageSquare";
+  iconName: "Github" | "Linkedin" | "Zap" | "Cpu" | "Globe" | "MessageSquare";
 }
 
 export const NAV_LINKS: NavLink[] = [
@@ -28,13 +28,13 @@ export const SOCIAL_LINKS: SocialLink[] = [
     id: "01",
     label: "GitHub",
     href: "https://github.com/saju2468",
-    iconName: "Zap",
+    iconName: "Github",
   },
   {
     id: "02",
     label: "LinkedIn",
     href: "https://linkedin.com/in/sajinpp77",
-    iconName: "Cpu",
+    iconName: "Linkedin",
   },
 ];
 

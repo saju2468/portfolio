@@ -6,8 +6,6 @@ import {
   CheckCircle2,
   Loader2,
   AlertCircle,
-  Zap,
-  Cpu,
 } from "lucide-react";
 import {
   motion,
@@ -20,18 +18,19 @@ import { Button } from "./Button";
 import { ModernInput } from "./ModernInput";
 import { SocialLinkItem } from "./SocialLinkItem";
 import { useContactForm } from "@/hooks/useContactForm";
+import { GithubIcon, LinkedinIcon } from "./icons/SocialIcons";
 
 // --- Constants ---
 
 const SOCIAL_LINKS = [
   {
-    icon: <Zap className="w-5 h-5" />,
+    icon: <GithubIcon className="w-5 h-5" />,
     label: "GitHub",
     href: "https://github.com/saju2468",
     id: "01",
   },
   {
-    icon: <Cpu className="w-5 h-5" />,
+    icon: <LinkedinIcon className="w-5 h-5" />,
     label: "LinkedIn",
     href: "https://linkedin.com/in/sajinpp77",
     id: "02",
