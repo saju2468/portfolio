@@ -14,16 +14,16 @@ export function Capabilities() {
   return (
     <section
       id="capabilities"
-      className="px-6 md:px-24 py-14  md:py-32 border-t border-grid-line bg-foreground/2 relative overflow-hidden"
+      className="px-6 md:px-24 py-12 md:py-32 border-t border-grid-line bg-foreground/2 relative overflow-hidden"
     >
-      <div className="flex flex-col gap-10 md:gap-20">
+      <div className="flex flex-col gap-8 md:gap-20">
         <FadeIn delay={0.1}>
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4 md:gap-6">
             <div className="technical-label flex items-center gap-4" aria-hidden="true">
               <span className="symbol text-accent">✦</span>
               <span>CORE_CAPABILITIES_v3.0_BENTO</span>
             </div>
-            <h2 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tighter uppercase leading-[0.9]">
+            <h2 className="text-4xl sm:text-7xl md:text-8xl font-black tracking-tighter uppercase leading-[0.9]">
               Core<br />
               <span className="text-accent underline decoration-4 underline-offset-8">Skills.</span>
             </h2>
@@ -31,7 +31,7 @@ export function Capabilities() {
         </FadeIn>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 auto-rows-[minmax(320px,auto)]">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 auto-rows-auto lg:auto-rows-[minmax(320px,auto)]">
           {/* Widget 01: Frontend Architecture */}
           <BentoCard className="lg:col-span-2" delay={0.2}>
             <BentoHeader index="01" title="FRONTEND ARCHITECTURE" Icon={Terminal} />
@@ -41,7 +41,7 @@ export function Capabilities() {
           {/* Widget 02: Performance */}
           <BentoCard delay={0.3} className="flex flex-col justify-between items-center text-center">
             <BentoHeader index="02" title="PERFORMANCE" Icon={Gauge} />
-            <div className="flex-1 flex flex-col items-center justify-center gap-6 w-full">
+            <div className="flex-1 flex flex-col items-center justify-center gap-4 sm:gap-6 w-full py-2">
               <div className="grid grid-cols-2 gap-4 sm:gap-6 w-full">
                 {SCORES.map((s, i) => (
                   <ScoreGauge
@@ -58,9 +58,9 @@ export function Capabilities() {
           {/* Widget 03: Ecosystem */}
           <BentoCard delay={0.4} className="flex flex-col overflow-hidden">
             <BentoHeader index="03" title="ECOSYSTEM" Icon={GitBranch} />
-            <div className="flex-1 flex flex-col justify-center gap-4 transition-opacity duration-500">
+            <div className="flex-1 flex flex-col justify-center gap-3 sm:gap-4 py-2 transition-opacity duration-500">
               <ToolMarquee />
-              <div className="flex gap-2 justify-center mt-6">
+              <div className="flex flex-wrap gap-2 justify-center mt-4 sm:mt-6">
                 {CAPABILITY_TAGS.map((tag) => (
                   <span
                     key={tag}
@@ -76,8 +76,8 @@ export function Capabilities() {
           {/* Widget 04: UI/UX engineering */}
           <BentoCard className="lg:col-span-2" delay={0.5}>
             <BentoHeader index="04" title="UI / UX ENGINEERING" Icon={Layers} />
-            <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
-              <div className="flex flex-col gap-6">
+            <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 items-center">
+              <div className="flex flex-col gap-4 sm:gap-6">
                 <SkillItem
                   Icon={Globe}
                   title="Responsive Design"

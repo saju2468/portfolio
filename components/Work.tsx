@@ -87,7 +87,7 @@ const ProjectItem = ({
         <div
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-          className="border-b border-grid-line py-12 lg:py-20 flex flex-col lg:flex-row lg:items-center justify-between gap-8 group/row relative overflow-hidden"
+          className="border-b border-grid-line py-8 lg:py-20 flex flex-col lg:flex-row lg:items-center justify-between gap-6 lg:gap-8 group/row relative overflow-hidden"
         >
           {/* Hover Animated Line */}
           <div className="absolute bottom-[-1px] left-0 h-[2px] bg-accent w-full transform origin-left scale-x-0 group-hover/row:scale-x-100 transition-transform duration-700 ease-out z-20" />
@@ -122,7 +122,7 @@ const ProjectItem = ({
             </div>
 
             {/* Mobile Image Fallback */}
-            <div className="block lg:hidden relative w-full aspect-video border border-card-border overflow-hidden mt-6 shadow-md rounded-lg">
+            <div className="block lg:hidden relative w-full aspect-video border border-card-border overflow-hidden mt-4 shadow-md rounded-lg">
               <Image
                 src={project.image}
                 alt={project.title}
@@ -133,7 +133,7 @@ const ProjectItem = ({
             </div>
 
             {/* Tech Details Column */}
-            <div className="flex flex-col gap-3 lg:items-end w-full lg:w-auto mt-6 lg:mt-0 transition-all duration-500 lg:opacity-0 lg:translate-x-8 group-hover/row:opacity-100 group-hover/row:translate-x-0">
+            <div className="flex flex-col gap-3 lg:items-end w-full lg:w-auto mt-4 lg:mt-0 transition-all duration-500 lg:opacity-0 lg:translate-x-8 group-hover/row:opacity-100 group-hover/row:translate-x-0">
               <span className="font-mono text-xs md:text-sm uppercase tracking-[0.2em] text-accent font-bold hidden lg:block">
                 Launch_Project <span className="symbol inline-block group-hover/link:translate-x-2 group-hover/link:-translate-y-2 transition-transform duration-300">↗</span>
               </span>
@@ -180,7 +180,7 @@ export function Work() {
   return (
     <section
       id="work"
-      className="px-6 md:px-24 py-24 md:py-36 border-t border-grid-line relative z-10 mt-12 md:mt-0 cursor-default"
+      className="px-6 md:px-24 py-12 md:py-36 border-t border-grid-line relative z-10 cursor-default"
       onMouseMove={handleMouseMove}
       aria-label="Portfolio Work Section"
     >
@@ -191,21 +191,21 @@ export function Work() {
         cursorY={cursorY} 
       />
 
-      <div className="flex flex-col gap-10 md:gap-20">
+      <div className="flex flex-col gap-8 md:gap-20">
         <FadeIn delay={0.1}>
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4 md:gap-6">
             <div className="technical-label flex items-center gap-4" aria-hidden="true">
               <span className="symbol text-accent">✦</span>
               <span>SYSTEM_MANIFEST_v0.6_ULTRA</span>
             </div>
-            <h2 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tighter uppercase leading-[0.9]">
+            <h2 className="text-4xl sm:text-7xl md:text-8xl font-black tracking-tighter uppercase leading-[0.9]">
               Featured.<br />
               <span className="text-accent underline decoration-4 underline-offset-8">Projects.</span>
             </h2>
           </div>
         </FadeIn>
 
-        <div className="w-full flex flex-col mt-4">
+        <div className="w-full flex flex-col mt-2 md:mt-4">
           <div className="border-t border-grid-line w-full" aria-hidden="true" />
 
           {featuredProjects.map((project, index) => (
@@ -220,7 +220,7 @@ export function Work() {
           ))}
         </div>
 
-        <div className="mt-5 md:mt-16 flex justify-center w-full relative z-20">
+        <div className="mt-8 md:mt-16 flex justify-center w-full relative z-20">
           <Button href="/projects" variant="secondary">
             <span>VIEW_ALL_PROJECTS</span>
             <span className="symbol text-base md:text-xl group-hover:translate-x-2 transition-transform duration-300" aria-hidden="true">→</span>
@@ -230,4 +230,3 @@ export function Work() {
     </section>
   );
 }
-

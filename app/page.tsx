@@ -5,7 +5,6 @@ import { Work } from "@/components/Work";
 import { Capabilities } from "@/components/Capabilities";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
-import { FadeIn } from "@/components/FadeIn";
 
 export default function Home() {
   return (
@@ -14,15 +13,9 @@ export default function Home() {
       <Header />
       <main className="min-h-screen relative font-sans transition-colors duration-700 bg-background text-foreground">
         <Hero />
-        <FadeIn>
-          <Work />
-        </FadeIn>
-        <FadeIn>
-          <Capabilities />
-        </FadeIn>
-        <FadeIn>
-          <Contact />
-        </FadeIn>
+        <Work />
+        <Capabilities />
+        <Contact />
         <Footer />
       </main>
     </>

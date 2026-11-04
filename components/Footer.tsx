@@ -9,15 +9,15 @@ export function Footer() {
   const { loadTime, timestamp } = usePerformanceMetrics();
 
   return (
-    <footer className="px-6 md:px-24 py-16 flex flex-col md:flex-row justify-between items-center border-t border-grid-line gap-12">
-      <div className="flex flex-col gap-4 items-center md:items-start">
-        <span className="font-black tracking-tighter text-3xl uppercase leading-none">{SYSTEM_CONFIG.NAME}</span>
+    <footer className="px-6 md:px-24 py-8 md:py-16 flex flex-col md:flex-row justify-between items-center border-t border-grid-line gap-8 md:gap-12">
+      <div className="flex flex-col gap-3 md:gap-4 items-center md:items-start">
+        <span className="font-black tracking-tighter text-2xl md:text-3xl uppercase leading-none">{SYSTEM_CONFIG.NAME}</span>
         <span className="technical-label !text-muted light:!text-neutral-700 !font-bold !text-[8px] tracking-[0.5em]">
           FRONTEND ENGINEER CORE // {SYSTEM_CONFIG.VERSION_YEAR}
         </span>
       </div>
 
-      <div className="flex gap-8 items-center">
+      <div className="flex gap-6 sm:gap-8 items-center">
         {FOOTER_LINKS.map((link) =>
           link.external ? (
             <a

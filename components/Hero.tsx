@@ -69,7 +69,7 @@ export function Hero() {
   return (
     <section
       id="about"
-      className="min-h-screen flex flex-col justify-center px-8 md:px-24 pt-32 md:pt-48 pb-10 relative overflow-hidden"
+      className="min-h-0 md:min-h-screen flex flex-col justify-start md:justify-center px-6 sm:px-8 md:px-24 pt-24 sm:pt-28 md:pt-48 pb-10 md:pb-16 relative overflow-hidden"
       aria-label="Introduction"
     >
       {/* Desktop Portrait - Fixed position at the side */}
@@ -94,11 +94,11 @@ export function Hero() {
         {/* Header Metadata Section */}
         <FadeIn delay={0.1}>
           <div
-            className="technical-label mb-10 flex items-center gap-6"
+            className="technical-label mb-6 md:mb-10 flex items-center gap-4 md:gap-6"
             aria-hidden="true"
           >
-            <span className="symbol text-2xl">✦</span>
-            <span className="text-xs">SYSTEM_INITIALIZED_00.2</span>
+            <span className="symbol text-xl md:text-2xl">✦</span>
+            <span className="text-[10px] md:text-xs">SYSTEM_INITIALIZED_00.2</span>
             <span className="handwriting text-xl ml-8 rotate-[-2deg] hidden md:inline-block">
               {"// Portrait mode active"}
             </span>
@@ -107,42 +107,42 @@ export function Hero() {
 
         {/* Hero Title Section */}
         <FadeIn delay={0.2}>
-          <h1 className="text-[14vw] md:text-[9vw] max-w-240 font-[900] tracking-tighter leading-[0.82] mb-12 uppercase typing-cursor magnify-target origin-left">
+          <h1 className="text-[13vw] sm:text-[11vw] md:text-[9vw] max-w-240 font-[900] tracking-tighter leading-[0.82] mb-8 md:mb-12 uppercase typing-cursor magnify-target origin-left">
             <AnimatedText text="CRAFTING" />
             <br />
             <AnimatedText text="MODERN" />
             <br />
             <span className="text-accent relative">
               <AnimatedText text="WEBSITES" />
-              <span className="inline-block w-4 md:w-8 h-2 md:h-4 bg-accent ml-2 translate-y-[-20%]" />
+              <span className="inline-block w-3 sm:w-4 md:w-8 h-1.5 sm:h-2 md:h-4 bg-accent ml-2 translate-y-[-20%]" />
             </span>
           </h1>
         </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-24 items-start md:mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-24 items-start md:mt-12">
           {/* Content Block */}
-          <div className="md:col-span-12 lg:col-span-7 flex flex-col gap-10">
+          <div className="md:col-span-12 lg:col-span-7 flex flex-col gap-6 md:gap-10">
             {/* Mobile Portrait - Shown only on smaller screens */}
             <FadeIn delay={0.3}>
-              <div className="lg:hidden w-full max-w-[400px] mb-8">
+              <div className="lg:hidden w-full max-w-[280px] sm:max-w-[340px] mb-4 sm:mb-8">
                 <PortraitFrame />
               </div>
             </FadeIn>
 
             <FadeIn delay={0.4}>
-              <p className="text-2xl md:text-5xl leading-[1.1] font-medium tracking-tight max-w-[50rem]">
+              <p className="text-xl sm:text-2xl md:text-5xl leading-[1.15] md:leading-[1.1] font-medium tracking-tight max-w-[50rem]">
                 I build scalable, responsive, and SEO-friendly web applications.
               </p>
             </FadeIn>
 
             <FadeIn delay={0.5}>
-              <div className="flex flex-col md:flex-row gap-8 items-start">
-                <p className="text-muted light:text-neutral-800 text-lg md:text-xl max-w-xl leading-relaxed font-normal">
+              <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
+                <p className="text-muted light:text-neutral-800 text-base md:text-xl max-w-xl leading-relaxed font-normal">
                   Strong experience in API integration, performance
                   optimization, and translating UI/UX designs into high-quality
                   production code.
                 </p>
-                <div className="technical-label text-[9px] border-l border-accent pl-4 flex flex-col gap-2">
+                <div className="technical-label text-[9px] border-l-2 border-accent pl-3 md:pl-4 flex flex-row md:flex-col gap-4 md:gap-2">
                   <span>LOC: {SYSTEM_CONFIG.LOCATION}</span>
                   <span>TIME: {time || "00:00:00 AM"}</span>
                 </div>
@@ -151,13 +151,13 @@ export function Hero() {
           </div>
 
           {/* Sidebar Metadata Section */}
-          <div className="md:col-span-12 lg:col-span-5 flex flex-col gap-12 lg:pl-12 decoration_elements">
+          <div className="md:col-span-12 lg:col-span-5 flex flex-col gap-6 md:gap-12 lg:pl-12 decoration_elements">
             <FadeIn delay={0.6}>
-              <div className="space-y-4">
+              <div className="space-y-2 md:space-y-4">
                 <span className="technical-label !text-muted light:!text-neutral-700 !font-bold">
                   SYSTEM STATUS
                 </span>
-                <div className="flex items-center gap-4 border-l-2 border-accent pl-4">
+                <div className="flex items-center gap-4 border-l-2 border-accent pl-3 md:pl-4">
                   <span className="text-xs font-mono uppercase font-bold text-accent animate-pulse">
                     NOMINAL_OPERATIONS_STABLE
                   </span>
@@ -166,7 +166,7 @@ export function Hero() {
             </FadeIn>
 
             <FadeIn delay={0.7}>
-              <div className="space-y-4">
+              <div className="space-y-2 md:space-y-4">
                 <span className="technical-label !text-muted light:!text-neutral-700 !font-bold">
                   ACTIVE MODULES
                 </span>
@@ -174,7 +174,7 @@ export function Hero() {
                   {SYSTEM_CONFIG.ACTIVE_MODULES.map((module) => (
                     <span
                       key={module}
-                      className="text-[10px] font-mono border border-card-border bg-card text-foreground shadow-xs px-3 py-1 uppercase font-bold hover:bg-accent hover:text-white transition-all duration-300 cursor-pointer"
+                      className="text-[10px] font-mono border border-card-border bg-card text-foreground shadow-xs px-2.5 py-1 uppercase font-bold hover:bg-accent hover:text-white transition-all duration-300 cursor-pointer"
                     >
                       {module}
                     </span>
@@ -183,7 +183,8 @@ export function Hero() {
               </div>
             </FadeIn>
 
-            <FadeIn delay={0.8}>
+            {/* Redundant on mobile because ACTIVE MODULES already displays the stack badges above */}
+            <FadeIn delay={0.8} className="hidden md:block">
               <div className="space-y-4">
                 <span className="technical-label !text-muted light:!text-neutral-700 !font-bold">
                   CURRENT STACK

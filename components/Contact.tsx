@@ -74,7 +74,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="px-6 md:px-24  py-20 md:py-64 bg-background relative overflow-hidden border-t border-grid-line/50"
+      className="px-6 md:px-24 py-12 md:py-48 bg-background relative overflow-hidden border-t border-grid-line/50"
     >
       {/* Decorative Grid */}
       <div
@@ -87,12 +87,12 @@ export function Contact() {
       />
 
       <div className="max-w-[1600px] mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 xl:gap-24">
           {/* Info Column */}
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
               <FadeIn delay={0.1}>
-                <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-4 md:gap-6">
                   <div
                     className="technical-label flex items-center gap-4"
                     aria-hidden="true"
@@ -100,7 +100,7 @@ export function Contact() {
                     <span className="w-12 h-[1px] bg-accent" />
                     <span className="text-accent">ESTABLISH_UPLINK</span>
                   </div>
-                  <h2 className="text-7xl sm:text-8xl md:text-9xl xl:text-[11rem] font-black tracking-tighter uppercase leading-[0.8] mb-12">
+                  <h2 className="text-5xl sm:text-7xl md:text-9xl xl:text-[11rem] font-black tracking-tighter uppercase leading-[0.85] mb-6 md:mb-12">
                     Let&apos;s
                     <br />
                     <span className="text-accent italic">Create.</span>
@@ -109,16 +109,16 @@ export function Contact() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-2xl md:text-3xl font-medium text-muted light:text-neutral-800 max-w-xl leading-snug tracking-tight mb-10 md:mb-20">
+                <p className="text-xl sm:text-2xl md:text-3xl font-medium text-muted light:text-neutral-800 max-w-xl leading-snug tracking-tight mb-8 md:mb-20">
                   Currently open for strategic partnerships and high-impact
                   digital ventures.
                 </p>
               </FadeIn>
             </div>
 
-            <div className="flex flex-col gap-16">
+            <div className="flex flex-col gap-8 md:gap-16">
               <FadeIn delay={0.3}>
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-3 md:gap-4">
                   <span
                     className="technical-label !text-muted light:!text-neutral-700 !font-bold"
                     aria-hidden="true"
@@ -130,17 +130,17 @@ export function Contact() {
                     className="group flex items-center gap-4 w-fit"
                     aria-label="Send an email to sajinpp77@gmail.com"
                   >
-                    <span className="text-2xl md:text-4xl font-bold tracking-tighter group-hover:text-accent transition-colors">
+                    <span className="text-xl sm:text-2xl md:text-4xl font-bold tracking-tighter group-hover:text-accent transition-colors">
                       sajinpp77@gmail.com
                     </span>
-                    <div className="w-10 h-10 rounded-full border border-card-border bg-card flex items-center justify-center group-hover:border-accent group-hover:bg-accent/5 transition-all">
-                      <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-card-border bg-card flex items-center justify-center group-hover:border-accent group-hover:bg-accent/5 transition-all">
+                      <Send className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                     </div>
                   </a>
                 </div>
               </FadeIn>
 
-              <div className="grid grid-cols-2 gap-8">
+              <div className="grid grid-cols-2 gap-3 sm:gap-8">
                 {SOCIAL_LINKS.map((link, i) => (
                   <SocialLinkItem key={link.label} link={link} index={i} />
                 ))}
@@ -163,14 +163,14 @@ export function Contact() {
                   aria-hidden="true"
                 />
 
-                <div className="relative z-10 bg-card border border-card-border shadow-xl light:shadow-2xl light:shadow-black/10 p-6 sm:p-8 md:p-16 rounded-[2rem] overflow-hidden">
-                  <div className="flex justify-between items-start mb-10 md:mb-16">
+                <div className="relative z-10 bg-card border border-card-border shadow-xl light:shadow-2xl light:shadow-black/10 p-5 sm:p-8 md:p-16 rounded-2xl md:rounded-[2rem] overflow-hidden">
+                  <div className="flex justify-between items-start mb-6 md:mb-16">
                     <div>
-                      <h3 className="text-2xl font-bold uppercase tracking-tight mb-2 text-foreground">
+                      <h3 className="text-xl sm:text-2xl font-bold uppercase tracking-tight mb-1 md:mb-2 text-foreground">
                         Initialize Protocol
                       </h3>
                       <p
-                        className="text-xs font-mono font-bold text-muted light:text-neutral-700 uppercase tracking-wider"
+                        className="text-[10px] sm:text-xs font-mono font-bold text-muted light:text-neutral-700 uppercase tracking-wider"
                         aria-hidden="true"
                       >
                         ENCRYPTION: AES-256-GCM
@@ -189,11 +189,11 @@ export function Contact() {
                   </div>
 
                   <form
-                    className="flex flex-col gap-8 md:gap-12"
+                    className="flex flex-col gap-6 md:gap-12"
                     onSubmit={handleSubmit}
                     noValidate
                   >
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
                       <ModernInput
                         id="name"
                         name="name"
@@ -248,7 +248,7 @@ export function Contact() {
                       isTextArea
                     />
 
-                    <div className="pt-6 flex flex-col gap-4">
+                    <div className="pt-4 md:pt-6 flex flex-col gap-4">
                       {submitError && (
                         <div
                           className="flex items-center gap-2 p-3 bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-mono uppercase tracking-wider rounded-lg"
