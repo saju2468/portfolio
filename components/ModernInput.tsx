@@ -60,6 +60,7 @@ export const ModernInput = memo(
             }`}
           >
             {label}
+            
           </label>
 
           <div className="relative overflow-hidden pt-4 pb-2">

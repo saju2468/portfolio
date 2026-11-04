@@ -39,9 +39,9 @@ export function Capabilities() {
           </BentoCard>
 
           {/* Widget 02: Performance */}
-          <BentoCard delay={0.3} className="flex flex-col justify-between items-center text-center">
+          <BentoCard delay={0.3} className="flex flex-col justify-start lg:justify-between items-center text-center">
             <BentoHeader index="02" title="PERFORMANCE" Icon={Gauge} />
-            <div className="flex-1 flex flex-col items-center justify-center gap-4 sm:gap-6 w-full py-2">
+            <div className="lg:flex-1 flex flex-col items-center justify-center gap-4 sm:gap-6 w-full py-2">
               <div className="grid grid-cols-2 gap-4 sm:gap-6 w-full">
                 {SCORES.map((s, i) => (
                   <ScoreGauge
@@ -56,9 +56,9 @@ export function Capabilities() {
           </BentoCard>
 
           {/* Widget 03: Ecosystem */}
-          <BentoCard delay={0.4} className="flex flex-col overflow-hidden">
+          <BentoCard delay={0.4} className="flex flex-col overflow-hidden justify-start lg:justify-between">
             <BentoHeader index="03" title="ECOSYSTEM" Icon={GitBranch} />
-            <div className="flex-1 flex flex-col justify-center gap-3 sm:gap-4 py-2 transition-opacity duration-500">
+            <div className="lg:flex-1 flex flex-col justify-center gap-3 sm:gap-4 py-2 transition-opacity duration-300">
               <ToolMarquee />
               <div className="flex flex-wrap gap-2 justify-center mt-4 sm:mt-6">
                 {CAPABILITY_TAGS.map((tag) => (
