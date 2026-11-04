@@ -13,19 +13,22 @@ import { Project, getFeaturedProjects } from "@/data/projects";
 /**
  * A decorative component that follows the cursor and reveals project previews.
  */
-const FloatingImage = ({ 
+const FloatingImage = ({
   projects,
-  hoveredIndex, 
-  cursorX, 
-  cursorY 
-}: { 
-  projects: Project[],
-  hoveredIndex: number | null, 
-  cursorX: MotionValue<number>, 
-  cursorY: MotionValue<number> 
+  hoveredIndex,
+  cursorX,
+  cursorY,
+}: {
+  projects: Project[];
+  hoveredIndex: number | null;
+  cursorX: MotionValue<number>;
+  cursorY: MotionValue<number>;
 }) => {
   return (
-    <div className="pointer-events-none fixed inset-0 z-50 hidden lg:block overflow-hidden" aria-hidden="true">
+    <div
+      className="pointer-events-none fixed inset-0 z-50 hidden lg:block overflow-hidden"
+      aria-hidden="true"
+    >
       <motion.div
         style={{ x: cursorX, y: cursorY }}
         className="absolute top-0 left-0 w-[360px] h-[240px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-grid-line rounded-sm"
@@ -35,10 +38,10 @@ const FloatingImage = ({
           scale: hoveredIndex !== null ? 1 : 0.8,
           rotate: hoveredIndex !== null ? 0 : -5,
         }}
-        transition={{ 
-          opacity: { duration: 0.3 }, 
-          scale: { duration: 0.4 }, 
-          rotate: { duration: 0.4 } 
+        transition={{
+          opacity: { duration: 0.3 },
+          scale: { duration: 0.4 },
+          rotate: { duration: 0.4 },
         }}
       >
         {projects.map((project, index) => (
@@ -49,7 +52,9 @@ const FloatingImage = ({
             fill
             sizes="360px"
             className={`object-cover transition-all duration-700 ease-in-out ${
-              hoveredIndex === index ? 'opacity-100 scale-100' : 'opacity-0 scale-110'
+              hoveredIndex === index
+                ? "opacity-100 scale-100"
+                : "opacity-0 scale-110"
             }`}
           />
         ))}
@@ -62,25 +67,25 @@ const FloatingImage = ({
 /**
  * An individual project row component with hover interactions.
  */
-const ProjectItem = ({ 
-  project, 
-  index, 
-  isHovered, 
-  onMouseEnter, 
-  onMouseLeave 
-}: { 
-  project: Project, 
-  index: number, 
-  isHovered: boolean,
-  onMouseEnter: () => void,
-  onMouseLeave: () => void
+const ProjectItem = ({
+  project,
+  index,
+  isHovered,
+  onMouseEnter,
+  onMouseLeave,
+}: {
+  project: Project;
+  index: number;
+  isHovered: boolean;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
 }) => {
   return (
     <FadeIn delay={0.1 * (index + 1)}>
-      <Link 
-        href={project.link} 
-        target="_blank" 
-        rel="noopener noreferrer" 
+      <Link
+        href={project.link}
+        target="_blank"
+        rel="noopener noreferrer"
         className="block w-full group/link"
         aria-label={`View project details for ${project.title}`}
       >
@@ -96,7 +101,8 @@ const ProjectItem = ({
           <div
             className="absolute inset-0 z-0 opacity-0 group-hover/row:opacity-100 transition-opacity duration-700 ease-out pointer-events-none"
             style={{
-              background: 'linear-gradient(90deg, rgba(255,77,0,0.04) 0%, transparent 100%)'
+              background:
+                "linear-gradient(90deg, rgba(255,77,0,0.04) 0%, transparent 100%)",
             }}
           />
 
@@ -110,11 +116,15 @@ const ProjectItem = ({
               {/* Huge Typography with Text Stroke */}
               <h3
                 className={`text-3xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter uppercase leading-[0.8] transition-all duration-700 group-hover/row:translate-x-4 ${
-                  !isHovered && 'opacity-40 light:opacity-65'
+                  !isHovered && "opacity-40 light:opacity-65"
                 }`}
                 style={{
-                  WebkitTextStroke: isHovered ? "0px transparent" : "1px var(--foreground)",
-                  WebkitTextFillColor: isHovered ? "var(--foreground)" : "transparent",
+                  WebkitTextStroke: isHovered
+                    ? "0px transparent"
+                    : "1px var(--foreground)",
+                  WebkitTextFillColor: isHovered
+                    ? "var(--foreground)"
+                    : "transparent",
                 }}
               >
                 {project.title}
@@ -135,7 +145,10 @@ const ProjectItem = ({
             {/* Tech Details Column */}
             <div className="flex flex-col gap-3 lg:items-end w-full lg:w-auto mt-4 lg:mt-0 transition-all duration-500 lg:opacity-0 lg:translate-x-8 group-hover/row:opacity-100 group-hover/row:translate-x-0">
               <span className="font-mono text-xs md:text-sm uppercase tracking-[0.2em] text-accent font-bold hidden lg:block">
-                Launch_Project <span className="symbol inline-block group-hover/link:translate-x-2 group-hover/link:-translate-y-2 transition-transform duration-300">↗</span>
+                Launch_Project{" "}
+                <span className="symbol inline-block group-hover/link:translate-x-2 group-hover/link:-translate-y-2 transition-transform duration-300">
+                  ↗
+                </span>
               </span>
 
               <div className="flex flex-wrap gap-2 lg:justify-end">
@@ -143,13 +156,17 @@ const ProjectItem = ({
                   <span
                     key={tag}
                     className="text-[10px] font-mono border border-card-border bg-card text-foreground font-bold px-2.5 py-1 uppercase shadow-xs transition-all duration-500"
-                    style={{ transitionDelay: `${isHovered ? 100 * tagIndex : 0}ms` }}
+                    style={{
+                      transitionDelay: `${isHovered ? 100 * tagIndex : 0}ms`,
+                    }}
                   >
                     {tag}
                   </span>
                 ))}
               </div>
-              <span className="font-mono text-xs text-muted light:text-neutral-700 mt-1 lg:text-right w-full font-bold">{project.technologies}</span>
+              <span className="font-mono text-xs text-muted light:text-neutral-700 mt-1 lg:text-right w-full font-bold">
+                {project.technologies}
+              </span>
             </div>
           </div>
         </div>
@@ -171,11 +188,14 @@ export function Work() {
   const cursorX = useSpring(mouseX, springConfig);
   const cursorY = useSpring(mouseY, springConfig);
 
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    // Offset to center the image on the cursor
-    mouseX.set(e.clientX - 180);
-    mouseY.set(e.clientY - 120);
-  }, [mouseX, mouseY]);
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent) => {
+      // Offset to center the image on the cursor
+      mouseX.set(e.clientX - 180);
+      mouseY.set(e.clientY - 120);
+    },
+    [mouseX, mouseY],
+  );
 
   return (
     <section
@@ -184,29 +204,38 @@ export function Work() {
       onMouseMove={handleMouseMove}
       aria-label="Portfolio Work Section"
     >
-      <FloatingImage 
+      <FloatingImage
         projects={featuredProjects}
-        hoveredIndex={hoveredIndex} 
-        cursorX={cursorX} 
-        cursorY={cursorY} 
+        hoveredIndex={hoveredIndex}
+        cursorX={cursorX}
+        cursorY={cursorY}
       />
 
       <div className="flex flex-col gap-8 md:gap-20">
         <FadeIn delay={0.1}>
           <div className="flex flex-col gap-4 md:gap-6">
-            <div className="technical-label flex items-center gap-4" aria-hidden="true">
+            <div
+              className="technical-label flex items-center gap-4"
+              aria-hidden="true"
+            >
               <span className="symbol text-accent">✦</span>
               <span>SYSTEM_MANIFEST_v0.6_ULTRA</span>
             </div>
             <h2 className="text-4xl sm:text-7xl md:text-8xl font-black tracking-tighter uppercase leading-[0.9]">
-              Featured.<br />
-              <span className="text-accent underline decoration-4 underline-offset-8">Projects.</span>
+              Featured.
+              <br />
+              <span className="text-accent underline decoration-4 underline-offset-8">
+                Projects.
+              </span>
             </h2>
           </div>
         </FadeIn>
 
         <div className="w-full flex flex-col mt-2 md:mt-4">
-          <div className="border-t border-grid-line w-full" aria-hidden="true" />
+          <div
+            className="border-t border-grid-line w-full"
+            aria-hidden="true"
+          />
 
           {featuredProjects.map((project, index) => (
             <ProjectItem
@@ -220,10 +249,15 @@ export function Work() {
           ))}
         </div>
 
-        <div className="mt-8 md:mt-16 flex justify-center w-full relative z-20">
+        <div className="mt-5 md:mt-16 flex justify-center w-full relative z-20">
           <Button href="/projects" variant="secondary">
             <span>VIEW_ALL_PROJECTS</span>
-            <span className="symbol text-base md:text-xl group-hover:translate-x-2 transition-transform duration-300" aria-hidden="true">→</span>
+            <span
+              className="symbol text-base md:text-xl group-hover:translate-x-2 transition-transform duration-300"
+              aria-hidden="true"
+            >
+              →
+            </span>
           </Button>
         </div>
       </div>

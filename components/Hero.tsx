@@ -69,7 +69,7 @@ export function Hero() {
   return (
     <section
       id="about"
-      className="min-h-0 md:min-h-screen flex flex-col justify-start md:justify-center px-6 sm:px-8 md:px-24 pt-24 sm:pt-28 md:pt-48 pb-10 md:pb-16 relative overflow-hidden"
+      className="min-h-0 md:min-h-screen flex flex-col justify-start md:justify-center px-6 sm:px-8 md:px-24 pt-32 sm:pt-28 md:pt-48 pb-10 md:pb-16 relative overflow-hidden"
       aria-label="Introduction"
     >
       {/* Desktop Portrait - Fixed position at the side */}
@@ -98,7 +98,9 @@ export function Hero() {
             aria-hidden="true"
           >
             <span className="symbol text-xl md:text-2xl">✦</span>
-            <span className="text-[10px] md:text-xs">SYSTEM_INITIALIZED_00.2</span>
+            <span className="text-[10px] md:text-xs">
+              SYSTEM_INITIALIZED_00.2
+            </span>
             <span className="handwriting text-xl ml-8 rotate-[-2deg] hidden md:inline-block">
               {"// Portrait mode active"}
             </span>
