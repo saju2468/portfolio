@@ -58,13 +58,13 @@ export function Capabilities() {
           {/* Widget 03: Ecosystem */}
           <BentoCard delay={0.4} className="flex flex-col overflow-hidden">
             <BentoHeader index="03" title="ECOSYSTEM" Icon={GitBranch} />
-            <div className="flex-1 flex flex-col justify-center gap-4 opacity-70 group-hover:opacity-100 transition-opacity duration-500">
+            <div className="flex-1 flex flex-col justify-center gap-4 transition-opacity duration-500">
               <ToolMarquee />
               <div className="flex gap-2 justify-center mt-6">
                 {CAPABILITY_TAGS.map((tag) => (
                   <span
                     key={tag}
-                    className="technical-label !text-[8px] bg-foreground/5 px-2 py-1 rounded"
+                    className="font-mono text-[9px] font-bold text-foreground bg-card border border-card-border px-2.5 py-1 rounded shadow-xs uppercase tracking-wider"
                   >
                     {tag}
                   </span>

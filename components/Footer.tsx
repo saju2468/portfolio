@@ -12,7 +12,7 @@ export function Footer() {
     <footer className="px-6 md:px-24 py-16 flex flex-col md:flex-row justify-between items-center border-t border-grid-line gap-12">
       <div className="flex flex-col gap-4 items-center md:items-start">
         <span className="font-black tracking-tighter text-3xl uppercase leading-none">{SYSTEM_CONFIG.NAME}</span>
-        <span className="technical-label opacity-40 !text-[8px] tracking-[0.5em]">
+        <span className="technical-label !text-muted light:!text-neutral-700 !font-bold !text-[8px] tracking-[0.5em]">
           FRONTEND ENGINEER CORE // {SYSTEM_CONFIG.VERSION_YEAR}
         </span>
       </div>
@@ -22,7 +22,7 @@ export function Footer() {
           link.external ? (
             <a
               key={link.label}
-              className="technical-label !text-[10px] hover:text-accent transition-colors"
+              className="technical-label !text-[10px] !text-muted light:!text-neutral-700 !font-bold hover:text-accent transition-colors"
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
@@ -32,7 +32,7 @@ export function Footer() {
           ) : (
             <Link
               key={link.label}
-              className="technical-label !text-[10px] hover:text-accent transition-colors"
+              className="technical-label !text-[10px] !text-muted light:!text-neutral-700 !font-bold hover:text-accent transition-colors"
               href={link.href}
             >
               {link.label}
@@ -47,7 +47,7 @@ export function Footer() {
           <div className="w-1.5 h-1.5 rounded-full bg-[#22c55e] animate-pulse" />
           <span>PAGE_LOAD: {loadTime}</span>
         </div>
-        <div className="mt-1 opacity-40 font-mono">
+        <div className="mt-1 text-muted light:text-neutral-700 font-bold font-mono">
           TIMESTAMP: {timestamp}<br />
           COORD: {SYSTEM_CONFIG.LOCATION}
         </div>

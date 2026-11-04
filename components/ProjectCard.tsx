@@ -20,8 +20,8 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
         rel="noopener noreferrer"
         className="block h-full"
       >
-        <div className="group relative flex flex-col border border-grid-line bg-background/50 backdrop-blur-sm hover:border-accent transition-all duration-700 h-full">
-          <div className="relative aspect-video w-full overflow-hidden border-b border-grid-line">
+        <div className="group relative flex flex-col border border-card-border bg-card shadow-sm hover:border-accent transition-all duration-700 h-full">
+          <div className="relative aspect-video w-full overflow-hidden border-b border-card-border">
             <Image
               src={project.image}
               alt={project.title}
@@ -45,24 +45,24 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
               <h3 className="text-2xl font-black uppercase tracking-tighter leading-none group-hover:text-accent transition-colors">
                 {project.title}
               </h3>
-              <div className="technical-label opacity-40 text-[10px] text-right whitespace-nowrap">
+              <div className="technical-label !text-muted light:!text-neutral-700 !font-bold text-[10px] text-right whitespace-nowrap">
                 {project.year}
               </div>
             </div>
 
-            <p className="opacity-70 text-sm leading-relaxed font-mono flex-1">
+            <p className="text-muted light:text-neutral-700 text-sm leading-relaxed font-mono font-medium flex-1">
               {project.description}
             </p>
 
-            <div className="flex flex-col gap-4 border-t border-grid-line pt-6">
+            <div className="flex flex-col gap-4 border-t border-card-border pt-6">
               <div className="flex justify-between items-center">
-                <span className="technical-label text-[8px] opacity-50">TECH STACK</span>
+                <span className="technical-label text-[8px] !text-muted light:!text-neutral-700 !font-bold">TECH STACK</span>
                 <span className="font-mono text-[9px] font-bold uppercase">
                   {project.technologies}
                 </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="technical-label text-[8px] opacity-50">CORE FOCUS</span>
+                <span className="technical-label text-[8px] !text-muted light:!text-neutral-700 !font-bold">CORE FOCUS</span>
                 <span className="font-mono text-[9px] font-bold uppercase">
                   {project.coreFocus}
                 </span>
@@ -73,7 +73,7 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-[8px] font-mono border border-foreground/10 px-2 py-1 uppercase opacity-60"
+                  className="text-[8px] font-mono border border-card-border bg-card text-foreground font-bold px-2 py-1 uppercase shadow-xs"
                 >
                   {tag}
                 </span>

@@ -79,7 +79,7 @@ export function Contact() {
     >
       {/* Decorative Grid */}
       <div
-        className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-[0.05] [data-theme=light]_&:opacity-[0.03]"
+        className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-[0.05] light:opacity-[0.03]"
         style={{
           backgroundImage: `radial-gradient(var(--foreground) 1px, transparent 0)`,
           backgroundSize: "40px 40px",
@@ -110,7 +110,7 @@ export function Contact() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-2xl md:text-3xl font-medium opacity-60 max-w-xl leading-snug tracking-tight mb-10 md:mb-20">
+                <p className="text-2xl md:text-3xl font-medium text-muted light:text-neutral-800 max-w-xl leading-snug tracking-tight mb-10 md:mb-20">
                   Currently open for strategic partnerships and high-impact
                   digital ventures.
                 </p>
@@ -121,7 +121,7 @@ export function Contact() {
               <FadeIn delay={0.3}>
                 <div className="flex flex-col gap-4">
                   <span
-                    className="technical-label opacity-40"
+                    className="technical-label !text-muted light:!text-neutral-700 !font-bold"
                     aria-hidden="true"
                   >
                     PRIMARY_NODE
@@ -134,7 +134,7 @@ export function Contact() {
                     <span className="text-2xl md:text-4xl font-bold tracking-tighter group-hover:text-accent transition-colors">
                       sajinpp77@gmail.com
                     </span>
-                    <div className="w-10 h-10 rounded-full border border-foreground/10 flex items-center justify-center group-hover:border-accent group-hover:bg-accent/5 transition-all">
+                    <div className="w-10 h-10 rounded-full border border-card-border bg-card flex items-center justify-center group-hover:border-accent group-hover:bg-accent/5 transition-all">
                       <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                     </div>
                   </a>
@@ -164,26 +164,26 @@ export function Contact() {
                   aria-hidden="true"
                 />
 
-                <div className="relative z-10 bg-foreground/[0.02] backdrop-blur-3xl border border-foreground/5 p-8 md:p-16 rounded-[2rem] overflow-hidden shadow-2xl shadow-black/5">
+                <div className="relative z-10 bg-card border border-card-border shadow-xl light:shadow-2xl light:shadow-black/10 p-6 sm:p-8 md:p-16 rounded-[2rem] overflow-hidden">
                   <div className="flex justify-between items-start mb-10 md:mb-16">
                     <div>
-                      <h3 className="text-2xl font-bold uppercase tracking-tight mb-2">
+                      <h3 className="text-2xl font-bold uppercase tracking-tight mb-2 text-foreground">
                         Initialize Protocol
                       </h3>
                       <p
-                        className="text-sm opacity-40 font-mono"
+                        className="text-xs font-mono font-bold text-muted light:text-neutral-700 uppercase tracking-wider"
                         aria-hidden="true"
                       >
                         ENCRYPTION: AES-256-GCM
                       </p>
                     </div>
                     <div
-                      className=" items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20 hidden sm:flex "
+                      className="items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20 light:bg-green-500/15 light:border-green-600/30 hidden sm:flex"
                       role="status"
                       aria-label="System status: nominal"
                     >
                       <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                      <span className="text-[10px] font-bold text-green-500 uppercase tracking-widest">
+                      <span className="text-[10px] font-bold text-green-600 light:text-green-800 uppercase tracking-widest">
                         Live_Status: Nominal
                       </span>
                     </div>

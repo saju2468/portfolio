@@ -29,7 +29,7 @@ const AnimatedText = ({ text }: { text: string }) => {
  */
 const PortraitFrame = ({ className = "" }: { className?: string }) => (
   <div
-    className={`group relative p-2 border border-grid-line bg-background/50 backdrop-blur-md transition-all duration-700 hover:border-accent ${className}`}
+    className={`group relative p-2 border border-card-border bg-card shadow-lg transition-all duration-700 hover:border-accent ${className}`}
   >
     {/* Decorative Label */}
     <div className="absolute top-0 right-0 p-4 mix-blend-difference z-10 opacity-60 group-hover:opacity-100 transition-opacity">
@@ -69,7 +69,7 @@ export function Hero() {
   return (
     <section
       id="about"
-      className="min-h-screen flex flex-col justify-center px-8 md:px-24 pt-48 md:pt-48 pb-10 relative overflow-hidden"
+      className="min-h-screen flex flex-col justify-center px-8 md:px-24 pt-32 md:pt-48 pb-10 relative overflow-hidden"
       aria-label="Introduction"
     >
       {/* Desktop Portrait - Fixed position at the side */}
@@ -84,7 +84,7 @@ export function Hero() {
         aria-hidden="true"
       >
         <PortraitFrame />
-        <div className="flex justify-between items-center opacity-30 text-[8px] font-mono tracking-widest px-1">
+        <div className="flex justify-between items-center text-muted font-bold text-[9px] font-mono tracking-widest px-1">
           <span>REF_ID: // {SYSTEM_CONFIG.REF_ID}</span>
           <span>SCAN_COMPLETE_99.8%</span>
         </div>
@@ -137,7 +137,7 @@ export function Hero() {
 
             <FadeIn delay={0.5}>
               <div className="flex flex-col md:flex-row gap-8 items-start">
-                <p className="opacity-40 text-lg md:text-xl max-w-xl leading-relaxed font-light">
+                <p className="text-muted light:text-neutral-800 text-lg md:text-xl max-w-xl leading-relaxed font-normal">
                   Strong experience in API integration, performance
                   optimization, and translating UI/UX designs into high-quality
                   production code.
@@ -154,7 +154,7 @@ export function Hero() {
           <div className="md:col-span-12 lg:col-span-5 flex flex-col gap-12 lg:pl-12 decoration_elements">
             <FadeIn delay={0.6}>
               <div className="space-y-4">
-                <span className="technical-label opacity-40">
+                <span className="technical-label !text-muted light:!text-neutral-700 !font-bold">
                   SYSTEM STATUS
                 </span>
                 <div className="flex items-center gap-4 border-l-2 border-accent pl-4">
@@ -167,14 +167,14 @@ export function Hero() {
 
             <FadeIn delay={0.7}>
               <div className="space-y-4">
-                <span className="technical-label opacity-40">
+                <span className="technical-label !text-muted light:!text-neutral-700 !font-bold">
                   ACTIVE MODULES
                 </span>
                 <div className="flex flex-wrap gap-2">
                   {SYSTEM_CONFIG.ACTIVE_MODULES.map((module) => (
                     <span
                       key={module}
-                      className="text-[10px] font-mono border border-foreground/20 px-3 py-1 uppercase font-bold hover:bg-accent hover:text-background transition-all duration-300 cursor-pointer"
+                      className="text-[10px] font-mono border border-card-border bg-card text-foreground shadow-xs px-3 py-1 uppercase font-bold hover:bg-accent hover:text-white transition-all duration-300 cursor-pointer"
                     >
                       {module}
                     </span>
@@ -185,7 +185,7 @@ export function Hero() {
 
             <FadeIn delay={0.8}>
               <div className="space-y-4">
-                <span className="technical-label opacity-40">
+                <span className="technical-label !text-muted light:!text-neutral-700 !font-bold">
                   CURRENT STACK
                 </span>
                 <p className="text-[10px] font-mono font-bold leading-relaxed tracking-widest uppercase text-accent">

@@ -55,8 +55,8 @@ export const ModernInput = memo(
             htmlFor={id}
             className={`absolute left-0 transition-all duration-500 pointer-events-none font-mono uppercase tracking-[0.2em] ${
               isFocused || hasValue
-                ? "-top-6 text-[10px] text-accent"
-                : "top-4 text-xs opacity-40"
+                ? "-top-6 text-[11px] text-accent font-bold"
+                : "top-4 text-xs text-muted light:text-neutral-800 font-bold"
             }`}
           >
             {label}
@@ -76,7 +76,7 @@ export const ModernInput = memo(
                 placeholder=" "
                 aria-invalid={!!error}
                 aria-describedby={error ? errorId : undefined}
-                className="w-full bg-transparent outline-none text-base md:text-lg font-medium tracking-tight resize-none placeholder:opacity-0 disabled:opacity-50 min-h-[56px] md:min-h-[120px] transition-all duration-300"
+                className="w-full bg-transparent outline-none text-base md:text-lg font-semibold text-foreground tracking-tight resize-none placeholder:opacity-0 disabled:opacity-50 min-h-[56px] md:min-h-[120px] transition-all duration-300"
               />
             ) : (
               <input
@@ -91,12 +91,12 @@ export const ModernInput = memo(
                 placeholder=" "
                 aria-invalid={!!error}
                 aria-describedby={error ? errorId : undefined}
-                className="w-full bg-transparent outline-none text-base md:text-lg font-medium tracking-tight placeholder:opacity-0 disabled:opacity-50 transition-all duration-300"
+                className="w-full bg-transparent outline-none text-base md:text-lg font-semibold text-foreground tracking-tight placeholder:opacity-0 disabled:opacity-50 transition-all duration-300"
               />
             )}
 
             {/* Animated underline */}
-            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-foreground/10" />
+            <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-input-line" />
             <motion.div
               initial={false}
               animate={{

@@ -6,12 +6,12 @@ import { ENGINEER_DATA } from "@/data/skills";
 export function CodeSnippet() {
   return (
     <div className="flex-1 flex flex-col justify-end">
-      <div className="border border-grid-line bg-background/80 p-4 sm:p-6 font-mono text-xs sm:text-sm text-foreground/80 overflow-hidden relative group/code hover:border-accent/50 transition-colors duration-500 shadow-2xl">
+      <div className="border border-card-border bg-card p-4 sm:p-6 font-mono text-xs sm:text-sm text-foreground overflow-hidden relative group/code hover:border-accent/50 transition-colors duration-500 shadow-xl">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent to-transparent opacity-50" />
         <div className="flex gap-2 mb-4">
-          <div className="w-2.5 h-2.5 rounded-full bg-grid-line" />
-          <div className="w-2.5 h-2.5 rounded-full bg-grid-line" />
-          <div className="w-2.5 h-2.5 rounded-full bg-grid-line" />
+          <div className="w-2.5 h-2.5 rounded-full bg-foreground/25" />
+          <div className="w-2.5 h-2.5 rounded-full bg-foreground/25" />
+          <div className="w-2.5 h-2.5 rounded-full bg-foreground/25" />
         </div>
         <div className="flex flex-col gap-2">
           <p>
@@ -28,7 +28,7 @@ export function CodeSnippet() {
             state: <span className="text-accent">[{ENGINEER_DATA.state.map((t) => `"${t}"`).join(", ")}]</span>,
           </p>
           <p className="pl-4 sm:pl-8">
-            focus: <span className="text-foreground/70">&quot;{ENGINEER_DATA.focus}&quot;</span>
+            focus: <span className="text-muted light:text-neutral-800 font-medium">&quot;{ENGINEER_DATA.focus}&quot;</span>
           </p>
           <p>{"};"}</p>
         </div>

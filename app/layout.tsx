@@ -114,7 +114,7 @@ export default function RootLayout({
                         cy="2"
                         r="1"
                         fill="currentColor"
-                        className="text-gray-800 [data-theme=light]_&:text-gray-300"
+                        className="text-gray-800 light:text-neutral-400"
                       />
                     </pattern>
                   </defs>

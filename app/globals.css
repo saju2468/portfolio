@@ -1,29 +1,45 @@
 @import "tailwindcss";
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@custom-variant light (&:where([data-theme=light], [data-theme=light] *));
 
 :root {
   --background: #0c0c0c;
   --foreground: #f2f2f2;
   --accent: #ff4d00;
-  --secondary: #aaa;
-  --grid-line: #1a1a1a;
+  --secondary: #aaaaaa;
+  --grid-line: #1e1e1e;
+  --card: #141414;
+  --card-border: #262626;
+  --input-line: rgba(255, 255, 255, 0.2);
+  --muted: #a3a3a3;
+  --subtle: #737373;
 }
 
 [data-theme="dark"] {
   --background: #0c0c0c;
   --foreground: #f2f2f2;
   --accent: #ff4d00;
-  --secondary: #aaa;
-  --grid-line: #1a1a1a;
+  --secondary: #aaaaaa;
+  --grid-line: #1e1e1e;
+  --card: #141414;
+  --card-border: #262626;
+  --input-line: rgba(255, 255, 255, 0.2);
+  --muted: #a3a3a3;
+  --subtle: #737373;
 }
 
 [data-theme="light"] {
-  --background: #fbfbf7;
-  --foreground: #101010;
+  --background: #f0f0ea;
+  --foreground: #0f0f0f;
   --accent: #ff4d00;
-  --secondary: #666;
-  --grid-line: #fb4c0040;
+  --secondary: #2d2d2d;
+  --grid-line: rgba(0, 0, 0, 0.12);
+  --card: #ffffff;
+  --card-border: rgba(0, 0, 0, 0.14);
+  --input-line: rgba(0, 0, 0, 0.35);
+  --muted: #374151;
+  --subtle: #4b5563;
 }
 
 @theme inline {
@@ -32,6 +48,11 @@
   --color-accent: var(--accent);
   --color-secondary: var(--secondary);
   --color-grid-line: var(--grid-line);
+  --color-card: var(--card);
+  --color-card-border: var(--card-border);
+  --color-input-line: var(--input-line);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-handwriting: var(--font-architects-daughter);
@@ -128,9 +149,13 @@ button,
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: var(--secondary);
-  opacity: 0.8;
   font-size: 10px;
   font-weight: 600;
+}
+
+[data-theme="light"] .technical-label {
+  color: #1f2937;
+  font-weight: 700;
 }
 
 .handwriting {

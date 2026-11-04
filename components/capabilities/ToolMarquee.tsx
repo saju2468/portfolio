@@ -26,7 +26,7 @@ export function ToolMarquee() {
         {marqueeTools.map((tool, i) => (
           <div
             key={`${tool}-${i}`}
-            className="px-4 py-2 border border-grid-line bg-background text-xs font-mono text-foreground/70 uppercase tracking-wider whitespace-nowrap shadow-[0_0_10px_rgba(0,0,0,0.1)] group-hover:border-accent/30 transition-colors"
+            className="px-4 py-2 border border-card-border bg-card text-xs font-mono font-bold text-foreground uppercase tracking-wider whitespace-nowrap shadow-sm group-hover:border-accent/40 transition-colors"
           >
             {tool}
           </div>

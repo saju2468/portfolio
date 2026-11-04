@@ -71,7 +71,7 @@ export default function ProjectsPage() {
                   className={`text-[10px] font-mono px-4 py-2 uppercase font-bold tracking-widest border transition-all duration-300 ${
                     selectedCategory === cat
                       ? "border-accent bg-accent text-white shadow-sm"
-                      : "border-grid-line bg-background/50 hover:border-accent/50 text-foreground/70"
+                      : "border-card-border bg-card text-foreground font-bold hover:border-accent shadow-xs"
                   }`}
                 >
                   {cat}
@@ -86,7 +86,7 @@ export default function ProjectsPage() {
                   value={searchQuery}
                   onChange={(e) => dispatch(setSearchQuery(e.target.value))}
                   placeholder="SEARCH_PROJECTS_..."
-                  className="w-full bg-background/50 border border-grid-line px-4 py-2 text-xs font-mono placeholder:opacity-40 focus:border-accent outline-none uppercase tracking-wider"
+                  className="w-full bg-card border border-card-border px-4 py-2 text-xs font-mono font-bold text-foreground placeholder:text-muted placeholder:opacity-70 focus:border-accent outline-none uppercase tracking-wider shadow-xs"
                 />
                 {searchQuery && (
                   <button
@@ -98,7 +98,7 @@ export default function ProjectsPage() {
                   </button>
                 )}
               </div>
-              <span className="technical-label !text-[9px] whitespace-nowrap opacity-50 hidden sm:inline-block">
+              <span className="technical-label !text-[9px] !text-muted light:!text-neutral-700 !font-bold whitespace-nowrap hidden sm:inline-block">
                 {projects.length} NODES
               </span>
             </div>

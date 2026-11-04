@@ -27,20 +27,20 @@ export const SocialLinkItem = memo(({ link, index }: SocialLinkItemProps) => (
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Visit my ${link.label}`}
-        className="group flex flex-col gap-3 p-6 rounded-2xl bg-foreground/5 border border-transparent hover:border-accent/20 hover:bg-accent/5 transition-all duration-500"
+        className="group flex flex-col gap-3 p-6 rounded-2xl bg-card border border-card-border shadow-sm hover:border-accent/40 hover:bg-accent/5 transition-all duration-500"
       >
         <div className="flex justify-between items-center">
-          <div className="opacity-40 group-hover:opacity-100 group-hover:text-accent transition-all">
+          <div className="text-foreground group-hover:text-accent transition-all">
             {link.icon}
           </div>
           <span
-            className="text-[10px] font-mono opacity-20 group-hover:opacity-100"
+            className="text-xs font-mono font-bold text-muted light:text-neutral-700"
             aria-hidden="true"
           >
             {link.id}
           </span>
         </div>
-        <span className="text-sm font-bold uppercase tracking-widest group-hover:text-accent transition-colors">
+        <span className="text-sm font-black uppercase tracking-widest text-foreground group-hover:text-accent transition-colors">
           {link.label}
         </span>
       </a>

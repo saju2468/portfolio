@@ -103,14 +103,14 @@ const ProjectItem = ({
           <div className="flex flex-col lg:flex-row lg:items-center justify-between relative z-10 w-full">
             <div className="flex items-center gap-6 lg:gap-16 relative">
               {/* Index Number */}
-              <div className="font-mono text-sm text-secondary opacity-60 group-hover/row:opacity-100 group-hover/row:text-accent transition-all duration-500 w-8 hidden lg:block -translate-x-4 group-hover/row:translate-x-0">
+              <div className="font-mono text-sm text-muted light:text-neutral-700 font-bold group-hover/row:text-accent transition-all duration-500 w-8 hidden lg:block -translate-x-4 group-hover/row:translate-x-0">
                 0{index + 1}
               </div>
 
               {/* Huge Typography with Text Stroke */}
               <h3
                 className={`text-3xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter uppercase leading-[0.8] transition-all duration-700 group-hover/row:translate-x-4 ${
-                  !isHovered && 'opacity-40 [data-theme=light]_&:opacity-50'
+                  !isHovered && 'opacity-40 light:opacity-65'
                 }`}
                 style={{
                   WebkitTextStroke: isHovered ? "0px transparent" : "1px var(--foreground)",
@@ -122,7 +122,7 @@ const ProjectItem = ({
             </div>
 
             {/* Mobile Image Fallback */}
-            <div className="block lg:hidden relative w-full aspect-video border border-grid-line overflow-hidden mt-6 shadow-lg">
+            <div className="block lg:hidden relative w-full aspect-video border border-card-border overflow-hidden mt-6 shadow-md rounded-lg">
               <Image
                 src={project.image}
                 alt={project.title}
@@ -142,14 +142,14 @@ const ProjectItem = ({
                 {project.tags.slice(0, 3).map((tag, tagIndex) => (
                   <span
                     key={tag}
-                    className="text-[10px] font-mono border border-grid-line text-foreground px-2 py-1 uppercase backdrop-blur-md bg-background transition-all duration-500 font-medium shadow-sm"
+                    className="text-[10px] font-mono border border-card-border bg-card text-foreground font-bold px-2.5 py-1 uppercase shadow-xs transition-all duration-500"
                     style={{ transitionDelay: `${isHovered ? 100 * tagIndex : 0}ms` }}
                   >
                     {tag}
                   </span>
                 ))}
               </div>
-              <span className="font-mono text-xs text-secondary mt-1 lg:text-right w-full font-medium">{project.technologies}</span>
+              <span className="font-mono text-xs text-muted light:text-neutral-700 mt-1 lg:text-right w-full font-bold">{project.technologies}</span>
             </div>
           </div>
         </div>
