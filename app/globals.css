@@ -71,7 +71,7 @@ body {
 
 .crt-overlay {
   pointer-events: none;
-  z-index: 9999;
+  z-index: 40;
   opacity: 0.6;
   background: linear-gradient(#12101000 50%, #0000001a 50%) 0 0 / 100% 3px,
     linear-gradient(90deg, #ff000005, #00ff0003, #0000ff05) 0 0 / 4px 100%;
@@ -83,9 +83,13 @@ body {
 }
 
 [data-theme="light"] .crt-overlay {
-  opacity: 0.4;
-  background: linear-gradient(#12101000 50%, #00000008 50%) 0 0 / 100% 2px,
-    linear-gradient(90deg, #ff000003, #00ff0001, #0000ff03) 0 0 / 3px 100%;
+  display: none;
+}
+
+.header-glass {
+  background-color: color-mix(in srgb, var(--background) 85%, transparent);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
 }
 
 .node-hover {

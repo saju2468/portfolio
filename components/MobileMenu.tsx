@@ -33,10 +33,10 @@ export function MobileMenu({
     >
       {/* Background Gradient/Blur Effect */}
       <div
-        className="absolute inset-0 pointer-events-none flex justify-center items-center opacity-20 light:opacity-60"
+        className="absolute inset-0 pointer-events-none flex justify-center items-center opacity-10 light:opacity-30"
         aria-hidden="true"
       >
-        <div className="w-[120vw] h-[120vw] bg-foreground blur-[120px] rounded-full opacity-20 light:opacity-50 light:mix-blend-overlay" />
+        <div className="w-[120vw] h-[120vw] bg-foreground/20 blur-[120px] rounded-full" />
       </div>
 
       {/* Header part of the mobile menu */}
