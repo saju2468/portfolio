@@ -27,13 +27,13 @@ const SOCIAL_LINKS = [
   {
     icon: <Zap className="w-5 h-5" />,
     label: "GitHub",
-    href: "https://github.com/sajin77",
+    href: "https://github.com/saju2468",
     id: "01",
   },
   {
     icon: <Cpu className="w-5 h-5" />,
     label: "LinkedIn",
-    href: "https://linkedin.com/in/sajin-pp",
+    href: "https://linkedin.com/in/sajinpp77",
     id: "02",
   },
 ];

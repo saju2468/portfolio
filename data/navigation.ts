@@ -27,20 +27,20 @@ export const SOCIAL_LINKS: SocialLink[] = [
   {
     id: "01",
     label: "GitHub",
-    href: "https://github.com/sajin77",
+    href: "https://github.com/saju2468",
     iconName: "Zap",
   },
   {
     id: "02",
     label: "LinkedIn",
-    href: "https://linkedin.com/in/sajin-pp",
+    href: "https://linkedin.com/in/sajinpp77",
     iconName: "Cpu",
   },
 ];
 
 export const FOOTER_LINKS = [
   { label: "Projects", href: "/projects" },
-  { label: "GitHub", href: "https://github.com/sajin77", external: true },
-  { label: "LinkedIn", href: "https://linkedin.com/in/sajin-pp", external: true },
+  { label: "GitHub", href: "https://github.com/saju2468", external: true },
+  { label: "LinkedIn", href: "https://linkedin.com/in/sajinpp77", external: true },
 ];
 
