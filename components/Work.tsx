@@ -128,7 +128,7 @@ const ProjectItem = ({
                 alt={project.title}
                 fill
                 sizes="(max-width: 768px) 100vw, 100vw"
-                className="object-cover grayscale contrast-125 group-hover/row:grayscale-0 transition-all duration-700"
+                className="object-cover grayscale-0 transition-all duration-700"
               />
             </div>
 

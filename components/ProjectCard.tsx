@@ -27,7 +27,7 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
               alt={project.title}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover object-left grayscale group-hover:grayscale-0 contrast-125 opacity-40 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
+              className="object-cover object-left grayscale-0 md:grayscale md:group-hover:grayscale-0 opacity-100 md:opacity-50 md:group-hover:opacity-100 md:group-hover:scale-105 transition-all duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80" />
             <div className="absolute bottom-4 left-4 z-10 flex gap-2">
@@ -40,9 +40,9 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
             </div>
           </div>
 
-          <div className="p-8 flex flex-col flex-1 gap-8">
+          <div className="p-6 sm:p-8 flex flex-col flex-1 gap-6 sm:gap-8">
             <div className="flex justify-between items-start gap-4">
-              <h3 className="text-2xl font-black uppercase tracking-tighter leading-none group-hover:text-accent transition-colors">
+              <h3 className="text-xl sm:text-2xl font-black uppercase tracking-tighter leading-none group-hover:text-accent transition-colors">
                 {project.title}
               </h3>
               <div className="technical-label !text-muted light:!text-neutral-700 !font-bold text-[10px] text-right whitespace-nowrap">
@@ -85,4 +85,3 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
     </FadeIn>
   );
 }
-
