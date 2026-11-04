@@ -189,11 +189,11 @@ export function Contact() {
                   </div>
 
                   <form
-                    className="flex flex-col gap-6 md:gap-12"
+                    className="flex flex-col gap-8 md:gap-12"
                     onSubmit={handleSubmit}
                     noValidate
                   >
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                       <ModernInput
                         id="name"
                         name="name"

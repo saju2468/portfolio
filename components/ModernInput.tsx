@@ -47,15 +47,15 @@ export const ModernInput = memo(
     return (
       <div className="flex flex-col gap-2 relative w-full group">
         <div
-          className={`relative transition-all duration-700 ${
+          className={`relative transition-all duration-300 ${
             isFocused ? "opacity-100" : "opacity-80"
           }`}
         >
           <label
             htmlFor={id}
-            className={`absolute left-0 transition-all duration-500 pointer-events-none font-mono uppercase tracking-[0.2em] ${
+            className={`absolute left-0 transition-all duration-300 pointer-events-none font-mono uppercase tracking-[0.2em] ${
               isFocused || hasValue
-                ? "-top-6 text-[11px] text-accent font-bold"
+                ? "-top-2 text-[10px] sm:text-[11px] text-accent font-bold"
                 : "top-4 text-xs text-muted light:text-neutral-800 font-bold"
             }`}
           >
