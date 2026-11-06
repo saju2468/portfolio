@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Architects_Daughter } from "next/font/google";
+import { Geist, Geist_Mono, Architects_Daughter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
@@ -19,6 +19,12 @@ const architectsDaughter = Architects_Daughter({
   subsets: ["latin"],
 });
 
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://sajin.dev"),
   title: {
@@ -26,7 +32,7 @@ export const metadata: Metadata = {
     template: "%s | sajin",
   },
   description:
-    "Portfolio of sajin. Frontend Engineer with 3+ years of experience building scalable, responsive, and SEO-friendly web applications with Next.js, React, and Tailwind CSS.",
+    "Portfolio of sajin. Senior Frontend Engineer specializing in Next.js, React, and TypeScript. Architecting high-performance digital experiences and scalable frontend systems.",
   keywords: [
     "Frontend Engineer",
     "React Developer",
@@ -43,7 +49,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     title: "sajin — Frontend Engineer (React, Next.js)",
     description:
-      "Frontend Engineer with 3+ years of experience building scalable, responsive, and SEO-friendly web applications.",
+      "Senior Frontend Engineer specializing in Next.js, React, and TypeScript. Architecting high-performance digital experiences and scalable frontend systems.",
     siteName: "sajin Portfolio",
     images: [
       {
@@ -58,7 +64,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "sajin — Frontend Engineer (React, Next.js)",
     description:
-      "Frontend Engineer specializing in Next.js, React, and modern UI engineering.",
+      "Senior Frontend Engineer specializing in Next.js, React, and TypeScript. Architecting high-performance digital experiences and scalable frontend systems.",
     images: ["/sajin.jpg"],
   },
   robots: {
@@ -88,7 +94,7 @@ export default function RootLayout({
       lang="en"
       data-theme="dark"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} ${architectsDaughter.variable}`}
+      className={`${geistSans.variable} ${geistMono.variable} ${architectsDaughter.variable} ${plusJakartaSans.variable}`}
     >
       <body suppressHydrationWarning className="antialiased selection:bg-[#ff4d00] selection:text-white">
         <StoreProvider>

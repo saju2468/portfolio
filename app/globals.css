@@ -56,6 +56,7 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-handwriting: var(--font-architects-daughter);
+  --font-display: var(--font-jakarta);
   --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-bounce: bounce 1s infinite;
 }
@@ -166,6 +167,10 @@ button,
   color: var(--accent);
   font-size: 0.9rem;
   font-style: italic;
+}
+
+.font-display {
+  font-family: var(--font-jakarta), var(--font-geist-sans), sans-serif;
 }
 
 .symbol {

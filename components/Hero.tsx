@@ -132,17 +132,17 @@ export function Hero() {
             </FadeIn>
 
             <FadeIn delay={0.4}>
-              <p className="text-xl sm:text-2xl md:text-5xl leading-[1.15] md:leading-[1.1] font-medium tracking-tight max-w-[50rem]">
-                I build scalable, responsive, and SEO-friendly web applications.
+              <p className="font-display text-2xl sm:text-3xl md:text-5xl lg:text-[3.25rem] leading-[1.15] md:leading-[1.1] font-bold tracking-tight max-w-[52rem] text-foreground">
+                Architecting high-performance digital experiences and scalable frontend systems.
               </p>
             </FadeIn>
 
             <FadeIn delay={0.5}>
               <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
-                <p className="text-muted light:text-neutral-800 text-base md:text-xl max-w-xl leading-relaxed font-normal">
-                  Strong experience in API integration, performance
-                  optimization, and translating UI/UX designs into high-quality
-                  production code.
+                <p className="font-mono text-xs sm:text-sm md:text-base max-w-xl leading-relaxed text-muted light:text-neutral-700">
+                  Specializing in Next.js, React, and TypeScript. Focused on
+                  robust state architecture, sub-second performance optimization,
+                  and building resilient design systems that scale effortlessly.
                 </p>
                 <div className="technical-label text-[9px] border-l-2 border-accent pl-3 md:pl-4 flex flex-row md:flex-col gap-4 md:gap-2">
                   <span>LOC: {SYSTEM_CONFIG.LOCATION}</span>
