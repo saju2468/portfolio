@@ -69,18 +69,12 @@ export function Hero() {
   return (
     <section
       id="about"
-      className="min-h-0 md:min-h-screen flex flex-col justify-start md:justify-center px-6 sm:px-8 md:px-24 pt-32 sm:pt-28 md:pt-48 pb-10 md:pb-16 relative overflow-hidden"
+      className="min-h-0 md:min-h-screen flex flex-col justify-start md:justify-center px-6 sm:px-8 md:px-14 lg:px-16 2xl:px-24 pt-32 sm:pt-28 md:pt-48 pb-10 md:pb-16 relative overflow-hidden"
       aria-label="Introduction"
     >
       {/* Desktop Portrait - Fixed position at the side */}
       <div
-        className="absolute z-10 hidden lg:flex flex-col gap-4"
-        style={{
-          right: "10%",
-          top: "50%",
-          width: "350px",
-          transform: "translateY(-50%)",
-        }}
+        className="absolute z-10 hidden lg:flex flex-col gap-4 w-[280px] xl:w-[300px] 2xl:w-[350px] right-6 lg:right-8 xl:right-10 2xl:right-[10%] top-1/2 -translate-y-1/2"
         aria-hidden="true"
       >
         <PortraitFrame />
@@ -90,7 +84,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="relative z-20 max-w-[60rem] w-full">
+      <div className="relative z-20 w-full max-w-[48rem] lg:max-w-[44rem] xl:max-w-[54rem] 2xl:max-w-[60rem]">
         {/* Header Metadata Section */}
         <FadeIn delay={0.1}>
           <div
@@ -121,7 +115,7 @@ export function Hero() {
           </h1>
         </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-24 items-start md:mt-12">
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 md:gap-12 xl:gap-16 2xl:gap-24 items-start md:mt-12">
           {/* Content Block */}
           <div className="md:col-span-12 lg:col-span-7 flex flex-col gap-6 md:gap-10">
             {/* Mobile Portrait - Shown only on smaller screens */}
@@ -144,7 +138,7 @@ export function Hero() {
                   robust state architecture, sub-second performance optimization,
                   and building resilient design systems that scale effortlessly.
                 </p>
-                <div className="technical-label text-[9px] border-l-2 border-accent pl-3 md:pl-4 flex flex-row md:flex-col gap-4 md:gap-2">
+                <div className="technical-label text-[9px] border-l-2 border-accent pl-3 md:pl-4 flex flex-row md:flex-col gap-4 md:gap-2 shrink-0">
                   <span>LOC: {SYSTEM_CONFIG.LOCATION}</span>
                   <span>TIME: {time || "00:00:00 AM"}</span>
                 </div>
@@ -153,7 +147,7 @@ export function Hero() {
           </div>
 
           {/* Sidebar Metadata Section */}
-          <div className="md:col-span-12 lg:col-span-5 flex flex-col gap-6 md:gap-12 lg:pl-12 decoration_elements">
+          <div className="md:col-span-12 lg:col-span-5 flex flex-col gap-6 md:gap-10 2xl:gap-12 lg:pl-6 xl:pl-8 2xl:pl-12 decoration_elements">
             <FadeIn delay={0.6}>
               <div className="space-y-2 md:space-y-4">
                 <span className="technical-label !text-muted light:!text-neutral-700 !font-bold">

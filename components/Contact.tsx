@@ -100,7 +100,7 @@ export function Contact() {
                     <span className="w-12 h-[1px] bg-accent" />
                     <span className="text-accent">ESTABLISH_UPLINK</span>
                   </div>
-                  <h2 className="text-5xl sm:text-7xl md:text-9xl xl:text-[11rem] font-black tracking-tighter uppercase leading-[0.85] mb-6 md:mb-12">
+                  <h2 className="text-5xl sm:text-7xl md:text-8xl 2xl:text-[11rem] font-black tracking-tighter uppercase leading-[0.85] mb-6 md:mb-12">
                     Let&apos;s
                     <br />
                     <span className="text-accent italic">Create.</span>
