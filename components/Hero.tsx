@@ -47,7 +47,6 @@ const PortraitFrame = ({ className = "" }: { className?: string }) => (
         priority
         fetchPriority="high"
         sizes="(max-width: 640px) 280px, (max-width: 1024px) 340px, 350px"
-        quality={85}
         className="object-cover transition-transform duration-700 group-hover:scale-105"
       />
       <div className="absolute inset-0 bg-accent/5 pointer-events-none" />
