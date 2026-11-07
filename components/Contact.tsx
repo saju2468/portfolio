@@ -86,7 +86,7 @@ export function Contact() {
         aria-hidden="true"
       />
 
-      <div className="max-w-[1600px] mx-auto relative z-10">
+      <div className="max-w-400 mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 xl:gap-24">
           {/* Info Column */}
           <div className="lg:col-span-5 flex flex-col justify-between">
@@ -97,7 +97,7 @@ export function Contact() {
                     className="technical-label flex items-center gap-4"
                     aria-hidden="true"
                   >
-                    <span className="w-12 h-[1px] bg-accent" />
+                    <span className="w-12 h-px bg-accent" />
                     <span className="text-accent">ESTABLISH_UPLINK</span>
                   </div>
                   <h2 className="text-5xl sm:text-7xl md:text-8xl 2xl:text-[11rem] font-black tracking-tighter uppercase leading-[0.85] mb-6 md:mb-12">
@@ -120,7 +120,7 @@ export function Contact() {
               <FadeIn delay={0.3}>
                 <div className="flex flex-col gap-3 md:gap-4">
                   <span
-                    className="technical-label !text-muted light:!text-neutral-700 !font-bold"
+                    className="technical-label text-muted! light:text-neutral-700! font-bold!"
                     aria-hidden="true"
                   >
                     PRIMARY_NODE
@@ -158,12 +158,12 @@ export function Contact() {
               >
                 {/* Spotlight Interaction */}
                 <motion.div
-                  className="absolute inset-0 pointer-events-none rounded-[2rem] z-0 transition-opacity duration-500 opacity-0 group-hover/form:opacity-100"
+                  className="absolute inset-0 pointer-events-none rounded-4xl z-0 transition-opacity duration-500 opacity-0 group-hover/form:opacity-100"
                   style={{ background: spotlightBg }}
                   aria-hidden="true"
                 />
 
-                <div className="relative z-10 bg-card border border-card-border shadow-xl light:shadow-2xl light:shadow-black/10 p-5 sm:p-8 md:p-16 rounded-2xl md:rounded-[2rem] overflow-hidden">
+                <div className="relative z-10 bg-card border border-card-border shadow-xl light:shadow-2xl light:shadow-black/10 p-5 sm:p-8 md:p-16 rounded-2xl md:rounded-4xl overflow-hidden">
                   <div className="flex justify-between items-start mb-6 md:mb-16">
                     <div>
                       <h3 className="text-xl sm:text-2xl font-bold uppercase tracking-tight mb-1 md:mb-2 text-foreground">

@@ -77,7 +77,7 @@ export const ModernInput = memo(
                 placeholder=" "
                 aria-invalid={!!error}
                 aria-describedby={error ? errorId : undefined}
-                className="w-full bg-transparent outline-none text-base md:text-lg font-semibold text-foreground tracking-tight resize-none placeholder:opacity-0 disabled:opacity-50 min-h-[56px] md:min-h-[120px] transition-all duration-300"
+                className="w-full bg-transparent outline-none text-base md:text-lg font-semibold text-foreground tracking-tight resize-none placeholder:opacity-0 disabled:opacity-50 min-h-14 md:min-h-30 transition-all duration-300"
               />
             ) : (
               <input

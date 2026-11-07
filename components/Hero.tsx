@@ -33,13 +33,13 @@ const PortraitFrame = ({ className = "" }: { className?: string }) => (
   >
     {/* Decorative Label */}
     <div className="absolute top-0 right-0 p-4 mix-blend-difference z-10 opacity-60 group-hover:opacity-100 transition-opacity">
-      <span className="technical-label !text-[8px] text-white tracking-[0.4em]">
+      <span className="technical-label text-[8px]! text-white tracking-[0.4em]">
         LIVE_FEED_01
       </span>
     </div>
 
     {/* Image Container */}
-    <div className="relative aspect-[4/5] w-full overflow-hidden">
+    <div className="relative aspect-4/5 w-full overflow-hidden">
       <Image
         src="/sajin.jpg"
         alt="Sajin Portrait"
@@ -74,7 +74,7 @@ export function Hero() {
     >
       {/* Desktop Portrait - Fixed position at the side */}
       <div
-        className="absolute z-10 hidden lg:flex flex-col gap-4 w-[280px] xl:w-[300px] 2xl:w-[350px] right-6 lg:right-8 xl:right-10 2xl:right-[10%] top-1/2 -translate-y-1/2"
+        className="absolute z-10 hidden lg:flex flex-col gap-4 w-70 xl:w-75 2xl:w-87.5 right-6 lg:right-8 xl:right-10 2xl:right-[10%] top-1/2 -translate-y-1/2"
         aria-hidden="true"
       >
         <PortraitFrame />
@@ -84,7 +84,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="relative z-20 w-full max-w-[48rem] lg:max-w-[44rem] xl:max-w-[54rem] 2xl:max-w-[60rem]">
+      <div className="relative z-20 w-full max-w-3xl lg:max-w-176 xl:max-w-216 2xl:max-w-240">
         {/* Header Metadata Section */}
         <FadeIn delay={0.1}>
           <div
@@ -95,7 +95,7 @@ export function Hero() {
             <span className="text-[10px] md:text-xs">
               SYSTEM_INITIALIZED_00.2
             </span>
-            <span className="handwriting text-xl ml-8 rotate-[-2deg] hidden md:inline-block">
+            <span className="handwriting text-xl ml-8 -rotate-2 hidden md:inline-block">
               {"// Portrait mode active"}
             </span>
           </div>
@@ -103,7 +103,7 @@ export function Hero() {
 
         {/* Hero Title Section */}
         <FadeIn delay={0.2}>
-          <h1 className="text-[13vw] sm:text-[11vw] md:text-[9vw] max-w-240 font-[900] tracking-tighter leading-[0.82] mb-8 md:mb-12 uppercase typing-cursor magnify-target origin-left">
+          <h1 className="text-[13vw] sm:text-[11vw] md:text-[9vw] max-w-240 font-black tracking-tighter leading-[0.82] mb-8 md:mb-12 uppercase typing-cursor magnify-target origin-left">
             <AnimatedText text="CRAFTING" />
             <br />
             <AnimatedText text="MODERN" />
@@ -120,13 +120,13 @@ export function Hero() {
           <div className="md:col-span-12 lg:col-span-7 flex flex-col gap-6 md:gap-10">
             {/* Mobile Portrait - Shown only on smaller screens */}
             <FadeIn delay={0.3}>
-              <div className="lg:hidden w-full max-w-[280px] sm:max-w-[340px] mb-4 sm:mb-8">
+              <div className="lg:hidden w-full max-w-70 sm:max-w-85 mb-4 sm:mb-8">
                 <PortraitFrame />
               </div>
             </FadeIn>
 
             <FadeIn delay={0.4}>
-              <p className="font-display text-2xl sm:text-3xl md:text-5xl lg:text-[3.25rem] leading-[1.15] md:leading-[1.1] font-bold tracking-tight max-w-[52rem] text-foreground">
+              <p className="font-display text-2xl sm:text-3xl md:text-5xl lg:text-[3.25rem] leading-[1.15] md:leading-[1.1] font-bold tracking-tight max-w-208 text-foreground">
                 Architecting high-performance digital experiences and scalable frontend systems.
               </p>
             </FadeIn>
@@ -150,7 +150,7 @@ export function Hero() {
           <div className="md:col-span-12 lg:col-span-5 flex flex-col gap-6 md:gap-10 2xl:gap-12 lg:pl-6 xl:pl-8 2xl:pl-12 decoration_elements">
             <FadeIn delay={0.6}>
               <div className="space-y-2 md:space-y-4">
-                <span className="technical-label !text-muted light:!text-neutral-700 !font-bold">
+                <span className="technical-label text-muted! light:text-neutral-700! font-bold!">
                   SYSTEM STATUS
                 </span>
                 <div className="flex items-center gap-4 border-l-2 border-accent pl-3 md:pl-4">
@@ -163,7 +163,7 @@ export function Hero() {
 
             <FadeIn delay={0.7}>
               <div className="space-y-2 md:space-y-4">
-                <span className="technical-label !text-muted light:!text-neutral-700 !font-bold">
+                <span className="technical-label text-muted! light:text-neutral-700! font-bold!">
                   ACTIVE MODULES
                 </span>
                 <div className="flex flex-wrap gap-2">
@@ -182,7 +182,7 @@ export function Hero() {
             {/* Redundant on mobile because ACTIVE MODULES already displays the stack badges above */}
             <FadeIn delay={0.8} className="hidden md:block">
               <div className="space-y-4">
-                <span className="technical-label !text-muted light:!text-neutral-700 !font-bold">
+                <span className="technical-label text-muted! light:text-neutral-700! font-bold!">
                   CURRENT STACK
                 </span>
                 <p className="text-[10px] font-mono font-bold leading-relaxed tracking-widest uppercase text-accent">
