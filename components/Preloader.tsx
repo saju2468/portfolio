@@ -155,13 +155,13 @@ export function Preloader() {
                 sajin
                 <div className="absolute -right-6 bottom-2 w-4 h-8 bg-accent" />
               </h1>
-              <span className="technical-label mt-4 tracking-[0.6em] text-accent font-black animate-pulse uppercase">
+              <span className="technical-label mt-4 tracking-[0.6em] text-accent font-black uppercase">
                 FRONTEND_ENGINEER_CORE
               </span>
             </div>
 
             <div className="w-full space-y-4">
-              <div className="flex justify-between items-end technical-label !text-[8px] opacity-60">
+              <div className="flex justify-between items-end technical-label !text-[9px] !text-muted">
                 <div className="flex flex-col gap-1">
                   <span>INIT_HANDSHAKE: OK</span>
                   <span>LOAD_MODULE_01: {progress > 30 ? "OK" : "PENDING"}</span>

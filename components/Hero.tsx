@@ -153,8 +153,9 @@ export function Hero() {
                 <span className="technical-label text-muted! light:text-neutral-700! font-bold!">
                   SYSTEM STATUS
                 </span>
-                <div className="flex items-center gap-4 border-l-2 border-accent pl-3 md:pl-4">
-                  <span className="text-xs font-mono uppercase font-bold text-accent animate-pulse">
+                <div className="flex items-center gap-2.5 border-l-2 border-accent pl-3 md:pl-4">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse shrink-0" aria-hidden="true" />
+                  <span className="text-xs font-mono uppercase font-bold text-accent">
                     NOMINAL_OPERATIONS_STABLE
                   </span>
                 </div>

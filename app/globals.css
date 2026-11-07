@@ -32,7 +32,7 @@
 [data-theme="light"] {
   --background: #f0f0ea;
   --foreground: #0f0f0f;
-  --accent: #ff4d00;
+  --accent: #b83400;
   --secondary: #2d2d2d;
   --grid-line: rgba(0, 0, 0, 0.12);
   --card: #ffffff;
@@ -170,9 +170,8 @@ button,
 
 .handwriting {
   font-family: var(--font-handwriting), cursive;
-  opacity: 0.8;
   color: var(--accent);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-style: italic;
 }
 
