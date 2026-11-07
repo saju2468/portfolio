@@ -107,6 +107,13 @@ button,
   content: "_";
   position: absolute;
   animation: 1s step-end infinite blink;
+  will-change: opacity;
+  transform: translateZ(0);
+}
+
+.animate-pulse {
+  will-change: opacity;
+  transform: translateZ(0);
 }
 
 @keyframes blink {

@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 // --- Constants ---
 
-const LOADING_DURATION = 2000; // 2 seconds loading duration
-const FINISH_DELAY = 400; // Delay after reaching 100% before closing
+const LOADING_DURATION = 700; // Snappy high-performance terminal boot sequence
+const FINISH_DELAY = 100; // Minimal delay after 100% before reveal
 
 const BINARY_STREAM_LINES = [
   "10100101101011001010111001011010",
@@ -139,7 +139,7 @@ export function Preloader() {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           className="fixed inset-0 z-[20000] bg-background text-foreground flex flex-col items-center justify-center p-8 overflow-hidden"
           role="progressbar"
           aria-label="Loading Sajin Portfolio"

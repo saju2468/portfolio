@@ -41,7 +41,7 @@ export function Footer() {
         )}
       </div>
 
-      <div className="flex flex-col gap-1 items-center md:items-end technical-label !text-[8px] opacity-60 font-mono text-center md:text-right">
+      <div className="flex flex-col gap-1 items-center md:items-end technical-label !text-[9px] !text-muted light:!text-neutral-700 !font-bold font-mono text-center md:text-right">
         <div className="flex gap-4 items-center">
           <span>SYSTEM_STATUS: {SYSTEM_CONFIG.LATENCY_STATUS}</span>
           <div className="w-1.5 h-1.5 rounded-full bg-[#22c55e] animate-pulse" />

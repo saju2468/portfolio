@@ -45,7 +45,9 @@ const PortraitFrame = ({ className = "" }: { className?: string }) => (
         alt="Sajin Portrait"
         fill
         priority
-        sizes="(max-width: 768px) 100vw, 350px"
+        fetchPriority="high"
+        sizes="(max-width: 640px) 280px, (max-width: 1024px) 340px, 350px"
+        quality={85}
         className="object-cover transition-transform duration-700 group-hover:scale-105"
       />
       <div className="absolute inset-0 bg-accent/5 pointer-events-none" />
@@ -118,12 +120,10 @@ export function Hero() {
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 md:gap-12 xl:gap-16 2xl:gap-24 items-start md:mt-12">
           {/* Content Block */}
           <div className="md:col-span-12 lg:col-span-7 flex flex-col gap-6 md:gap-10">
-            {/* Mobile Portrait - Shown only on smaller screens */}
-            <FadeIn delay={0.3}>
-              <div className="lg:hidden w-full max-w-70 sm:max-w-85 mb-4 sm:mb-8">
-                <PortraitFrame />
-              </div>
-            </FadeIn>
+            {/* Mobile Portrait - Rendered immediately for optimal LCP score */}
+            <div className="lg:hidden w-full max-w-70 sm:max-w-85 mb-4 sm:mb-8">
+              <PortraitFrame />
+            </div>
 
             <FadeIn delay={0.4}>
               <p className="font-display text-2xl sm:text-3xl md:text-5xl lg:text-[3.25rem] leading-[1.15] md:leading-[1.1] font-bold tracking-tight max-w-208 text-foreground">
